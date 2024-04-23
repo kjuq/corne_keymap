@@ -4,8 +4,8 @@
 
 #include "keycodes.h"
 
-#include "user_layers.h"
 #include "user_keycodes.h"
+#include "user_layers.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -82,10 +82,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ), // }}}
 
     [_ADJUST2] = LAYOUT_split_3x5_3_ex2( // {{{
-        EXT_LYR, QK_BOOT, DB_TOGG, AU_TOGG, XXXXXXX, XXXXXXX,         XXXXXXX, RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
+        EXT_LYR, QK_BOOT, DB_TOGG, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
         XXXXXXX, XXXXXXX, QWERTY,  COLEMAK, XXXXXXX, XXXXXXX,         XXXXXXX, RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW,RGB_M_SN,
         XXXXXXX, XXXXXXX, KO_TOGG, EE_CLR,  XXXXXXX,                           RGB_M_K, RGB_M_X, RGB_M_G, RGB_M_T, RGB_M_TW,
-                                   XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX
+                                   XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KC_RSFT, XXXXXXX
     ), // }}}
 
     [_MOUSE] = LAYOUT_split_3x5_3_ex2( // {{{
