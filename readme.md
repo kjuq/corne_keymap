@@ -23,6 +23,7 @@ Build
 ./build_docker.sh
 ```
 
-## Development
+## TODO list
 
-TODO
+- Add the way to supress warnings when development
+- Add the way to build the firmware with docker
