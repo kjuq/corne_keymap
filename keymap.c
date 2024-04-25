@@ -91,7 +91,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case ADJUST2:
             if (record->event.pressed) {
                 if (IS_LAYER_OFF(_ADJUST2)) {
-                    user_enter_layer(_ADJUST2, HSV_ADJUST2);
+                    layer_move(_ADJUST2);
+                    rgblight_reload_from_eeprom();
                 } else {
                     user_exit_layer();
                 }
