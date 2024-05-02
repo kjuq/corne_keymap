@@ -246,6 +246,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 user_override_toggle_post(user_config.spc_tap);
             }
             return false;
+        case RGB_RDP:
+            if (record->event.pressed) {
+                rgb_matrix_mode(RGB_MATRIX_RAINDROPS);
+            }
         default:
             last_keycode = get_last_keycode();
     }
