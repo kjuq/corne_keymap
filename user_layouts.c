@@ -12,9 +12,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // clang-format off
 
     [_COLEMAK] = LAYOUT_split_3x5_3_ex2( // {{{
-        KC_ESC,  KC_W,    KC_F,    KC_P,    KC_V,    XXXXXXX,         XXXXXXX, KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q,
+        KC_ESC,  KC_W,    KC_F,    KC_P,    KC_B,    XXXXXXX,         XXXXXXX, KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q,
         KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    XXXXXXX,         XXXXXXX, KC_H,    KC_N,    KC_E,    KC_I,    KC_O,
-        KC_Z,    KC_X,    KC_C,    KC_D,    KC_B,                              KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SCLN,
+        KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                              KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SCLN,
                                    LOWER,   KC_LCTL, KC_SPC,          KC_SPC,  KC_RSFT, RAISE
     ), // }}}
 
@@ -75,9 +75,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ), // }}}
 
     [_ADJUST] = LAYOUT_split_3x5_3_ex2( // {{{
-        EXT_LYR, KO_WDDL, KO_WD,   XXXXXXX, KO_CMDV, XXXXXXX,         XXXXXXX, ADJUST2, XXXXXXX, KO_CTLU, XXXXXXX, KO_CMDQ,
+        EXT_LYR, KO_WDDL, KO_WD,   XXXXXXX, KO_AR,   XXXXXXX,         XXXXXXX, ADJUST2, XXXXXXX, KO_CTLU, XXXXXXX, KO_CMDQ,
         KO_HM,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KO_BS,   XXXXXXX, KO_ED,   KO_TB,   XXXXXXX,
-        XXXXXXX, XXXXXXX, KO_CMDD, KO_DL,   KO_AR,                             XXXXXXX, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
+        XXXXXXX, XXXXXXX, XXXXXXX, KO_DL,   XXXXXXX,                           XXXXXXX, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
                                    XXXXXXX, XXXXXXX, KO_CMSP,         MT_SPC,  KO_MTAB, LT_FNC
     ), // }}}
 

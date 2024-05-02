@@ -63,7 +63,6 @@ void _common_win_linux(void) {
         user_config.override_word_dl_lnx = true;
         user_config.override_word_dl_apl = false;
     }
-    // user_config.override_cmd_v = false;
     user_config.override_linux_cmd = true;
     eeconfig_update_user(user_config.raw);
 }
@@ -109,12 +108,6 @@ void user_reload_user_eeprom(void) {
     }
     if (!user_config.override_cmd_space) {
         user_switch_override(&cmd_space_override, false);
-    }
-    if (!user_config.override_cmd_v) {
-        user_switch_override(&cmd_v_override, false);
-    }
-    if (!user_config.override_cmd_d) {
-        user_switch_override(&cmd_d_override, false);
     }
     if (!user_config.override_cmd_q) {
         user_switch_override(&cmd_q_override, false);

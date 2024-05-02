@@ -151,7 +151,6 @@ void user_dump_override_state(void) {
         if (user_config.override_word_mv_apl) SEND_STRING(" wdmvapl");
         if (user_config.override_word_mv_lnx) SEND_STRING(" wdmvlnx");
         if (user_config.override_ctrl_u) SEND_STRING(" ctlu");
-        if (user_config.override_cmd_v) SEND_STRING(" cmdv");
         if (user_config.override_cmd_q) SEND_STRING(" cmdq");
         if (user_config.spc_tap) SEND_STRING(" spctap");
 
@@ -163,8 +162,6 @@ void user_dump_override_state(void) {
         SEND_STRING(" \\");
 
         if (user_config.override_linux_cmd) SEND_STRING(" lnxcmd");
-
-        if (user_config.override_cmd_d) SEND_STRING(" cmdd");
 
         if (user_config.is_jis_mode) SEND_STRING(" jis");
 

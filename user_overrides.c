@@ -64,8 +64,6 @@ key_override_t w_del_mac_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_W, RALT(K
 key_override_t w_del_win_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_W, LCTL(KC_BSPC));
 
 key_override_t cmd_space_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_SPC, LGUI(KC_BSLS));
-key_override_t cmd_v_override     = ko_make_basic(MOD_BIT(KC_LGUI), KC_D, LGUI(KC_V));   // overridden by linux cmd
-key_override_t cmd_d_override     = ko_make_basic(MOD_BIT(KC_LGUI), KC_V, LGUI(KC_D));   // overridden by linux cmd
 key_override_t cmd_q_override     = ko_make_basic(MOD_BIT(KC_LGUI), KC_Q, LGUI(KC_GRV)); // overridden by linux cmd
 
 key_override_t ctrl_tab_override  = ko_make_basic(MOD_BIT(KC_LCTL), KC_ESC, LCTL(KC_TAB));
@@ -147,8 +145,6 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &ctrl_u_key_override,
     &cmd_space_override,
 
-    &cmd_d_override,
-    &cmd_v_override,
     &cmd_q_override,
 
     &w_fwd_mac_override,
