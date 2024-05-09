@@ -17,11 +17,17 @@
 #define MK_C_OFFSET_UNMOD 6
 #define MK_C_INTERVAL_UNMOD 1
 
+#define MK_C_OFFSET_1 1
+#define MK_C_INTERVAL_1 1
+
 #define MK_C_OFFSET_0 1
-#define MK_C_INTERVAL_0 1
+#define MK_C_INTERVAL_0 3
 
 #define MK_W_OFFSET_UNMOD 1
 #define MK_W_INTERVAL_UNMOD 60
+
+#define MK_W_OFFSET_1 1
+#define MK_W_INTERVAL_1 90
 
 #define MK_W_OFFSET_0 1
 #define MK_W_INTERVAL_0 120

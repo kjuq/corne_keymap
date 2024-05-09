@@ -8,13 +8,11 @@
 
 #define LOWER MO(_LOWER)
 #define LWRFNC LT(_LOWER, KC_F18)
-// #define RAISE MO(_RAISE)
 #define RAISE LM(_RAISE, MOD_MASK_SHIFT)
 #define RISFNC LT(_RAISE, KC_F19)
 #define FNCTN OSL(_FNCTN)
 #define MODS OSL(_MODS)
 #define ORS OSL(_ORS)
-#define MOUSE MO(_MOUSE)
 
 #define MOD_CAG LM(0, MOD_MASK_CAG)
 
@@ -29,6 +27,7 @@ enum planck_keycodes {
     LNG_TAP,
     ADJUST,
     ADJUST2,
+    MOUSE,
     EXT_LYR,
     KO_TB,
     KO_EN,
