@@ -101,6 +101,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         case RAISE:
+        case RISFNC:
             if (record->event.pressed) {
                 // do nothing special
             } else {
