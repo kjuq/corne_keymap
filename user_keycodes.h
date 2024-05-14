@@ -51,5 +51,7 @@ enum planck_keycodes {
     LT_FNC,
     MT_SPC,
     HOLDLST,
+    DTCT_OS,
+    CYCL_OS,
     RGB_RDP,
 };

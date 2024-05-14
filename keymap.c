@@ -1,13 +1,11 @@
 #include "action_util.h"
-#include QMK_KEYBOARD_H
 
 #include "quantum.h"
 #include "keycodes.h"
-#include "os_detection.h"
 
 #include "user_keycodes.h"
 #include "user_layers.h"
-#include "user_overrides_utils.c"
+#include "user_overrides.c"
 
 #include "user_init.c"
 #include "user_utils.c"
@@ -51,19 +49,6 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 
 void keyboard_post_init_user(void) {
     wait_ms(500); // wait to detect OS properly
-
-    if (detected_host_os() == OS_MACOS) {
-        user_init_macos();
-    } else if (detected_host_os() == OS_IOS) {
-        user_init_ios();
-    } else if (detected_host_os() == OS_LINUX) {
-        user_init_linux();
-    } else if (detected_host_os() == OS_WINDOWS) {
-        user_init_windows();
-    } else {
-        user_init_unsure();
-    }
-
     user_reload_user_eeprom();
 }
 
@@ -237,7 +222,39 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KO_JIS:
             if (record->event.pressed) {
                 user_config.is_jis_mode = user_config.is_jis_mode ? false : true;
-                user_override_toggle_post(user_config.is_jis_mode);
+            }
+            return false;
+
+        case DTCT_OS:
+            if (record->event.pressed) {
+                user_config.is_auto_detect_os = user_config.is_auto_detect_os ? false : true;
+            }
+            return false;
+
+        case CYCL_OS:
+            if (record->event.pressed) {
+                if (user_config.is_linux) {
+                    user_config.is_linux = 0;
+                    user_config.is_macos = 1;
+                    user_config.is_windows = 0;
+                    user_config.is_ios = 0;
+                } else if (user_config.is_macos) {
+                    user_config.is_linux = 0;
+                    user_config.is_macos = 0;
+                    user_config.is_windows = 1;
+                    user_config.is_ios = 0;
+                } else if (user_config.is_windows) {
+                    user_config.is_linux = 0;
+                    user_config.is_macos = 0;
+                    user_config.is_windows = 0;
+                    user_config.is_ios = 1;
+                } else {
+                    user_config.is_linux = 1;
+                    user_config.is_macos = 0;
+                    user_config.is_windows = 0;
+                    user_config.is_ios = 0;
+                }
+                user_override_toggle_post(true);
             }
             return false;
 

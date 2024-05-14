@@ -76,13 +76,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         EXT_LYR, KO_WDDL, KO_WD,   XXXXXXX, KO_AR,   XXXXXXX,         XXXXXXX, ADJUST2, XXXXXXX, KO_CTLU, XXXXXXX, KO_CMDQ,
         KO_HM,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KO_BS,   XXXXXXX, KO_ED,   KO_TB,   XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, KO_DL,   XXXXXXX,                           XXXXXXX, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
-                                   XXXXXXX, XXXXXXX, XXXXXXX,         MT_SPC,  KO_MTAB, LT_FNC
+                                   XXXXXXX, XXXXXXX, KO_LXCM,         MT_SPC,  KO_MTAB, LT_FNC
     ), // }}}
 
     [_ADJUST2] = LAYOUT_split_3x5_3_ex2( // {{{
         EXT_LYR, QK_BOOT, DB_TOGG, RGB_TOG, XXXXXXX, XXXXXXX,         XXXXXXX, RGB_SPI, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
         XXXXXXX, XXXXXXX, QWERTY,  COLEMAK, XXXXXXX, XXXXXXX,         XXXXXXX, RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW,RGB_RDP,
-        XXXXXXX, XXXXXXX, KO_TOGG, EE_CLR,  XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        CYCL_OS, DTCT_OS, KO_TOGG, EE_CLR,  XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                    XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KC_RSFT, XXXXXXX
     ), // }}}
 
