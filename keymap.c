@@ -48,7 +48,7 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 }
 
 void keyboard_post_init_user(void) {
-    wait_ms(500); // wait to detect OS properly
+    // wait_ms(250); // wait to detect OS properly
     user_reload_user_eeprom();
 }
 
