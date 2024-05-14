@@ -26,7 +26,7 @@ cp -r kbd_firmware/keyboards/crkbd/qmk/qmk_firmware/* .
 Clone this repository
 
 ```bash
-cd qmk_firmware/keyboards/crkbd
+cd qmk_firmware/keyboards/crkbd/keymaps
 git clone https://github.com/kjuq/corne_keymap
 ```
 
