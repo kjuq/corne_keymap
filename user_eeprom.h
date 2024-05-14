@@ -13,14 +13,13 @@ typedef union {
         bool override_ctrl_k : 1;
         bool override_ctrl_o : 1;
         bool override_ctrl_u : 1;
-        bool override_word_mv_apl : 1;
-        bool override_word_mv_lnx : 1;
-        bool override_word_dl_apl : 1;
-        bool override_word_dl_lnx : 1;
+        bool override_word_mv : 1;
+        bool override_word_dl : 1;
         bool override_cmd_q : 1;
         bool override_modded_esc : 1;
         bool override_linux_cmd : 1;
         bool is_jis_mode : 1;
+        bool is_auto_detect_os : 1;
         bool is_macos : 1;
         bool is_windows : 1;
         bool is_linux : 1;

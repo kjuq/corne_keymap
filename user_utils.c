@@ -1,5 +1,6 @@
 #pragma once
 
+#include "os_detection.h"
 #include QMK_KEYBOARD_H
 
 #include "user_eeprom.h"
@@ -38,12 +39,38 @@ void user_override_toggle_post(bool enable) {
     }
 }
 
-bool user_is_apple(void) {
+bool user_is_macos(void) {
     user_config.raw = eeconfig_read_user();
-    return user_config.is_macos || user_config.is_ios;
+    if (user_config.is_auto_detect_os) {
+        return detected_host_os() == OS_MACOS;
+    } else {
+        return user_config.is_macos;
+    }
 }
 
-bool user_is_lnxwin(void) {
+bool user_is_ios(void) {
     user_config.raw = eeconfig_read_user();
-    return user_config.is_linux || user_config.is_windows;
+    if (user_config.is_auto_detect_os) {
+        return detected_host_os() == OS_IOS;
+    } else {
+        return user_config.is_ios;
+    }
+}
+
+bool user_is_linux(void) {
+    user_config.raw = eeconfig_read_user();
+    if (user_config.is_auto_detect_os) {
+        return detected_host_os() == OS_LINUX;
+    } else {
+        return user_config.is_linux;
+    }
+}
+
+bool user_is_windows(void) {
+    user_config.raw = eeconfig_read_user();
+    if (user_config.is_auto_detect_os) {
+        return detected_host_os() == OS_WINDOWS;
+    } else {
+        return user_config.is_windows;
+    }
 }

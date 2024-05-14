@@ -126,6 +126,19 @@ void user_dump_override_state(void) {
     register_code(KC_LSFT);
     tap_code16(KC_LBRC);
 
+    /*if (user_is_macos()) {*/
+    /*    SEND_STRING(" macos");*/
+    /*} else if (user_is_windows()) {*/
+    /*    SEND_STRING(" win");*/
+    /*} else if (user_is_linux()) {*/
+    /*    SEND_STRING(" linux");*/
+    /*} else if (user_is_ios()) {*/
+    /*    SEND_STRING(" ios");*/
+    /*} else {*/
+    /*    SEND_STRING(" unknown");*/
+    /*}*/
+    /*SEND_STRING(" detected \\");*/
+
     if (user_config.is_macos) {
         SEND_STRING(" macos");
     } else if (user_config.is_windows) {
@@ -146,10 +159,8 @@ void user_dump_override_state(void) {
         if (user_config.override_tab) SEND_STRING(" tab");
         if (user_config.override_arrows) SEND_STRING(" arr");
         if (user_config.override_delete) SEND_STRING(" del");
-        if (user_config.override_word_dl_apl) SEND_STRING(" wddlapl");
-        if (user_config.override_word_dl_lnx) SEND_STRING(" wddllnx");
-        if (user_config.override_word_mv_apl) SEND_STRING(" wdmvapl");
-        if (user_config.override_word_mv_lnx) SEND_STRING(" wdmvlnx");
+        if (user_config.override_word_dl) SEND_STRING(" wddl");
+        if (user_config.override_word_mv) SEND_STRING(" wdmv");
         if (user_config.override_ctrl_u) SEND_STRING(" ctlu");
         if (user_config.override_cmd_q) SEND_STRING(" cmdq");
         if (user_config.spc_tap) SEND_STRING(" spctap");

@@ -219,28 +219,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         case KO_WD:
             if (record->event.pressed) {
-                bool cur_status;
-                if (user_is_apple()) {
-                    cur_status                       = user_config.override_word_mv_apl;
-                    user_config.override_word_mv_apl = cur_status ? false : true;
-                } else {
-                    cur_status                       = user_config.override_word_mv_lnx;
-                    user_config.override_word_mv_lnx = cur_status ? false : true;
-                }
-                user_override_toggle_post(cur_status);
+                user_config.override_word_mv = user_config.override_word_mv ? false : true;
+                user_override_toggle_post(user_config.override_word_mv);
             }
             return false;
         case KO_WDDL:
             if (record->event.pressed) {
-                bool cur_status;
-                if (user_is_apple()) {
-                    cur_status                       = user_config.override_word_dl_apl;
-                    user_config.override_word_dl_apl = cur_status ? false : true;
-                } else {
-                    cur_status                       = user_config.override_word_dl_lnx;
-                    user_config.override_word_dl_lnx = cur_status ? false : true;
-                }
-                user_override_toggle_post(cur_status);
+                user_config.override_word_dl = user_config.override_word_dl ? false : true;
+                user_override_toggle_post(user_config.override_word_dl);
             }
             return false;
         case KO_LXCM:
