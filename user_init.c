@@ -2,8 +2,6 @@
 
 #include "user_init.h"
 
-#include QMK_KEYBOARD_H
-
 #include "user_eeprom.h"
 #include "user_overrides_utils.c"
 #include "user_layers.h"
@@ -30,13 +28,13 @@ void user_init_unsure(void) {
 }
 
 void _common_win_linux(void) {
-    user_config.raw        = eeconfig_read_user();
+    user_config.raw                = eeconfig_read_user();
     user_config.override_linux_cmd = true;
     eeconfig_update_user(user_config.raw);
 }
 
 void _common_apple(void) {
-    user_config.raw        = eeconfig_read_user();
+    user_config.raw                = eeconfig_read_user();
     user_config.override_linux_cmd = false;
     eeconfig_update_user(user_config.raw);
 }

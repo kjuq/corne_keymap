@@ -1,6 +1,6 @@
 #pragma once
 
-#include QMK_KEYBOARD_H
+#include "process_key_override.h"
 
 void user_switch_override(key_override_t *, bool);
 

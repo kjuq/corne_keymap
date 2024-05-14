@@ -2,10 +2,8 @@
 
 #include QMK_KEYBOARD_H
 
-#include "keycodes.h"
-
-#include "user_keycodes.h"
 #include "user_layers.h"
+#include "user_keycodes.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 

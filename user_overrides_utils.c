@@ -2,8 +2,7 @@
 
 #include "user_overrides_utils.h"
 
-#include QMK_KEYBOARD_H
-
+#include "quantum.h"
 #include "user_overrides.c"
 #include "user_eeprom.h"
 

@@ -1,5 +1,4 @@
 #include "action_util.h"
-#include "print.h"
 #include QMK_KEYBOARD_H
 
 #include "quantum.h"
@@ -16,7 +15,7 @@
 #include "user_layouts.c" // necessary; setting layouts
 
 static uint16_t last_keycode;
-static int mouse_acl_pressed = 0;
+static int      mouse_acl_pressed = 0;
 
 void oneshot_layer_changed_user(uint8_t layer) {
     if (layer == _MODS || layer == _ORS) {
@@ -134,7 +133,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 mouse_acl_pressed--;
             }
             return false;
-
 
         // Extra keys
         case EXT_LYR:

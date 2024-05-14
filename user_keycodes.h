@@ -1,6 +1,6 @@
 #pragma once
 
-#include QMK_KEYBOARD_H
+#include "quantum_keycodes.h"
 
 // user defined keycodes
 #define CMD_SPC LGUI_T(KC_SPC)

@@ -1,8 +1,10 @@
 #pragma once
 
+#include "_wait.h"
+#include "eeconfig.h"
 #include "os_detection.h"
-#include QMK_KEYBOARD_H
 
+#include "rgb_matrix.h"
 #include "user_eeprom.h"
 #include "user_init.c"
 #include "user_layers.h"

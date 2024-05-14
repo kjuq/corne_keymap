@@ -1,8 +1,7 @@
 #pragma once
 
-#include QMK_KEYBOARD_H
-
-#include "keycodes.h"
+#include "quantum_keycodes.h"
+#include "process_key_override.h"
 
 // variables for key_overrides
 key_override_t jis_at_override   = ko_make_basic(0, KC_AT, KC_LBRC);         // S(KC_2)
