@@ -131,13 +131,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
 
-        // Hooks
-        case KO_TOGG:
-            if (record->event.pressed) {
-                user_react_key_press(HSV_ORANGE);
-            }
-            return true;
-
         // Key override
         case KO_TB:
             if (record->event.pressed) {
