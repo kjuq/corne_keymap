@@ -36,7 +36,42 @@ Build
 ./build.sh
 ```
 
+## Development
+
+To use clangd and suppress inconpatible flags' errors
+
+```bash
+nvim qmk_firmware/.clangd
+```
+
+Append them to `CompileFlags/Remove`
+
+```yaml
+---
+CompileFlags:
+  Remove:
+    - -mcpu=*
+    - -mfpu=*
+    - -mfloat-abi=*
+    - -mno-unaligned-access
+```
+
+It should be like below
+
+```yaml
+CompileFlags:
+  Add: [-Wno-unknown-attributes, -Wno-maybe-uninitialized, -Wno-unknown-warning-option]
+  Remove: [-W*, -mcall-prologues]
+  Compiler: clang
+---
+CompileFlags:
+  Remove:
+    - -mcpu=*
+    - -mfpu=*
+    - -mfloat-abi=*
+    - -mno-unaligned-access
+```
+
 ## TODO list
 
-- Add the way to supress warnings when development
 - Add the way to build the firmware with docker
