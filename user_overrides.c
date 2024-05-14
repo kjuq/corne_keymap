@@ -356,14 +356,14 @@ void user_dump_override_state(void) {
         if (user_config.override_tab) SEND_STRING(" tab");
         if (user_config.override_arrows) SEND_STRING(" arr");
         if (user_config.override_delete) SEND_STRING(" del");
-        if (user_config.override_ctrl_u) SEND_STRING(" ctlu");
-        if (user_config.override_cmd_q) SEND_STRING(" cmdq");
         if (user_config.spc_tap) SEND_STRING(" spctap");
 
         SEND_STRING(" \\");
 
         if (user_config.override_home) SEND_STRING(" home");
         if (user_config.override_end) SEND_STRING(" end");
+        if (user_config.override_ctrl_u) SEND_STRING(" ctlu");
+        if (user_config.override_cmd_q) SEND_STRING(" cmdq");
         if (user_config.override_word_dl) SEND_STRING(" wddl");
         if (user_config.override_word_mv) SEND_STRING(" wdmv");
 
@@ -406,18 +406,26 @@ void reload_overrides() {
         user_switch_override(&right_key_override, false);
         user_switch_override(&left_key_override, false);
     }
-    if (!user_config.override_ctrl_u) {
-        user_switch_override(&ctrl_u_key_override, false);
-    }
-    if (!user_config.override_cmd_q) {
-        user_switch_override(&cmd_q_override, false);
-    }
 
     if (!user_config.override_modded_esc) {
         user_switch_override(&ctrl_tab_override, false);
         user_switch_override(&alt_tab_override, false);
         user_switch_override(&cmd_tab_override, false);
         user_switch_override(&shift_tab_override, false);
+    }
+
+    if (user_is_macos() || user_is_ios() || !user_config.override_home) {
+        user_switch_override(&home_key_override, false);
+    }
+    if (user_is_macos() || user_is_ios() || !user_config.override_end) {
+        user_switch_override(&end_key_override, false);
+    }
+
+    if (user_is_linux() || user_is_windows() || !user_config.override_ctrl_u) {
+        user_switch_override(&ctrl_u_key_override, false);
+    }
+    if (user_is_linux() || user_is_windows() || !user_config.override_cmd_q) {
+        user_switch_override(&cmd_q_override, false);
     }
 
     if (user_is_macos() || user_is_ios() || !user_config.override_word_mv) {
@@ -436,13 +444,6 @@ void reload_overrides() {
 
     if (user_is_linux() || user_is_windows() || !user_config.override_word_dl) {
         user_switch_override(&w_del_mac_override, false);
-    }
-
-    if (user_is_macos() || user_is_ios() || !user_config.override_home) {
-        user_switch_override(&home_key_override, false);
-    }
-    if (user_is_macos() || user_is_ios() || !user_config.override_end) {
-        user_switch_override(&end_key_override, false);
     }
 
     if (user_is_macos() || user_is_ios() || !user_config.override_linux_cmd) {
