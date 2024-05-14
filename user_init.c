@@ -106,9 +106,6 @@ void user_reload_user_eeprom(void) {
     if (!user_config.override_ctrl_u) {
         user_switch_override(&ctrl_u_key_override, false);
     }
-    if (!user_config.override_cmd_space) {
-        user_switch_override(&cmd_space_override, false);
-    }
     if (!user_config.override_cmd_q) {
         user_switch_override(&cmd_q_override, false);
     }

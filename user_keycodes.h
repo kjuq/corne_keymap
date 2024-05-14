@@ -38,7 +38,6 @@ enum planck_keycodes {
     KO_ED,
     KO_CTLK,
     KO_CTLO,
-    KO_CMSP,
     KO_WD,
     KO_WDDL,
     KO_CTLU,

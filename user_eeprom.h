@@ -17,7 +17,6 @@ typedef union {
         bool override_word_mv_lnx : 1;
         bool override_word_dl_apl : 1;
         bool override_word_dl_lnx : 1;
-        bool override_cmd_space : 1;
         bool override_cmd_q : 1;
         bool override_modded_esc : 1;
         bool override_linux_cmd : 1;

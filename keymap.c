@@ -204,12 +204,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
 
-        case KO_CMSP:
-            if (record->event.pressed) {
-                user_config.override_cmd_space = user_config.override_cmd_space ? false : true;
-                user_override_toggle_post(user_config.override_cmd_space);
-            }
-            return false;
         case KO_CMDQ:
             if (record->event.pressed) {
                 user_config.override_cmd_q = user_config.override_cmd_q ? false : true;

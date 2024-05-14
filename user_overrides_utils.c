@@ -166,7 +166,6 @@ void user_dump_override_state(void) {
         if (user_config.is_jis_mode) SEND_STRING(" jis");
 
         if (user_config.fnc_tap) SEND_STRING(" fnctap");
-        if (user_config.override_cmd_space) SEND_STRING(" cmdspc");
     } else {
         SEND_STRING(" override disabled");
     }
