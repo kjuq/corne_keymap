@@ -321,7 +321,9 @@ void user_dump_override_state(void) {
     register_code(KC_LSFT);
     tap_code16(KC_LBRC);
 
-    if (user_is_macos()) {
+    if (!user_config.is_auto_detect_os) {
+        SEND_STRING(" manually");
+    } else if (user_is_macos()) {
         SEND_STRING(" macos");
     } else if (user_is_windows()) {
         SEND_STRING(" win");
@@ -354,8 +356,6 @@ void user_dump_override_state(void) {
         if (user_config.override_tab) SEND_STRING(" tab");
         if (user_config.override_arrows) SEND_STRING(" arr");
         if (user_config.override_delete) SEND_STRING(" del");
-        if (user_config.override_word_dl) SEND_STRING(" wddl");
-        if (user_config.override_word_mv) SEND_STRING(" wdmv");
         if (user_config.override_ctrl_u) SEND_STRING(" ctlu");
         if (user_config.override_cmd_q) SEND_STRING(" cmdq");
         if (user_config.spc_tap) SEND_STRING(" spctap");
@@ -364,6 +364,8 @@ void user_dump_override_state(void) {
 
         if (user_config.override_home) SEND_STRING(" home");
         if (user_config.override_end) SEND_STRING(" end");
+        if (user_config.override_word_dl) SEND_STRING(" wddl");
+        if (user_config.override_word_mv) SEND_STRING(" wdmv");
 
         SEND_STRING(" \\");
 

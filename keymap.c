@@ -134,120 +134,138 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         // Key override
         case KO_TB:
             if (record->event.pressed) {
-                user_config.override_tab = user_config.override_tab ? false : true;
-                user_override_toggle_post(user_config.override_tab);
+                user_config.override_tab = !user_config.override_tab;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
             }
             return false;
         case KO_EN:
             if (record->event.pressed) {
-                user_config.override_enter = user_config.override_enter ? false : true;
-                user_override_toggle_post(user_config.override_enter);
+                user_config.override_enter = !user_config.override_enter;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
             }
             return false;
         case KO_BS:
             if (record->event.pressed) {
-                user_config.override_backspace = user_config.override_backspace ? false : true;
-                user_override_toggle_post(user_config.override_backspace);
+                user_config.override_backspace = !user_config.override_backspace;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
             }
             return false;
         case KO_DL:
             if (record->event.pressed) {
-                user_config.override_delete = user_config.override_delete ? false : true;
-                user_override_toggle_post(user_config.override_delete);
+                user_config.override_delete = !user_config.override_delete;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
             }
             return false;
         case KO_AR:
             if (record->event.pressed) {
-                user_config.override_arrows = user_config.override_arrows ? false : true;
-                user_override_toggle_post(user_config.override_arrows);
+                user_config.override_arrows = !user_config.override_arrows;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
             }
             return false;
         case KO_HM:
             if (record->event.pressed) {
-                user_config.override_home = user_config.override_home ? false : true;
-                user_override_toggle_post(user_config.override_home);
+                user_config.override_home = !user_config.override_home;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
             }
             return false;
         case KO_ED:
             if (record->event.pressed) {
-                user_config.override_end = user_config.override_end ? false : true;
-                user_override_toggle_post(user_config.override_end);
+                user_config.override_end = !user_config.override_end;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
             }
             return false;
         case KO_CTLU:
             if (record->event.pressed) {
-                user_config.override_ctrl_u = user_config.override_ctrl_u ? false : true;
-                user_override_toggle_post(user_config.override_ctrl_u);
+                user_config.override_ctrl_u = !user_config.override_ctrl_u;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
             }
             return false;
 
         case KO_CMDQ:
             if (record->event.pressed) {
-                user_config.override_cmd_q = user_config.override_cmd_q ? false : true;
-                user_override_toggle_post(user_config.override_cmd_q);
+                user_config.override_cmd_q = !user_config.override_cmd_q;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
             }
             return false;
         case KO_MTAB:
             if (record->event.pressed) {
-                user_config.override_modded_esc = user_config.override_modded_esc ? false : true;
-                user_override_toggle_post(user_config.override_modded_esc);
+                user_config.override_modded_esc = !user_config.override_modded_esc;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
             }
             return false;
         case KO_WD:
             if (record->event.pressed) {
-                user_config.override_word_mv = user_config.override_word_mv ? false : true;
-                user_override_toggle_post(user_config.override_word_mv);
+                user_config.override_word_mv = !user_config.override_word_mv;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
             }
             return false;
         case KO_WDDL:
             if (record->event.pressed) {
-                user_config.override_word_dl = user_config.override_word_dl ? false : true;
-                user_override_toggle_post(user_config.override_word_dl);
+                user_config.override_word_dl = !user_config.override_word_dl;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
             }
             return false;
         case KO_LXCM:
             if (record->event.pressed) {
-                user_config.override_linux_cmd = user_config.override_linux_cmd ? false : true;
-                user_override_toggle_post(user_config.override_linux_cmd);
+                user_config.override_linux_cmd = !user_config.override_linux_cmd;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
             }
             return false;
 
         case KO_JIS:
             if (record->event.pressed) {
-                user_config.is_jis_mode = user_config.is_jis_mode ? false : true;
+                user_config.is_jis_mode = !user_config.is_jis_mode;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
             }
             return false;
 
         case DTCT_OS:
             if (record->event.pressed) {
-                user_config.is_auto_detect_os = user_config.is_auto_detect_os ? false : true;
+                user_config.is_auto_detect_os = !user_config.is_auto_detect_os;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
             }
             return false;
 
         case CYCL_OS:
             if (record->event.pressed) {
                 if (user_config.is_linux) {
-                    user_config.is_linux = 0;
-                    user_config.is_macos = 1;
+                    user_config.is_linux   = 0;
+                    user_config.is_macos   = 1;
                     user_config.is_windows = 0;
-                    user_config.is_ios = 0;
+                    user_config.is_ios     = 0;
                 } else if (user_config.is_macos) {
-                    user_config.is_linux = 0;
-                    user_config.is_macos = 0;
+                    user_config.is_linux   = 0;
+                    user_config.is_macos   = 0;
                     user_config.is_windows = 1;
-                    user_config.is_ios = 0;
+                    user_config.is_ios     = 0;
                 } else if (user_config.is_windows) {
-                    user_config.is_linux = 0;
-                    user_config.is_macos = 0;
+                    user_config.is_linux   = 0;
+                    user_config.is_macos   = 0;
                     user_config.is_windows = 0;
-                    user_config.is_ios = 1;
+                    user_config.is_ios     = 1;
                 } else {
-                    user_config.is_linux = 1;
-                    user_config.is_macos = 0;
+                    user_config.is_linux   = 1;
+                    user_config.is_macos   = 0;
                     user_config.is_windows = 0;
-                    user_config.is_ios = 0;
+                    user_config.is_ios     = 0;
                 }
-                user_override_toggle_post(true);
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
             }
             return false;
 
@@ -260,15 +278,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         // Hold tap
         case LT_FNC:
             if (record->event.pressed) {
-                user_config.fnc_tap = user_config.fnc_tap ? false : true;
-                user_override_toggle_post(user_config.fnc_tap);
+                user_config.fnc_tap = !user_config.fnc_tap;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
             }
             return false;
 
         case MT_SPC:
             if (record->event.pressed) {
-                user_config.spc_tap = user_config.spc_tap ? false : true;
-                user_override_toggle_post(user_config.spc_tap);
+                user_config.spc_tap = !user_config.spc_tap;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
             }
             return false;
         case RGB_RDP:

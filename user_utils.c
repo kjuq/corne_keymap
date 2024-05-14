@@ -22,13 +22,7 @@ void user_exit_layer(void) {
     return;
 };
 
-void user_override_toggle_post(bool enable) {
-    eeconfig_update_user(user_config.raw);
-    user_reload_user_eeprom();
-}
-
 bool user_is_macos(void) {
-    user_config.raw = eeconfig_read_user();
     if (user_config.is_auto_detect_os) {
         return detected_host_os() == OS_MACOS;
     } else {
@@ -37,7 +31,6 @@ bool user_is_macos(void) {
 }
 
 bool user_is_ios(void) {
-    user_config.raw = eeconfig_read_user();
     if (user_config.is_auto_detect_os) {
         return detected_host_os() == OS_IOS;
     } else {
@@ -46,7 +39,6 @@ bool user_is_ios(void) {
 }
 
 bool user_is_linux(void) {
-    user_config.raw = eeconfig_read_user();
     if (user_config.is_auto_detect_os) {
         return detected_host_os() == OS_LINUX;
     } else {
@@ -55,7 +47,6 @@ bool user_is_linux(void) {
 }
 
 bool user_is_windows(void) {
-    user_config.raw = eeconfig_read_user();
     if (user_config.is_auto_detect_os) {
         return detected_host_os() == OS_WINDOWS;
     } else {
