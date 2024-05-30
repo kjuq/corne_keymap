@@ -92,6 +92,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 layer_off(_MOUSE);
             }
             return true;
+        case MOD_CAG:
+            if (record->event.pressed) {
+                register_code(KC_RCTL);
+                register_code(KC_LALT);
+                register_code(KC_RGUI);
+            } else {
+                unregister_code(KC_RCTL);
+                unregister_code(KC_LALT);
+                unregister_code(KC_RGUI);
+            }
+            return false;
 
         // MOUSE
         case MOUSE:

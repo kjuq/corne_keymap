@@ -14,19 +14,18 @@
 #define MODS OSL(_MODS)
 #define ORS OSL(_ORS)
 
-#define MOD_CAG LM(0, MOD_MASK_CAG)
-
 #define SC_TAB (QK_LCTL | QK_RSFT | KC_TAB)
 #define SA_TAB (QK_RALT | QK_RSFT | KC_TAB)
 #define EISU KC_LNG2
 #define KANA KC_LNG1
 
 enum planck_keycodes {
-    QWERTY = SAFE_RANGE,
-    COLEMAK,
+    COLEMAK = SAFE_RANGE,
+    QWERTY,
     LNG_TAP,
     ADJUST,
     ADJUST2,
+    MOD_CAG,
     MOUSE,
     EXT_LYR,
     KO_TB,
