@@ -10,8 +10,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // clang-format off
 
     [_COLEMAK] = LAYOUT_split_3x5_3_ex2( // {{{
-        KC_ESC,  KC_W,    KC_F,    KC_P,    KC_B,    KC_F18,          KC_F20,  KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q,
-        KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_F19,          KC_F21,  KC_H,    KC_N,    KC_E,    KC_I,    KC_O,
+        KC_ESC,  KC_W,    KC_F,    KC_P,    KC_B,    KC_F13,          KC_F15,  KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q,
+        KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_F14,          KC_F16,  KC_H,    KC_N,    KC_E,    KC_I,    KC_O,
         KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                              KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SCLN,
                                    LOWER,   KC_LCTL, KC_SPC,          KC_SPC,  KC_RSFT, RAISE
     ), // }}}
@@ -52,9 +52,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ), // }}}
 
     [_FNCTN] = LAYOUT_split_3x5_3_ex2( // {{{
-        XXXXXXX, KC_BRIU, KC_VOLU ,KC_F15,  ADJUST,  XXXXXXX,         XXXXXXX, KC_F12,  KC_F7,   KC_F8,   KC_F9,   XXXXXXX,
-        HOLDLST, KC_BRID, KC_VOLD ,KC_F14,  KC_F17,  XXXXXXX,         XXXXXXX, KC_F11,  KC_F4,   KC_F5,   KC_F6,   MODS,
-        XXXXXXX, XXXXXXX, KC_MPLY ,KC_F13,  KC_F16,                            KC_F10,  KC_F1,   KC_F2,   KC_F3,   ORS,
+        XXXXXXX, KC_BRIU, KC_VOLU, KC_PSCR, ADJUST,  XXXXXXX,         XXXXXXX, KC_F12,  KC_F7,   KC_F8,   KC_F9,   XXXXXXX,
+        HOLDLST, KC_BRID, KC_VOLD, KC_PGUP, KC_INS,  XXXXXXX,         XXXXXXX, KC_F11,  KC_F4,   KC_F5,   KC_F6,   MODS,
+        KC_PAUS, KC_SCRL, KC_MPLY, KC_PGDN, KC_CAPS,                           KC_F10,  KC_F1,   KC_F2,   KC_F3,   ORS,
                                    _______, _______, _______,         _______, _______, _______
     ), // }}}
 
@@ -87,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ), // }}}
 
     [_MOUSE] = LAYOUT_split_3x5_3_ex2( // {{{
-        _______, KC_WH_U, KC_MS_U, KC_WH_D, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, KC_BTN3, KC_BTN2, XXXXXXX, KC_BSPC,
+        _______, KC_WH_U, KC_MS_U, KC_WH_D, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, KC_BTN3, KC_BTN2, XXXXXXX, XXXXXXX,
         XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN5, XXXXXXX,         XXXXXXX, XXXXXXX, KC_BTN1, KC_ACL1, KC_ACL1, KC_LSFT,
         XXXXXXX, KC_WH_L, XXXXXXX, KC_WH_R, KC_BTN4,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LALT,
                                    _______, _______, _______,         _______, _______, _______
