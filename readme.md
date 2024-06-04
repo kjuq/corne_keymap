@@ -1,6 +1,28 @@
-# My Planck Layout
+# My ultimate Corne keymap
 
-## Usage
+## Usage (`foostan/kbd_firmware`)
+
+Clone `foostan/kbd_firmware`
+
+```sh
+git clone --recursive https://github.com/foostan/kbd_firmware
+```
+
+Clone this repository
+
+```sh
+cd kbd_firmware/keyboards/crkbd/qmk/qmk_firmware/keymaps
+git clone https://github.com/kjuq/corne_keymap
+```
+
+Build
+
+```sh
+cd corne_keymap
+./build.sh
+```
+
+## Usage (`qmk/qmk_firmware`)
 
 Clone `qmk/qmk_firmware` first
 
@@ -33,7 +55,7 @@ git clone https://github.com/kjuq/corne_keymap
 Build
 
 ```bash
-./build.sh
+./build_qmk.sh
 ```
 
 ## Development
