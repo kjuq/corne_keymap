@@ -2,8 +2,8 @@
 
 #include QMK_KEYBOARD_H
 
-#include "user_layers.h"
 #include "user_keycodes.h"
+#include "user_layers.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -38,15 +38,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ), // }}}
 
     [_LOWER] = LAYOUT_split_3x5_3_ex2( // {{{
-        SC_TAB,  KC_MINS, KC_EQL,  KC_QUOT, XXXXXXX, XXXXXXX,         XXXXXXX, FNCTN,   KC_7,    KC_8,    KC_9,    KC_BSPC,
-        MOD_CAG, KC_SLSH, KC_LBRC, KC_RBRC, KC_GRV,  XXXXXXX,         XXXXXXX, KC_0,    KC_4,    KC_5,    KC_6,    XXXXXXX,
+        SC_TAB,  KC_MINS, KC_EQL,  KC_GRV,  XXXXXXX, XXXXXXX,         XXXXXXX, FNCTN,   KC_7,    KC_8,    KC_9,    KC_BSPC,
+        MOD_CAG, KC_SLSH, KC_LBRC, KC_RBRC, KC_QUOT, XXXXXXX,         XXXXXXX, KC_0,    KC_4,    KC_5,    KC_6,    XXXXXXX,
         KC_RCTL, KC_COMM, KC_DOT,  KC_SCLN, KC_BSLS,                           XXXXXXX, KC_1,    KC_2,    KC_3,    KC_LSFT,
                                    _______, _______, _______,         _______, _______, _______
     ), // }}}
 
     [_RAISE] = LAYOUT_split_3x5_3_ex2( // {{{
-        SA_TAB,  KC_UNDS, KC_PLUS, KC_DQUO, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, KC_AMPR, KC_ASTR, KC_LPRN, KC_BSPC,
-        XXXXXXX, KC_QUES, KC_LCBR, KC_RCBR, KC_TILD, XXXXXXX,         XXXXXXX, KC_RPRN, KC_DLR,  KC_PERC, KC_CIRC, MOUSE,
+        SA_TAB,  KC_UNDS, KC_PLUS, KC_TILD, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, KC_AMPR, KC_ASTR, KC_LPRN, KC_BSPC,
+        XXXXXXX, KC_QUES, KC_LCBR, KC_RCBR, KC_DQUO, XXXXXXX,         XXXXXXX, KC_RPRN, KC_DLR,  KC_PERC, KC_CIRC, MOUSE,
         KC_RCMD, KC_LABK, KC_RABK, KC_COLN, KC_PIPE,                           XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_LALT,
                                    _______, _______, _______,         _______, _______, _______
     ), // }}}
