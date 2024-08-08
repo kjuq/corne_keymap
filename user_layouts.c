@@ -52,9 +52,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ), // }}}
 
     [_FNCTN] = LAYOUT_split_3x5_3_ex2( // {{{
-        XXXXXXX, KC_BRIU, KC_VOLU, KC_PSCR, ADJUST,  XXXXXXX,         XXXXXXX, KC_F12,  KC_F7,   KC_F8,   KC_F9,   XXXXXXX,
-        HOLDLST, KC_BRID, KC_VOLD, KC_PGUP, KC_INS,  XXXXXXX,         XXXXXXX, KC_F11,  KC_F4,   KC_F5,   KC_F6,   MODS,
-        KC_PAUS, KC_SCRL, KC_MPLY, KC_PGDN, KC_CAPS,                           KC_F10,  KC_F1,   KC_F2,   KC_F3,   ORS,
+        XXXXXXX, KC_BRIU, KC_VOLU, KC_PGUP, ADJUST,  XXXXXXX,         XXXXXXX, KC_F12,  KC_F7,   KC_F8,   KC_F9,   HOLDLST,
+        KC_CAPS, KC_BRID, KC_VOLD, KC_PGDN, KC_INS,  XXXXXXX,         XXXXXXX, KC_F11,  KC_F4,   KC_F5,   KC_F6,   MODS,
+        KC_SCRL, KC_MPLY, KC_MUTE, KC_PSCR, KC_PAUS,                           KC_F10,  KC_F1,   KC_F2,   KC_F3,   ORS,
                                    _______, _______, _______,         _______, _______, _______
     ), // }}}
 
