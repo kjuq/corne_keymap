@@ -30,6 +30,6 @@ sudo util/docker_build.sh $TARGET || exit 1
 
 OUTPUT="${TMP_KEYBOARD}_$(echo $REVISION | sed 's/\//_/')_$KEYMAP.uf2"
 [ ! -f "$OUTPUT" ] && exit 1
-mv "$QMK_BASE/$OUTPUT" "$SCRIPT_DIR/firmware.uf2"
+mv --force "$QMK_BASE/$OUTPUT" "$SCRIPT_DIR/firmware.uf2"
 
 rm -fdr "$TMP_KEYBOARD_PATH"
