@@ -49,6 +49,8 @@ enum planck_keycodes {
     KO_PRNT,
     LT_FNC,
     MT_SPC,
+    ERGOLFT,
+    ERGORIT,
     HOLDLST,
     DTCT_OS,
     CYCL_OS,

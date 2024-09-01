@@ -370,12 +370,11 @@ void user_dump_override_state(void) {
         SEND_STRING(" \\");
 
         if (user_config.is_auto_detect_os) SEND_STRING(" detectos");
-
         if (user_config.override_linux_cmd) SEND_STRING(" lnxcmd");
-
         if (user_config.is_jis_mode) SEND_STRING(" jis");
-
         if (user_config.fnc_tap) SEND_STRING(" fnctap");
+        if (user_config.ergolft) SEND_STRING(" ergolft");
+        if (user_config.ergorit) SEND_STRING(" ergorit");
     } else {
         SEND_STRING(" override disabled");
     }

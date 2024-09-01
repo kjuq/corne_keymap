@@ -7,6 +7,8 @@ enum planck_layers {
     _QWERTY,
     _FNC_TAP,
     _SPC_TAP,
+    _ERGOLFT,
+    _ERGORIT,
     _LOWER,
     _RAISE,
     _FNCTN,

@@ -26,6 +26,8 @@ typedef union {
         bool is_ios : 1;
         bool fnc_tap : 1;
         bool spc_tap : 1;
+        bool ergolft : 1;
+        bool ergorit : 1;
     };
 } user_config_t;
 

@@ -302,6 +302,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 user_reload_user_eeprom();
             }
             return false;
+        case ERGOLFT:
+            if (record->event.pressed) {
+                user_config.ergolft = !user_config.ergolft;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
+            }
+            return false;
+        case ERGORIT:
+            if (record->event.pressed) {
+                user_config.ergorit = !user_config.ergorit;
+                eeconfig_update_user(user_config.raw);
+                user_reload_user_eeprom();
+            }
+            return false;
+
         case RGB_RDP:
             if (record->event.pressed) {
                 rgb_matrix_mode(RGB_MATRIX_RAINDROPS);

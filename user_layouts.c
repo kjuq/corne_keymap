@@ -37,6 +37,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    _______, _______, CMD_SPC,         ALT_SPC, _______, _______
     ), // }}}
 
+    [_ERGOLFT] = LAYOUT_split_3x5_3_ex2( // {{{
+        _______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______,
+                                   KC_LCMD, LOWER,   KC_LCTL,         _______, _______, _______
+    ), // }}}
+
+    [_ERGORIT] = LAYOUT_split_3x5_3_ex2( // {{{
+        _______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______,
+                                   _______, _______, _______,         KC_RSFT, RAISE,   KC_RALT
+    ), // }}}
+
     [_LOWER] = LAYOUT_split_3x5_3_ex2( // {{{
         SC_TAB,  KC_MINS, KC_EQL,  KC_GRV,  XXXXXXX, XXXXXXX,         XXXXXXX, FNCTN,   KC_7,    KC_8,    KC_9,    KC_BSPC,
         MOD_CAG, KC_SLSH, KC_LBRC, KC_RBRC, KC_QUOT, XXXXXXX,         XXXXXXX, KC_0,    KC_4,    KC_5,    KC_6,    XXXXXXX,
@@ -76,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         EXT_LYR, KO_WDDL, KO_WD,   XXXXXXX, KO_AR,   XXXXXXX,         XXXXXXX, ADJUST2, XXXXXXX, KO_CTLU, XXXXXXX, KO_CMDQ,
         KO_HM,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KO_BS,   XXXXXXX, KO_ED,   KO_TB,   XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, KO_DL,   XXXXXXX,                           XXXXXXX, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
-                                   XXXXXXX, XXXXXXX, KO_LXCM,         MT_SPC,  KO_MTAB, LT_FNC
+                                   KO_MTAB, ERGOLFT, KO_LXCM,         MT_SPC,  ERGORIT, LT_FNC
     ), // }}}
 
     [_ADJUST2] = LAYOUT_split_3x5_3_ex2( // {{{
