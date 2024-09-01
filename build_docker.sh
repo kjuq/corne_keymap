@@ -17,7 +17,7 @@ TMP_KEYBOARD_PATH="$QMK_BASE/keyboards/$TMP_KEYBOARD"
 cd "$KBD_BASE" || exit 1
 make git-submodule
 
-[ ! -d "$TMP_KEYBOARD_PATH" ] && rm -fdr "$TMP_KEYBOARD_PATH"
+[ -d "$TMP_KEYBOARD_PATH" ] && rm -fdr "$TMP_KEYBOARD_PATH"
 cp -r "$KBD_BASE/keyboards/$KEYBOARD/qmk/qmk_firmware" "$TMP_KEYBOARD_PATH"
 
 # Update `kbd_firmware/src/qmk/qmk_firmware`
