@@ -36,13 +36,15 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case CMD_SPC:
-        case ALT_SPC:
-            // Do not select the hold action when another key is pressed.
-            return false;
-        default:
+        case LOWER:
+        case RAISE:
+        case LWRFNC:
+        case RISFNC:
             // Immediately select the hold action when another key is pressed.
             return true;
+        default:
+            // Do not select the hold action when another key is pressed.
+            return false;
     }
     (void)record; // suppress unused parameter warning
 }
@@ -287,9 +289,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
 
         // Hold tap
-        case LT_FNC:
+        case MT_HRM:
             if (record->event.pressed) {
-                user_config.fnc_tap = !user_config.fnc_tap;
+                user_config.hrmod = !user_config.hrmod;
                 eeconfig_update_user(user_config.raw);
                 user_reload_user_eeprom();
             }

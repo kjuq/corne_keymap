@@ -53,34 +53,49 @@ key_override_t right_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_F, KC_RIG
 key_override_t left_key_override  = ko_make_basic(MOD_BIT(KC_LCTL), KC_B, KC_LEFT);
 key_override_t up_key_override    = ko_make_basic(MOD_BIT(KC_LCTL), KC_P, KC_UP);
 key_override_t down_key_override  = ko_make_basic(MOD_BIT(KC_LCTL), KC_N, KC_DOWN);
-
 key_override_t home_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_A, KC_HOME);
 key_override_t end_key_override  = ko_make_basic(MOD_BIT(KC_LCTL), KC_E, KC_END);
-
 key_override_t enter_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_M, KC_ENT);
 key_override_t tab_key_override   = ko_make_basic(MOD_BIT(KC_LCTL), KC_I, KC_TAB);
 key_override_t bs_key_override    = ko_make_basic(MOD_BIT(KC_LCTL), KC_H, KC_BSPC);
 key_override_t del_key_override   = ko_make_basic(MOD_BIT(KC_LCTL), KC_D, KC_DEL);
-
 key_override_t w_fwd_mac_override = ko_make_basic(MOD_BIT(KC_RALT), KC_F, RALT(KC_RGHT));
 key_override_t w_bck_mac_override = ko_make_basic(MOD_BIT(KC_RALT), KC_B, RALT(KC_LEFT));
-
 key_override_t w_fwd_win_override = ko_make_basic(MOD_BIT(KC_RALT), KC_F, RCTL(KC_RGHT));
 key_override_t w_bck_win_override = ko_make_basic(MOD_BIT(KC_RALT), KC_B, RCTL(KC_LEFT));
-
 key_override_t w_del_mac_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_W, RALT(KC_BSPC));
 key_override_t w_del_win_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_W, LCTL(KC_BSPC));
-
 key_override_t cmd_q_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_Q, LGUI(KC_GRV)); // overridden by linux cmd
-
 key_override_t ctrl_tab_override  = ko_make_basic(MOD_BIT(KC_LCTL), KC_ESC, LCTL(KC_TAB));
 key_override_t alt_tab_override   = ko_make_basic(MOD_BIT(KC_RALT), KC_ESC, RALT(KC_TAB));
 key_override_t cmd_tab_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_ESC, LGUI(KC_TAB));
 key_override_t shift_tab_override = ko_make_basic(MOD_BIT(KC_RSFT), KC_ESC, RSFT(KC_TAB));
 
+key_override_t hrm_right_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_F, KC_RIGHT);
+key_override_t hrm_left_key_override  = ko_make_basic(MOD_BIT(KC_LCTL), CM_B, KC_LEFT);
+key_override_t hrm_up_key_override    = ko_make_basic(MOD_BIT(KC_LCTL), CM_P, KC_UP);
+key_override_t hrm_down_key_override  = ko_make_basic(MOD_BIT(KC_LCTL), CM_N, KC_DOWN);
+key_override_t hrm_home_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_A, KC_HOME);
+key_override_t hrm_end_key_override  = ko_make_basic(MOD_BIT(KC_LCTL), CM_E, KC_END);
+key_override_t hrm_enter_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_M, KC_ENT);
+key_override_t hrm_tab_key_override   = ko_make_basic(MOD_BIT(KC_LCTL), CM_I, KC_TAB);
+key_override_t hrm_bs_key_override    = ko_make_basic(MOD_BIT(KC_LCTL), CM_H, KC_BSPC);
+key_override_t hrm_del_key_override   = ko_make_basic(MOD_BIT(KC_LCTL), CM_D, KC_DEL);
+key_override_t hrm_w_fwd_mac_override = ko_make_basic(MOD_BIT(KC_RALT), CM_F, RALT(KC_RGHT));
+key_override_t hrm_w_bck_mac_override = ko_make_basic(MOD_BIT(KC_RALT), CM_B, RALT(KC_LEFT));
+key_override_t hrm_w_fwd_win_override = ko_make_basic(MOD_BIT(KC_RALT), CM_F, RCTL(KC_RGHT));
+key_override_t hrm_w_bck_win_override = ko_make_basic(MOD_BIT(KC_RALT), CM_B, RCTL(KC_LEFT));
+key_override_t hrm_w_del_mac_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_W, RALT(KC_BSPC));
+key_override_t hrm_w_del_win_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_W, LCTL(KC_BSPC));
+key_override_t hrm_cmd_q_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_Q, LGUI(KC_GRV)); // overridden by linux cmd
+key_override_t hrm_ctrl_tab_override  = ko_make_basic(MOD_BIT(KC_LCTL), CM_ESC, LCTL(KC_TAB));
+key_override_t hrm_alt_tab_override   = ko_make_basic(MOD_BIT(KC_RALT), CM_ESC, RALT(KC_TAB));
+key_override_t hrm_cmd_tab_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_ESC, LGUI(KC_TAB));
+key_override_t hrm_shift_tab_override = ko_make_basic(MOD_BIT(KC_RSFT), CM_ESC, RSFT(KC_TAB));
+
 key_override_t linux_a_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_A, LCTL(KC_A));
 key_override_t linux_b_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_B, LCTL(KC_B));
-key_override_t linux_c_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_C, LCTL(KC_C));
+key_override_t linux_c_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_C, KC_COPY);
 key_override_t linux_d_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_D, LCTL(KC_D));
 key_override_t linux_e_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_E, LCTL(KC_E));
 key_override_t linux_f_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_F, LCTL(KC_F));
@@ -99,9 +114,9 @@ key_override_t linux_r_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_R, LCTL(K
 key_override_t linux_s_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_S, LCTL(KC_S));
 key_override_t linux_t_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_T, LCTL(KC_T));
 key_override_t linux_u_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_U, LCTL(KC_U));
-key_override_t linux_v_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_V, LCTL(KC_V));
+key_override_t linux_v_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_V, KC_PASTE);
 key_override_t linux_w_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_W, LCTL(KC_W));
-key_override_t linux_x_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_X, LCTL(KC_X));
+key_override_t linux_x_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_X, KC_CUT);
 key_override_t linux_y_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_Y, LCTL(KC_Y));
 key_override_t linux_z_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_Z, LCTL(KC_Z));
 key_override_t linux_com_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_COMM, LCTL(KC_COMM));
@@ -150,20 +165,39 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &home_key_override,
     &end_key_override,
     &ctrl_u_key_override,
-
     &cmd_q_override,
-
     &w_fwd_mac_override,
     &w_bck_mac_override,
     &w_del_mac_override,
     &w_fwd_win_override,
     &w_bck_win_override,
     &w_del_win_override,
-
     &ctrl_tab_override,
     &alt_tab_override,
     &cmd_tab_override,
     &shift_tab_override,
+
+    &hrm_right_key_override,
+    &hrm_left_key_override,
+    &hrm_up_key_override,
+    &hrm_down_key_override,
+    &hrm_home_key_override,
+    &hrm_end_key_override,
+    &hrm_enter_key_override,
+    &hrm_tab_key_override,
+    &hrm_bs_key_override,
+    &hrm_del_key_override,
+    &hrm_w_fwd_mac_override,
+    &hrm_w_bck_mac_override,
+    &hrm_w_fwd_win_override,
+    &hrm_w_bck_win_override,
+    &hrm_w_del_mac_override,
+    &hrm_w_del_win_override,
+    &hrm_cmd_q_override,
+    &hrm_ctrl_tab_override,
+    &hrm_alt_tab_override,
+    &hrm_cmd_tab_override,
+    &hrm_shift_tab_override,
 
     &jis_at_override,
     &jis_circ_override,
@@ -372,7 +406,7 @@ void user_dump_override_state(void) {
         if (user_config.is_auto_detect_os) SEND_STRING(" detectos");
         if (user_config.override_linux_cmd) SEND_STRING(" lnxcmd");
         if (user_config.is_jis_mode) SEND_STRING(" jis");
-        if (user_config.fnc_tap) SEND_STRING(" fnctap");
+        if (user_config.hrmod) SEND_STRING(" hrmod");
         if (user_config.ergolft) SEND_STRING(" ergolft");
         if (user_config.ergorit) SEND_STRING(" ergorit");
     } else {
@@ -389,21 +423,29 @@ void reload_overrides() {
 
     if (!user_config.override_tab) {
         user_switch_override(&tab_key_override, false);
+        user_switch_override(&hrm_tab_key_override, false);
     }
     if (!user_config.override_enter) {
         user_switch_override(&enter_key_override, false);
+        user_switch_override(&hrm_enter_key_override, false);
     }
     if (!user_config.override_backspace) {
         user_switch_override(&bs_key_override, false);
+        user_switch_override(&hrm_bs_key_override, false);
     }
     if (!user_config.override_delete) {
         user_switch_override(&del_key_override, false);
+        user_switch_override(&hrm_del_key_override, false);
     }
     if (!user_config.override_arrows) {
         user_switch_override(&up_key_override, false);
         user_switch_override(&down_key_override, false);
         user_switch_override(&right_key_override, false);
         user_switch_override(&left_key_override, false);
+        user_switch_override(&hrm_up_key_override, false);
+        user_switch_override(&hrm_down_key_override, false);
+        user_switch_override(&hrm_right_key_override, false);
+        user_switch_override(&hrm_left_key_override, false);
     }
 
     if (!user_config.override_modded_esc) {
@@ -411,13 +453,19 @@ void reload_overrides() {
         user_switch_override(&alt_tab_override, false);
         user_switch_override(&cmd_tab_override, false);
         user_switch_override(&shift_tab_override, false);
+        user_switch_override(&hrm_ctrl_tab_override, false);
+        user_switch_override(&hrm_alt_tab_override, false);
+        user_switch_override(&hrm_cmd_tab_override, false);
+        user_switch_override(&hrm_shift_tab_override, false);
     }
 
     if (user_is_macos() || user_is_ios() || !user_config.override_home) {
         user_switch_override(&home_key_override, false);
+        user_switch_override(&hrm_home_key_override, false);
     }
     if (user_is_macos() || user_is_ios() || !user_config.override_end) {
         user_switch_override(&end_key_override, false);
+        user_switch_override(&hrm_end_key_override, false);
     }
 
     if (user_is_linux() || user_is_windows() || !user_config.override_ctrl_u) {
@@ -425,24 +473,27 @@ void reload_overrides() {
     }
     if (user_is_linux() || user_is_windows() || !user_config.override_cmd_q) {
         user_switch_override(&cmd_q_override, false);
+        user_switch_override(&hrm_cmd_q_override, false);
     }
 
     if (user_is_macos() || user_is_ios() || !user_config.override_word_mv) {
         user_switch_override(&w_fwd_win_override, false);
         user_switch_override(&w_bck_win_override, false);
+        user_switch_override(&hrm_w_fwd_win_override, false);
+        user_switch_override(&hrm_w_bck_win_override, false);
     }
 
     if (user_is_linux() || user_is_windows() || !user_config.override_word_mv) {
-        user_switch_override(&w_fwd_mac_override, false);
-        user_switch_override(&w_bck_mac_override, false);
+        user_switch_override(&hrm_w_fwd_mac_override, false);
+        user_switch_override(&hrm_w_bck_mac_override, false);
     }
 
     if (user_is_macos() || user_is_ios() || !user_config.override_word_dl) {
-        user_switch_override(&w_del_win_override, false);
+        user_switch_override(&hrm_w_del_win_override, false);
     }
 
     if (user_is_linux() || user_is_windows() || !user_config.override_word_dl) {
-        user_switch_override(&w_del_mac_override, false);
+        user_switch_override(&hrm_w_del_mac_override, false);
     }
 
     if (user_is_macos() || user_is_ios() || !user_config.override_linux_cmd) {
