@@ -124,6 +124,35 @@ key_override_t linux_z_override   = ko_make_basic(MOD_BIT(KC_LGUI), KC_Z, LCTL(K
 key_override_t linux_com_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_COMM, LCTL(KC_COMM));
 key_override_t linux_dot_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_DOT, LCTL(KC_DOT));
 
+key_override_t hrm_linux_a_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_A, LCTL(KC_A));
+key_override_t hrm_linux_b_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_B, LCTL(KC_B));
+key_override_t hrm_linux_c_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_C, KC_COPY);
+key_override_t hrm_linux_d_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_D, LCTL(KC_D));
+key_override_t hrm_linux_e_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_E, LCTL(KC_E));
+key_override_t hrm_linux_f_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_F, LCTL(KC_F));
+key_override_t hrm_linux_g_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_G, LCTL(KC_G));
+key_override_t hrm_linux_h_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_H, LCTL(KC_H));
+key_override_t hrm_linux_i_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_I, LCTL(KC_I));
+key_override_t hrm_linux_j_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_J, LCTL(KC_J));
+key_override_t hrm_linux_k_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_K, LCTL(KC_K));
+key_override_t hrm_linux_l_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_L, LCTL(KC_L));
+key_override_t hrm_linux_m_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_M, LCTL(KC_M));
+key_override_t hrm_linux_n_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_N, LCTL(KC_N));
+key_override_t hrm_linux_o_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_O, LCTL(KC_O));
+key_override_t hrm_linux_p_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_P, LCTL(KC_P));
+key_override_t hrm_linux_q_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_Q, LCTL(KC_Q));
+key_override_t hrm_linux_r_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_R, LCTL(KC_R));
+key_override_t hrm_linux_s_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_S, LCTL(KC_S));
+key_override_t hrm_linux_t_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_T, LCTL(KC_T));
+key_override_t hrm_linux_u_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_U, LCTL(KC_U));
+key_override_t hrm_linux_v_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_V, KC_PASTE);
+key_override_t hrm_linux_w_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_W, LCTL(KC_W));
+key_override_t hrm_linux_x_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_X, KC_CUT);
+key_override_t hrm_linux_y_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_Y, LCTL(KC_Y));
+key_override_t hrm_linux_z_override   = ko_make_basic(MOD_BIT(KC_LGUI), CM_Z, LCTL(KC_Z));
+key_override_t hrm_linux_com_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_COMM, LCTL(KC_COMM));
+key_override_t hrm_linux_dot_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_DOT, LCTL(KC_DOT));
+
 const key_override_t **key_overrides = (const key_override_t *[]){
     &linux_a_override,
     &linux_b_override,
@@ -153,6 +182,35 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &linux_z_override,
     &linux_com_override,
     &linux_dot_override,
+
+    &hrm_linux_a_override,
+    &hrm_linux_b_override,
+    &hrm_linux_c_override,
+    &hrm_linux_d_override,
+    &hrm_linux_e_override,
+    &hrm_linux_f_override,
+    &hrm_linux_g_override,
+    &hrm_linux_h_override,
+    &hrm_linux_i_override,
+    &hrm_linux_j_override,
+    &hrm_linux_k_override,
+    &hrm_linux_l_override,
+    &hrm_linux_m_override,
+    &hrm_linux_n_override,
+    &hrm_linux_o_override,
+    &hrm_linux_p_override,
+    &hrm_linux_q_override,
+    &hrm_linux_r_override,
+    &hrm_linux_s_override,
+    &hrm_linux_t_override,
+    &hrm_linux_u_override,
+    &hrm_linux_v_override,
+    &hrm_linux_w_override,
+    &hrm_linux_x_override,
+    &hrm_linux_y_override,
+    &hrm_linux_z_override,
+    &hrm_linux_com_override,
+    &hrm_linux_dot_override,
 
     &enter_key_override,
     &tab_key_override,
@@ -309,6 +367,35 @@ void user_switch_linux_cmd(bool enable) {
     user_switch_override(&linux_z_override, enable);
     user_switch_override(&linux_com_override, enable);
     user_switch_override(&linux_dot_override, enable);
+
+    user_switch_override(&hrm_linux_a_override, enable);
+    user_switch_override(&hrm_linux_b_override, enable);
+    user_switch_override(&hrm_linux_c_override, enable);
+    user_switch_override(&hrm_linux_d_override, enable);
+    user_switch_override(&hrm_linux_e_override, enable);
+    user_switch_override(&hrm_linux_f_override, enable);
+    user_switch_override(&hrm_linux_g_override, enable);
+    user_switch_override(&hrm_linux_h_override, enable);
+    user_switch_override(&hrm_linux_i_override, enable);
+    user_switch_override(&hrm_linux_j_override, enable);
+    user_switch_override(&hrm_linux_k_override, enable);
+    user_switch_override(&hrm_linux_l_override, enable);
+    user_switch_override(&hrm_linux_m_override, enable);
+    user_switch_override(&hrm_linux_n_override, enable);
+    user_switch_override(&hrm_linux_o_override, enable);
+    user_switch_override(&hrm_linux_p_override, enable);
+    user_switch_override(&hrm_linux_q_override, enable);
+    user_switch_override(&hrm_linux_r_override, enable);
+    user_switch_override(&hrm_linux_s_override, enable);
+    user_switch_override(&hrm_linux_t_override, enable);
+    user_switch_override(&hrm_linux_u_override, enable);
+    user_switch_override(&hrm_linux_v_override, enable);
+    user_switch_override(&hrm_linux_w_override, enable);
+    user_switch_override(&hrm_linux_x_override, enable);
+    user_switch_override(&hrm_linux_y_override, enable);
+    user_switch_override(&hrm_linux_z_override, enable);
+    user_switch_override(&hrm_linux_com_override, enable);
+    user_switch_override(&hrm_linux_dot_override, enable);
 }
 
 void user_enable_all_overrides(void) {
