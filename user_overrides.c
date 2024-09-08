@@ -13,41 +13,45 @@
 static bool false_const = false;
 
 // variables for key_overrides
-key_override_t jis_at_override   = ko_make_basic(0, KC_AT, KC_LBRC);         // S(KC_2)
-key_override_t jis_circ_override = ko_make_basic(0, KC_CIRC, KC_EQL);        // S(KC_6)
-key_override_t jis_ampr_override = ko_make_basic(0, KC_AMPR, KC_CIRC);       // S(KC_7)
-key_override_t jis_astr_override = ko_make_basic(0, KC_ASTR, KC_DQUO);       // S(KC_8)
-key_override_t jis_lprn_override = ko_make_basic(0, KC_LPRN, KC_ASTR);       // S(KC_9)
-key_override_t jis_rprn_override = ko_make_basic(0, KC_RPRN, LSFT(KC_9));    // S(KC_0)
-key_override_t jis_unds_override = ko_make_basic(0, KC_UNDS, LSFT(KC_INT1)); // S(KC_MINUS)
-key_override_t jis_plus_override = ko_make_basic(0, KC_PLUS, KC_COLN);       // S(KC_EQUAL)
-key_override_t jis_lbrc_override = ko_make_basic(0, KC_LBRC, KC_RBRC);
-key_override_t jis_lcbr_override = ko_make_basic(0, KC_LCBR, KC_RCBR); // S(KC_LBRC)
-key_override_t jis_rbrc_override = ko_make_basic(0, KC_RBRC, KC_NUHS);
-key_override_t jis_rcbr_override = ko_make_basic(0, KC_RCBR, LSFT(KC_NUHS)); // S(KC_RBRC)
-key_override_t jis_bsls_override = ko_make_basic(0, KC_BSLS, KC_INT3);
-key_override_t jis_pipe_override = ko_make_basic(0, KC_PIPE, LSFT(KC_INT3)); // S(KC_BSLS)
-key_override_t jis_coln_override = ko_make_basic(0, KC_COLN, KC_QUOT);       // S(KC_SCLN)
-key_override_t jis_quot_override = ko_make_basic(0, KC_QUOT, KC_AMPR);
-key_override_t jis_dquo_override = ko_make_basic(0, KC_DQUO, KC_AT); // S(KC_QUOT)
-key_override_t jis_grv_override  = ko_make_basic(0, KC_GRV, KC_LCBR);
-key_override_t jis_tild_override = ko_make_basic(0, KC_TILD, KC_PLUS); // S(KC_GRV)
-key_override_t jis_eql_override  = ko_make_basic(0, KC_EQL, KC_UNDS);
+// JIS: https://github.com/koktoh/jtu_custom_keycodes
+// HACK: I have no idea why MOD_MASK_SHIFT is needed for @, ^, and :.
 
-key_override_t jis_s_2_override    = ko_make_basic(MOD_MASK_SHIFT, KC_2, KC_LBRC);
-key_override_t jis_s_6_override    = ko_make_basic(MOD_MASK_SHIFT, KC_6, KC_EQL);
-key_override_t jis_s_7_override    = ko_make_basic(MOD_MASK_SHIFT, KC_7, KC_CIRC);
-key_override_t jis_s_8_override    = ko_make_basic(MOD_MASK_SHIFT, KC_8, KC_DQUO);
-key_override_t jis_s_9_override    = ko_make_basic(MOD_MASK_SHIFT, KC_9, KC_ASTR);
-key_override_t jis_s_0_override    = ko_make_basic(MOD_MASK_SHIFT, KC_0, LSFT(KC_9));
-key_override_t jis_s_mins_override = ko_make_basic(MOD_MASK_SHIFT, KC_MINS, LSFT(KC_INT1));
-key_override_t jis_s_eql_override  = ko_make_basic(MOD_MASK_SHIFT, KC_EQL, KC_COLN);
-key_override_t jis_s_lbrc_override = ko_make_basic(MOD_MASK_SHIFT, KC_LBRC, KC_RCBR);
-key_override_t jis_s_rbrc_override = ko_make_basic(MOD_MASK_SHIFT, KC_RBRC, LSFT(KC_NUHS));
-key_override_t jis_s_bsls_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSLS, LSFT(KC_INT3));
-key_override_t jis_s_scln_override = ko_make_basic(MOD_MASK_SHIFT, KC_SCLN, KC_QUOT);
-key_override_t jis_s_quot_override = ko_make_basic(MOD_MASK_SHIFT, KC_QUOT, KC_AT);
-key_override_t jis_s_grv_override  = ko_make_basic(MOD_MASK_SHIFT, KC_GRV, KC_PLUS);
+key_override_t jis_s_2_override    = ko_make_basic(MOD_MASK_SHIFT, KC_2, KC_LBRC); // KC_AT @
+key_override_t jis_s_6_override    = ko_make_basic(MOD_MASK_SHIFT, KC_6, KC_EQL); // KC_CIRC ^
+key_override_t jis_s_7_override    = ko_make_basic(MOD_MASK_SHIFT, KC_7, KC_CIRC); // KC_AMPR &
+key_override_t jis_s_8_override    = ko_make_basic(MOD_MASK_SHIFT, KC_8, KC_DQUO); // KC_ASTR *
+key_override_t jis_s_9_override    = ko_make_basic(MOD_MASK_SHIFT, KC_9, KC_ASTR); // KC_LPRN (
+key_override_t jis_s_0_override    = ko_make_basic(MOD_MASK_SHIFT, KC_0, LSFT(KC_9)); // KC_RPRN )
+
+key_override_t jis_s_mins_override = ko_make_basic(MOD_MASK_SHIFT, KC_MINS, LSFT(KC_INT1)); // KC_UNDS _
+key_override_t jis_s_eql_override  = ko_make_basic(MOD_MASK_SHIFT, KC_EQL, KC_COLN); // KC_PLUS +
+key_override_t jis_s_lbrc_override = ko_make_basic(MOD_MASK_SHIFT, KC_LBRC, KC_RCBR); // KC_LCBR {
+key_override_t jis_s_rbrc_override = ko_make_basic(MOD_MASK_SHIFT, KC_RBRC, LSFT(KC_NUHS)); // KC_RCBR }
+key_override_t jis_s_bsls_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSLS, LSFT(KC_INT3)); // KC_PIPE |
+key_override_t jis_s_scln_override = ko_make_basic(MOD_MASK_SHIFT, KC_SCLN, KC_QUOT); // KC_COLN :
+key_override_t jis_s_quot_override = ko_make_basic(MOD_MASK_SHIFT, KC_QUOT, KC_AT); // KC_DQUO "
+key_override_t jis_s_grv_override  = ko_make_basic(MOD_MASK_SHIFT, KC_GRV, KC_PLUS); // KC_TILD ~
+
+key_override_t jis_at_override   = ko_make_basic(MOD_MASK_SHIFT, KC_AT, KC_LBRC); // S(KC_2),KC_AT @
+key_override_t jis_circ_override = ko_make_basic(MOD_MASK_SHIFT, KC_CIRC, KC_EQL); // S(KC_6) KC_CIRC ^
+key_override_t jis_ampr_override = ko_make_basic(0, KC_AMPR, KC_CIRC); // S(KC_7) KC_AMPR &
+key_override_t jis_astr_override = ko_make_basic(0, KC_ASTR, KC_DQUO); // S(KC_8) KC_ASTR *
+key_override_t jis_lprn_override = ko_make_basic(0, KC_LPRN, KC_ASTR); // S(KC_9) KC_LPRN (
+key_override_t jis_rprn_override = ko_make_basic(0, KC_RPRN, LSFT(KC_9)); // S(KC_0) KC_RPRN )
+key_override_t jis_unds_override = ko_make_basic(0, KC_UNDS, LSFT(KC_INT1)); // S(KC_MINUS) KC_UNDS _
+key_override_t jis_plus_override = ko_make_basic(0, KC_PLUS, KC_COLN);  // S(KC_EQUAL) KC_PLUS +
+key_override_t jis_lbrc_override = ko_make_basic(0, KC_LBRC, KC_RBRC);
+key_override_t jis_lcbr_override = ko_make_basic(0, KC_LCBR, KC_RCBR); // S(KC_LBRC) KC_LCBR {
+key_override_t jis_rbrc_override = ko_make_basic(0, KC_RBRC, KC_NUHS);
+key_override_t jis_rcbr_override = ko_make_basic(0, KC_RCBR, LSFT(KC_NUHS)); // S(KC_RBRC) KC_RCBR }
+key_override_t jis_bsls_override = ko_make_basic(0, KC_BSLS, KC_INT3);
+key_override_t jis_pipe_override = ko_make_basic(0, KC_PIPE, LSFT(KC_INT3)); // S(KC_BSLS) KC_PIPE |
+key_override_t jis_coln_override = ko_make_basic(MOD_MASK_SHIFT, KC_COLN, KC_QUOT); // S(KC_SCLN) KC_COLN :
+key_override_t jis_quot_override = ko_make_basic(0, KC_QUOT, KC_AMPR);
+key_override_t jis_dquo_override = ko_make_basic(0, KC_DQUO, KC_AT); // S(KC_QUOT) KC_DQUO "
+key_override_t jis_grv_override  = ko_make_basic(0, KC_GRV, KC_LCBR);
+key_override_t jis_tild_override = ko_make_basic(0, KC_TILD, KC_PLUS); // S(KC_GRV) KC_TILD ~
+key_override_t jis_eql_override  = ko_make_basic(0, KC_EQL, KC_UNDS);
 
 key_override_t right_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_F, KC_RIGHT);
 key_override_t left_key_override  = ko_make_basic(MOD_BIT(KC_LCTL), KC_B, KC_LEFT);
@@ -257,6 +261,21 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &hrm_cmd_tab_override,
     &hrm_shift_tab_override,
 
+    &jis_s_2_override,
+    &jis_s_6_override,
+    &jis_s_7_override,
+    &jis_s_8_override,
+    &jis_s_9_override,
+    &jis_s_0_override,
+    &jis_s_mins_override,
+    &jis_s_eql_override,
+    &jis_s_lbrc_override,
+    &jis_s_rbrc_override,
+    &jis_s_bsls_override,
+    &jis_s_scln_override,
+    &jis_s_quot_override,
+    &jis_s_grv_override,
+
     &jis_at_override,
     &jis_circ_override,
     &jis_ampr_override,
@@ -278,21 +297,6 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &jis_tild_override,
     &jis_eql_override,
 
-    &jis_s_2_override,
-    &jis_s_6_override,
-    &jis_s_7_override,
-    &jis_s_8_override,
-    &jis_s_9_override,
-    &jis_s_0_override,
-    &jis_s_mins_override,
-    &jis_s_eql_override,
-    &jis_s_lbrc_override,
-    &jis_s_rbrc_override,
-    &jis_s_bsls_override,
-    &jis_s_scln_override,
-    &jis_s_quot_override,
-    &jis_s_grv_override,
-
     NULL,
 };
 
@@ -301,6 +305,21 @@ void user_switch_override(key_override_t *override, bool enabled) {
 }
 
 void user_switch_jis(bool enabled) {
+    user_switch_override(&jis_s_2_override, enabled);
+    user_switch_override(&jis_s_6_override, enabled);
+    user_switch_override(&jis_s_7_override, enabled);
+    user_switch_override(&jis_s_8_override, enabled);
+    user_switch_override(&jis_s_9_override, enabled);
+    user_switch_override(&jis_s_0_override, enabled);
+    user_switch_override(&jis_s_mins_override, enabled);
+    user_switch_override(&jis_s_eql_override, enabled);
+    user_switch_override(&jis_s_lbrc_override, enabled);
+    user_switch_override(&jis_s_rbrc_override, enabled);
+    user_switch_override(&jis_s_bsls_override, enabled);
+    user_switch_override(&jis_s_scln_override, enabled);
+    user_switch_override(&jis_s_quot_override, enabled);
+    user_switch_override(&jis_s_grv_override, enabled);
+
     user_switch_override(&jis_at_override, enabled);
     user_switch_override(&jis_circ_override, enabled);
     user_switch_override(&jis_ampr_override, enabled);
@@ -321,21 +340,6 @@ void user_switch_jis(bool enabled) {
     user_switch_override(&jis_grv_override, enabled);
     user_switch_override(&jis_tild_override, enabled);
     user_switch_override(&jis_eql_override, enabled);
-
-    user_switch_override(&jis_s_2_override, enabled);
-    user_switch_override(&jis_s_6_override, enabled);
-    user_switch_override(&jis_s_7_override, enabled);
-    user_switch_override(&jis_s_8_override, enabled);
-    user_switch_override(&jis_s_9_override, enabled);
-    user_switch_override(&jis_s_0_override, enabled);
-    user_switch_override(&jis_s_mins_override, enabled);
-    user_switch_override(&jis_s_eql_override, enabled);
-    user_switch_override(&jis_s_lbrc_override, enabled);
-    user_switch_override(&jis_s_rbrc_override, enabled);
-    user_switch_override(&jis_s_bsls_override, enabled);
-    user_switch_override(&jis_s_scln_override, enabled);
-    user_switch_override(&jis_s_quot_override, enabled);
-    user_switch_override(&jis_s_grv_override, enabled);
 }
 
 void user_switch_linux_cmd(bool enable) {
