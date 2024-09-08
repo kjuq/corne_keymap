@@ -442,9 +442,9 @@ void user_toggle_word_del_override(bool enable) {
 }
 
 void user_dump_override_state(void) {
-    tap_code(KC_LNG2);
+    tap_code(KC_LNG2); // disable Japanese input
+    tap_code(KC_SLSH);
     register_code(KC_LSFT);
-    tap_code16(KC_LBRC);
 
     if (!user_config.is_auto_detect_os) {
         SEND_STRING(" manually");
@@ -459,7 +459,7 @@ void user_dump_override_state(void) {
     } else {
         SEND_STRING(" unknown");
     }
-    SEND_STRING(" detected \\");
+    SEND_STRING(" detected 1"); // 1 is '1'
 
     if (user_config.is_macos) {
         SEND_STRING(" macos");
@@ -472,7 +472,7 @@ void user_dump_override_state(void) {
     } else {
         SEND_STRING(" unknown");
     }
-    SEND_STRING(" \\");
+    SEND_STRING(" 1");
 
     if (key_override_is_enabled()) {
         if (user_config.override_modded_esc) SEND_STRING(" modesc");
@@ -483,7 +483,7 @@ void user_dump_override_state(void) {
         if (user_config.override_delete) SEND_STRING(" del");
         if (user_config.spc_tap) SEND_STRING(" spctap");
 
-        SEND_STRING(" \\");
+        SEND_STRING(" 1");
 
         if (user_config.override_home) SEND_STRING(" home");
         if (user_config.override_end) SEND_STRING(" end");
@@ -492,7 +492,7 @@ void user_dump_override_state(void) {
         if (user_config.override_word_dl) SEND_STRING(" wddl");
         if (user_config.override_word_mv) SEND_STRING(" wdmv");
 
-        SEND_STRING(" \\");
+        SEND_STRING(" 1");
 
         if (user_config.is_auto_detect_os) SEND_STRING(" detectos");
         if (user_config.override_linux_cmd) SEND_STRING(" lnxcmd");
@@ -504,9 +504,9 @@ void user_dump_override_state(void) {
         SEND_STRING(" override disabled");
     }
 
-    tap_code(KC_SPC);
-    tap_code16(KC_RBRC);
     unregister_code(KC_LSFT);
+    tap_code(KC_SPC);
+    tap_code(KC_SLSH);
 }
 
 void reload_overrides() {
