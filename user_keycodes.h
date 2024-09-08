@@ -23,14 +23,14 @@
 
 // Home Row Mod
 #define CM_ESC LT(_HRMOD, KC_ESC)
-#define CM_W LT(_HRMOD, KC_W)
-#define CM_F LT(_HRMOD, KC_F)
-#define CM_P LT(_HRMOD, KC_P)
+#define CM_W LT(_SPACES, KC_W)
+#define CM_F LT(_SPACES, KC_F)
+#define CM_P LT(_SPACES, KC_P)
 #define CM_B LT(_HRMOD, KC_B)
 #define CM_J LT(_HRMOD, KC_J)
-#define CM_L LT(_HRMOD, KC_L)
-#define CM_U LT(_HRMOD, KC_U)
-#define CM_Y LT(_HRMOD, KC_Y)
+#define CM_L LT(_SPACES, KC_L)
+#define CM_U LT(_SPACES, KC_U)
+#define CM_Y LT(_SPACES, KC_Y)
 #define CM_Q LT(_HRMOD, KC_Q)
 
 #define CM_A MT(MOD_LGUI, KC_A)
@@ -53,7 +53,7 @@
 #define CM_M LT(_LOWER, KC_M)
 #define CM_COMM LT(_RAISE, KC_COMM)
 #define CM_DOT LT(_FNCTN, KC_DOT)
-#define CM_SCLN LT(_MOUSE, KC_SCLN)
+#define CM_SPC LT(_MOUSE, KC_SPC)
 
 enum planck_keycodes {
     COLEMAK = SAFE_RANGE,

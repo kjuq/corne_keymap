@@ -6,6 +6,7 @@ enum planck_layers {
     _COLEMAK,
     _QWERTY,
 	_HRMOD,
+	_SPACES,
     _SPC_TAP,
     _ERGOLFT,
     _ERGORIT,

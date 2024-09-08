@@ -26,10 +26,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_HRMOD] = LAYOUT_split_3x5_3_ex2( // {{{
         CM_ESC,  CM_W,    CM_F,    CM_P,    CM_B,    _______,         _______, CM_J,    CM_L,    CM_U,    CM_Y,    CM_Q,
         CM_A,    CM_R,    CM_S,    CM_T,    CM_G,    _______,         _______, CM_H,    CM_N,    CM_E,    CM_I,    CM_O,
-        CM_Z,    CM_X,    CM_C,    CM_D,    CM_V,                              CM_K,    CM_M,    CM_COMM, CM_DOT,  CM_SCLN,
+        CM_Z,    CM_X,    CM_C,    CM_D,    CM_V,                              CM_K,    CM_M,    CM_COMM, CM_DOT,  CM_SPC,
                                    _______, _______, _______,         _______, _______, _______
     ), // }}}
 
+    [_SPACES] = LAYOUT_split_3x5_3_ex2( // {{{
+        KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  _______,         _______, KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,
+        KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  _______,         _______, KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,
+        KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,                            KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,
+                                   _______, _______, _______,         _______, _______, _______
     ), // }}}
 
     [_SPC_TAP] = LAYOUT_split_3x5_3_ex2( // {{{
