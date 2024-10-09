@@ -14,10 +14,10 @@
 #define MK_3_SPEED
 #define MK_MOMENTARY_ACCEL
 
-#define MK_C_OFFSET_UNMOD 6
+#define MK_C_OFFSET_UNMOD 3
 #define MK_C_INTERVAL_UNMOD 1
 
-#define MK_C_OFFSET_1 2
+#define MK_C_OFFSET_1 1
 #define MK_C_INTERVAL_1 1
 
 #define MK_C_OFFSET_0 1
