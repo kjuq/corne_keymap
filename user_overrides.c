@@ -158,445 +158,445 @@ key_override_t hrm_linux_com_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_COMM,
 key_override_t hrm_linux_dot_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_DOT, LCTL(KC_DOT));
 
 const key_override_t **key_overrides = (const key_override_t *[]){
-    &linux_a_override,
-    &linux_b_override,
-    &linux_c_override,
-    &linux_d_override,
-    &linux_e_override,
-    &linux_f_override,
-    &linux_g_override,
-    &linux_h_override,
-    &linux_i_override,
-    &linux_j_override,
-    &linux_k_override,
-    &linux_l_override,
-    &linux_m_override,
-    &linux_n_override,
-    &linux_o_override,
-    &linux_p_override,
-    &linux_q_override,
-    &linux_r_override,
-    &linux_s_override,
-    &linux_t_override,
-    &linux_u_override,
-    &linux_v_override,
-    &linux_w_override,
-    &linux_x_override,
-    &linux_y_override,
-    &linux_z_override,
-    &linux_com_override,
-    &linux_dot_override,
+	&linux_a_override,
+		&linux_b_override,
+		&linux_c_override,
+		&linux_d_override,
+		&linux_e_override,
+		&linux_f_override,
+		&linux_g_override,
+		&linux_h_override,
+		&linux_i_override,
+		&linux_j_override,
+		&linux_k_override,
+		&linux_l_override,
+		&linux_m_override,
+		&linux_n_override,
+		&linux_o_override,
+		&linux_p_override,
+		&linux_q_override,
+		&linux_r_override,
+		&linux_s_override,
+		&linux_t_override,
+		&linux_u_override,
+		&linux_v_override,
+		&linux_w_override,
+		&linux_x_override,
+		&linux_y_override,
+		&linux_z_override,
+		&linux_com_override,
+		&linux_dot_override,
 
-    &hrm_linux_a_override,
-    &hrm_linux_b_override,
-    &hrm_linux_c_override,
-    &hrm_linux_d_override,
-    &hrm_linux_e_override,
-    &hrm_linux_f_override,
-    &hrm_linux_g_override,
-    &hrm_linux_h_override,
-    &hrm_linux_i_override,
-    &hrm_linux_j_override,
-    &hrm_linux_k_override,
-    &hrm_linux_l_override,
-    &hrm_linux_m_override,
-    &hrm_linux_n_override,
-    &hrm_linux_o_override,
-    &hrm_linux_p_override,
-    &hrm_linux_q_override,
-    &hrm_linux_r_override,
-    &hrm_linux_s_override,
-    &hrm_linux_t_override,
-    &hrm_linux_u_override,
-    &hrm_linux_v_override,
-    &hrm_linux_w_override,
-    &hrm_linux_x_override,
-    &hrm_linux_y_override,
-    &hrm_linux_z_override,
-    &hrm_linux_com_override,
-    &hrm_linux_dot_override,
+		&hrm_linux_a_override,
+		&hrm_linux_b_override,
+		&hrm_linux_c_override,
+		&hrm_linux_d_override,
+		&hrm_linux_e_override,
+		&hrm_linux_f_override,
+		&hrm_linux_g_override,
+		&hrm_linux_h_override,
+		&hrm_linux_i_override,
+		&hrm_linux_j_override,
+		&hrm_linux_k_override,
+		&hrm_linux_l_override,
+		&hrm_linux_m_override,
+		&hrm_linux_n_override,
+		&hrm_linux_o_override,
+		&hrm_linux_p_override,
+		&hrm_linux_q_override,
+		&hrm_linux_r_override,
+		&hrm_linux_s_override,
+		&hrm_linux_t_override,
+		&hrm_linux_u_override,
+		&hrm_linux_v_override,
+		&hrm_linux_w_override,
+		&hrm_linux_x_override,
+		&hrm_linux_y_override,
+		&hrm_linux_z_override,
+		&hrm_linux_com_override,
+		&hrm_linux_dot_override,
 
-    &enter_key_override,
-    &tab_key_override,
-    &right_key_override,
-    &left_key_override,
-    &up_key_override,
-    &down_key_override,
-    &bs_key_override,
-    &del_key_override,
-    &home_key_override,
-    &end_key_override,
-    &ctrl_u_key_override,
-    &cmd_q_override,
-    &w_fwd_mac_override,
-    &w_bck_mac_override,
-    &w_del_mac_override,
-    &w_fwd_win_override,
-    &w_bck_win_override,
-    &w_del_win_override,
-    &ctrl_tab_override,
-    &alt_tab_override,
-    &cmd_tab_override,
-    &shift_tab_override,
+		&enter_key_override,
+		&tab_key_override,
+		&right_key_override,
+		&left_key_override,
+		&up_key_override,
+		&down_key_override,
+		&bs_key_override,
+		&del_key_override,
+		&home_key_override,
+		&end_key_override,
+		&ctrl_u_key_override,
+		&cmd_q_override,
+		&w_fwd_mac_override,
+		&w_bck_mac_override,
+		&w_del_mac_override,
+		&w_fwd_win_override,
+		&w_bck_win_override,
+		&w_del_win_override,
+		&ctrl_tab_override,
+		&alt_tab_override,
+		&cmd_tab_override,
+		&shift_tab_override,
 
-    &hrm_right_key_override,
-    &hrm_left_key_override,
-    &hrm_up_key_override,
-    &hrm_down_key_override,
-    &hrm_home_key_override,
-    &hrm_end_key_override,
-    &hrm_enter_key_override,
-    &hrm_tab_key_override,
-    &hrm_bs_key_override,
-    &hrm_del_key_override,
-    &hrm_w_fwd_mac_override,
-    &hrm_w_bck_mac_override,
-    &hrm_w_fwd_win_override,
-    &hrm_w_bck_win_override,
-    &hrm_w_del_mac_override,
-    &hrm_w_del_win_override,
-    &hrm_cmd_q_override,
-    &hrm_ctrl_tab_override,
-    &hrm_alt_tab_override,
-    &hrm_cmd_tab_override,
-    &hrm_shift_tab_override,
+		&hrm_right_key_override,
+		&hrm_left_key_override,
+		&hrm_up_key_override,
+		&hrm_down_key_override,
+		&hrm_home_key_override,
+		&hrm_end_key_override,
+		&hrm_enter_key_override,
+		&hrm_tab_key_override,
+		&hrm_bs_key_override,
+		&hrm_del_key_override,
+		&hrm_w_fwd_mac_override,
+		&hrm_w_bck_mac_override,
+		&hrm_w_fwd_win_override,
+		&hrm_w_bck_win_override,
+		&hrm_w_del_mac_override,
+		&hrm_w_del_win_override,
+		&hrm_cmd_q_override,
+		&hrm_ctrl_tab_override,
+		&hrm_alt_tab_override,
+		&hrm_cmd_tab_override,
+		&hrm_shift_tab_override,
 
-    &jis_s_2_override,
-    &jis_s_6_override,
-    &jis_s_7_override,
-    &jis_s_8_override,
-    &jis_s_9_override,
-    &jis_s_0_override,
-    &jis_s_mins_override,
-    &jis_s_eql_override,
-    &jis_s_lbrc_override,
-    &jis_s_rbrc_override,
-    &jis_s_bsls_override,
-    &jis_s_scln_override,
-    &jis_s_quot_override,
-    &jis_s_grv_override,
+		&jis_s_2_override,
+		&jis_s_6_override,
+		&jis_s_7_override,
+		&jis_s_8_override,
+		&jis_s_9_override,
+		&jis_s_0_override,
+		&jis_s_mins_override,
+		&jis_s_eql_override,
+		&jis_s_lbrc_override,
+		&jis_s_rbrc_override,
+		&jis_s_bsls_override,
+		&jis_s_scln_override,
+		&jis_s_quot_override,
+		&jis_s_grv_override,
 
-    &jis_at_override,
-    &jis_circ_override,
-    &jis_ampr_override,
-    &jis_astr_override,
-    &jis_lprn_override,
-    &jis_rprn_override,
-    &jis_unds_override,
-    &jis_plus_override,
-    &jis_lbrc_override,
-    &jis_lcbr_override,
-    &jis_rbrc_override,
-    &jis_rcbr_override,
-    &jis_bsls_override,
-    &jis_pipe_override,
-    &jis_coln_override,
-    &jis_quot_override,
-    &jis_dquo_override,
-    &jis_grv_override,
-    &jis_tild_override,
-    &jis_eql_override,
+		&jis_at_override,
+		&jis_circ_override,
+		&jis_ampr_override,
+		&jis_astr_override,
+		&jis_lprn_override,
+		&jis_rprn_override,
+		&jis_unds_override,
+		&jis_plus_override,
+		&jis_lbrc_override,
+		&jis_lcbr_override,
+		&jis_rbrc_override,
+		&jis_rcbr_override,
+		&jis_bsls_override,
+		&jis_pipe_override,
+		&jis_coln_override,
+		&jis_quot_override,
+		&jis_dquo_override,
+		&jis_grv_override,
+		&jis_tild_override,
+		&jis_eql_override,
 
-    NULL,
+		NULL,
 };
 
 void user_switch_override(key_override_t *override, bool enabled) {
-    override->enabled = enabled ? NULL : &false_const;
+	override->enabled = enabled ? NULL : &false_const;
 }
 
 void user_switch_jis(bool enabled) {
-    user_switch_override(&jis_s_2_override, enabled);
-    user_switch_override(&jis_s_6_override, enabled);
-    user_switch_override(&jis_s_7_override, enabled);
-    user_switch_override(&jis_s_8_override, enabled);
-    user_switch_override(&jis_s_9_override, enabled);
-    user_switch_override(&jis_s_0_override, enabled);
-    user_switch_override(&jis_s_mins_override, enabled);
-    user_switch_override(&jis_s_eql_override, enabled);
-    user_switch_override(&jis_s_lbrc_override, enabled);
-    user_switch_override(&jis_s_rbrc_override, enabled);
-    user_switch_override(&jis_s_bsls_override, enabled);
-    user_switch_override(&jis_s_scln_override, enabled);
-    user_switch_override(&jis_s_quot_override, enabled);
-    user_switch_override(&jis_s_grv_override, enabled);
+	user_switch_override(&jis_s_2_override, enabled);
+	user_switch_override(&jis_s_6_override, enabled);
+	user_switch_override(&jis_s_7_override, enabled);
+	user_switch_override(&jis_s_8_override, enabled);
+	user_switch_override(&jis_s_9_override, enabled);
+	user_switch_override(&jis_s_0_override, enabled);
+	user_switch_override(&jis_s_mins_override, enabled);
+	user_switch_override(&jis_s_eql_override, enabled);
+	user_switch_override(&jis_s_lbrc_override, enabled);
+	user_switch_override(&jis_s_rbrc_override, enabled);
+	user_switch_override(&jis_s_bsls_override, enabled);
+	user_switch_override(&jis_s_scln_override, enabled);
+	user_switch_override(&jis_s_quot_override, enabled);
+	user_switch_override(&jis_s_grv_override, enabled);
 
-    user_switch_override(&jis_at_override, enabled);
-    user_switch_override(&jis_circ_override, enabled);
-    user_switch_override(&jis_ampr_override, enabled);
-    user_switch_override(&jis_astr_override, enabled);
-    user_switch_override(&jis_lprn_override, enabled);
-    user_switch_override(&jis_rprn_override, enabled);
-    user_switch_override(&jis_unds_override, enabled);
-    user_switch_override(&jis_plus_override, enabled);
-    user_switch_override(&jis_lbrc_override, enabled);
-    user_switch_override(&jis_lcbr_override, enabled);
-    user_switch_override(&jis_rbrc_override, enabled);
-    user_switch_override(&jis_rcbr_override, enabled);
-    user_switch_override(&jis_bsls_override, enabled);
-    user_switch_override(&jis_pipe_override, enabled);
-    user_switch_override(&jis_coln_override, enabled);
-    user_switch_override(&jis_quot_override, enabled);
-    user_switch_override(&jis_dquo_override, enabled);
-    user_switch_override(&jis_grv_override, enabled);
-    user_switch_override(&jis_tild_override, enabled);
-    user_switch_override(&jis_eql_override, enabled);
+	user_switch_override(&jis_at_override, enabled);
+	user_switch_override(&jis_circ_override, enabled);
+	user_switch_override(&jis_ampr_override, enabled);
+	user_switch_override(&jis_astr_override, enabled);
+	user_switch_override(&jis_lprn_override, enabled);
+	user_switch_override(&jis_rprn_override, enabled);
+	user_switch_override(&jis_unds_override, enabled);
+	user_switch_override(&jis_plus_override, enabled);
+	user_switch_override(&jis_lbrc_override, enabled);
+	user_switch_override(&jis_lcbr_override, enabled);
+	user_switch_override(&jis_rbrc_override, enabled);
+	user_switch_override(&jis_rcbr_override, enabled);
+	user_switch_override(&jis_bsls_override, enabled);
+	user_switch_override(&jis_pipe_override, enabled);
+	user_switch_override(&jis_coln_override, enabled);
+	user_switch_override(&jis_quot_override, enabled);
+	user_switch_override(&jis_dquo_override, enabled);
+	user_switch_override(&jis_grv_override, enabled);
+	user_switch_override(&jis_tild_override, enabled);
+	user_switch_override(&jis_eql_override, enabled);
 }
 
 void user_switch_linux_cmd(bool enable) {
-    user_switch_override(&linux_a_override, enable);
-    user_switch_override(&linux_b_override, enable);
-    user_switch_override(&linux_c_override, enable);
-    user_switch_override(&linux_d_override, enable);
-    user_switch_override(&linux_e_override, enable);
-    user_switch_override(&linux_f_override, enable);
-    user_switch_override(&linux_g_override, enable);
-    user_switch_override(&linux_h_override, enable);
-    user_switch_override(&linux_i_override, enable);
-    user_switch_override(&linux_j_override, enable);
-    user_switch_override(&linux_k_override, enable);
-    user_switch_override(&linux_l_override, enable);
-    user_switch_override(&linux_m_override, enable);
-    user_switch_override(&linux_n_override, enable);
-    user_switch_override(&linux_o_override, enable);
-    user_switch_override(&linux_p_override, enable);
-    user_switch_override(&linux_q_override, enable);
-    user_switch_override(&linux_r_override, enable);
-    user_switch_override(&linux_s_override, enable);
-    user_switch_override(&linux_t_override, enable);
-    user_switch_override(&linux_u_override, enable);
-    user_switch_override(&linux_v_override, enable);
-    user_switch_override(&linux_w_override, enable);
-    user_switch_override(&linux_x_override, enable);
-    user_switch_override(&linux_y_override, enable);
-    user_switch_override(&linux_z_override, enable);
-    user_switch_override(&linux_com_override, enable);
-    user_switch_override(&linux_dot_override, enable);
+	user_switch_override(&linux_a_override, enable);
+	user_switch_override(&linux_b_override, enable);
+	user_switch_override(&linux_c_override, enable);
+	user_switch_override(&linux_d_override, enable);
+	user_switch_override(&linux_e_override, enable);
+	user_switch_override(&linux_f_override, enable);
+	user_switch_override(&linux_g_override, enable);
+	user_switch_override(&linux_h_override, enable);
+	user_switch_override(&linux_i_override, enable);
+	user_switch_override(&linux_j_override, enable);
+	user_switch_override(&linux_k_override, enable);
+	user_switch_override(&linux_l_override, enable);
+	user_switch_override(&linux_m_override, enable);
+	user_switch_override(&linux_n_override, enable);
+	user_switch_override(&linux_o_override, enable);
+	user_switch_override(&linux_p_override, enable);
+	user_switch_override(&linux_q_override, enable);
+	user_switch_override(&linux_r_override, enable);
+	user_switch_override(&linux_s_override, enable);
+	user_switch_override(&linux_t_override, enable);
+	user_switch_override(&linux_u_override, enable);
+	user_switch_override(&linux_v_override, enable);
+	user_switch_override(&linux_w_override, enable);
+	user_switch_override(&linux_x_override, enable);
+	user_switch_override(&linux_y_override, enable);
+	user_switch_override(&linux_z_override, enable);
+	user_switch_override(&linux_com_override, enable);
+	user_switch_override(&linux_dot_override, enable);
 
-    user_switch_override(&hrm_linux_a_override, enable);
-    user_switch_override(&hrm_linux_b_override, enable);
-    user_switch_override(&hrm_linux_c_override, enable);
-    user_switch_override(&hrm_linux_d_override, enable);
-    user_switch_override(&hrm_linux_e_override, enable);
-    user_switch_override(&hrm_linux_f_override, enable);
-    user_switch_override(&hrm_linux_g_override, enable);
-    user_switch_override(&hrm_linux_h_override, enable);
-    user_switch_override(&hrm_linux_i_override, enable);
-    user_switch_override(&hrm_linux_j_override, enable);
-    user_switch_override(&hrm_linux_k_override, enable);
-    user_switch_override(&hrm_linux_l_override, enable);
-    user_switch_override(&hrm_linux_m_override, enable);
-    user_switch_override(&hrm_linux_n_override, enable);
-    user_switch_override(&hrm_linux_o_override, enable);
-    user_switch_override(&hrm_linux_p_override, enable);
-    user_switch_override(&hrm_linux_q_override, enable);
-    user_switch_override(&hrm_linux_r_override, enable);
-    user_switch_override(&hrm_linux_s_override, enable);
-    user_switch_override(&hrm_linux_t_override, enable);
-    user_switch_override(&hrm_linux_u_override, enable);
-    user_switch_override(&hrm_linux_v_override, enable);
-    user_switch_override(&hrm_linux_w_override, enable);
-    user_switch_override(&hrm_linux_x_override, enable);
-    user_switch_override(&hrm_linux_y_override, enable);
-    user_switch_override(&hrm_linux_z_override, enable);
-    user_switch_override(&hrm_linux_com_override, enable);
-    user_switch_override(&hrm_linux_dot_override, enable);
+	user_switch_override(&hrm_linux_a_override, enable);
+	user_switch_override(&hrm_linux_b_override, enable);
+	user_switch_override(&hrm_linux_c_override, enable);
+	user_switch_override(&hrm_linux_d_override, enable);
+	user_switch_override(&hrm_linux_e_override, enable);
+	user_switch_override(&hrm_linux_f_override, enable);
+	user_switch_override(&hrm_linux_g_override, enable);
+	user_switch_override(&hrm_linux_h_override, enable);
+	user_switch_override(&hrm_linux_i_override, enable);
+	user_switch_override(&hrm_linux_j_override, enable);
+	user_switch_override(&hrm_linux_k_override, enable);
+	user_switch_override(&hrm_linux_l_override, enable);
+	user_switch_override(&hrm_linux_m_override, enable);
+	user_switch_override(&hrm_linux_n_override, enable);
+	user_switch_override(&hrm_linux_o_override, enable);
+	user_switch_override(&hrm_linux_p_override, enable);
+	user_switch_override(&hrm_linux_q_override, enable);
+	user_switch_override(&hrm_linux_r_override, enable);
+	user_switch_override(&hrm_linux_s_override, enable);
+	user_switch_override(&hrm_linux_t_override, enable);
+	user_switch_override(&hrm_linux_u_override, enable);
+	user_switch_override(&hrm_linux_v_override, enable);
+	user_switch_override(&hrm_linux_w_override, enable);
+	user_switch_override(&hrm_linux_x_override, enable);
+	user_switch_override(&hrm_linux_y_override, enable);
+	user_switch_override(&hrm_linux_z_override, enable);
+	user_switch_override(&hrm_linux_com_override, enable);
+	user_switch_override(&hrm_linux_dot_override, enable);
 }
 
 void user_enable_all_overrides(void) {
-    for (int i = 0; key_overrides[i] != NULL; i++) {
-        key_override_t *ko = (key_override_t *)key_overrides[i];
-        ko->enabled        = NULL;
-    }
+	for (int i = 0; key_overrides[i] != NULL; i++) {
+		key_override_t *ko = (key_override_t *)key_overrides[i];
+		ko->enabled        = NULL;
+	}
 };
 
 void user_disable_all_overrides(void) {
-    for (int i = 0; key_overrides[i] != NULL; i++) {
-        key_override_t *ko = (key_override_t *)key_overrides[i];
-        ko->enabled        = &false_const;
-    }
+	for (int i = 0; key_overrides[i] != NULL; i++) {
+		key_override_t *ko = (key_override_t *)key_overrides[i];
+		ko->enabled        = &false_const;
+	}
 };
 
 void user_enable_word_del_override(void) {
-    if (user_config.is_macos) { // If MacOS
-        user_switch_override(&w_del_mac_override, true);
-        user_switch_override(&w_del_win_override, false);
-    } else if (user_config.is_windows) { // If Windows
-        user_switch_override(&w_del_mac_override, false);
-        user_switch_override(&w_del_win_override, true);
-    } else if (user_config.is_linux) { // Linux is not implemented yet. Maybe depends on distributions.
-        user_disable_word_del_override();
-    }
+	if (user_config.is_macos) { // If MacOS
+		user_switch_override(&w_del_mac_override, true);
+		user_switch_override(&w_del_win_override, false);
+	} else if (user_config.is_windows) { // If Windows
+		user_switch_override(&w_del_mac_override, false);
+		user_switch_override(&w_del_win_override, true);
+	} else if (user_config.is_linux) { // Linux is not implemented yet. Maybe depends on distributions.
+		user_disable_word_del_override();
+	}
 }
 
 void user_disable_word_del_override(void) {
-    user_switch_override(&w_del_mac_override, false);
-    user_switch_override(&w_del_win_override, false);
+	user_switch_override(&w_del_mac_override, false);
+	user_switch_override(&w_del_win_override, false);
 }
 
 void user_toggle_word_del_override(bool enable) {
-    if (enable) {
-        user_enable_word_del_override();
-    } else {
-        user_disable_word_del_override();
-    }
+	if (enable) {
+		user_enable_word_del_override();
+	} else {
+		user_disable_word_del_override();
+	}
 }
 
 void user_dump_override_state(void) {
-    tap_code(KC_LNG2); // disable Japanese input
-    tap_code(KC_SLSH);
-    register_code(KC_LSFT);
+	tap_code(KC_LNG2); // disable Japanese input
+	tap_code(KC_SLSH);
+	register_code(KC_LSFT);
 
-    if (!user_config.is_auto_detect_os) {
-        SEND_STRING(" manually");
-    } else if (user_is_macos()) {
-        SEND_STRING(" macos");
-    } else if (user_is_windows()) {
-        SEND_STRING(" win");
-    } else if (user_is_linux()) {
-        SEND_STRING(" linux");
-    } else if (user_is_ios()) {
-        SEND_STRING(" ios");
-    } else {
-        SEND_STRING(" unknown");
-    }
-    SEND_STRING(" detected 1"); // 1 is '1'
+	if (!user_config.is_auto_detect_os) {
+		SEND_STRING(" manually");
+	} else if (user_is_macos()) {
+		SEND_STRING(" macos");
+	} else if (user_is_windows()) {
+		SEND_STRING(" win");
+	} else if (user_is_linux()) {
+		SEND_STRING(" linux");
+	} else if (user_is_ios()) {
+		SEND_STRING(" ios");
+	} else {
+		SEND_STRING(" unknown");
+	}
+	SEND_STRING(" detected 1"); // 1 is '1'
 
-    if (user_config.is_macos) {
-        SEND_STRING(" macos");
-    } else if (user_config.is_windows) {
-        SEND_STRING(" win");
-    } else if (user_config.is_linux) {
-        SEND_STRING(" linux");
-    } else if (user_config.is_ios) {
-        SEND_STRING(" ios");
-    } else {
-        SEND_STRING(" unknown");
-    }
-    SEND_STRING(" 1");
+	if (user_config.is_macos) {
+		SEND_STRING(" macos");
+	} else if (user_config.is_windows) {
+		SEND_STRING(" win");
+	} else if (user_config.is_linux) {
+		SEND_STRING(" linux");
+	} else if (user_config.is_ios) {
+		SEND_STRING(" ios");
+	} else {
+		SEND_STRING(" unknown");
+	}
+	SEND_STRING(" 1");
 
-    if (key_override_is_enabled()) {
-        if (user_config.override_modded_esc) SEND_STRING(" modesc");
-        if (user_config.override_enter) SEND_STRING(" ent");
-        if (user_config.override_backspace) SEND_STRING(" bksp");
-        if (user_config.override_tab) SEND_STRING(" tab");
-        if (user_config.override_arrows) SEND_STRING(" arr");
-        if (user_config.override_delete) SEND_STRING(" del");
-        if (user_config.spc_tap) SEND_STRING(" spctap");
+	if (key_override_is_enabled()) {
+		if (user_config.override_modded_esc) SEND_STRING(" modesc");
+		if (user_config.override_enter) SEND_STRING(" ent");
+		if (user_config.override_backspace) SEND_STRING(" bksp");
+		if (user_config.override_tab) SEND_STRING(" tab");
+		if (user_config.override_arrows) SEND_STRING(" arr");
+		if (user_config.override_delete) SEND_STRING(" del");
+		if (user_config.spc_tap) SEND_STRING(" spctap");
 
-        SEND_STRING(" 1");
+		SEND_STRING(" 1");
 
-        if (user_config.override_home) SEND_STRING(" home");
-        if (user_config.override_end) SEND_STRING(" end");
-        if (user_config.override_ctrl_u) SEND_STRING(" ctlu");
-        if (user_config.override_cmd_q) SEND_STRING(" cmdq");
-        if (user_config.override_word_dl) SEND_STRING(" wddl");
-        if (user_config.override_word_mv) SEND_STRING(" wdmv");
+		if (user_config.override_home) SEND_STRING(" home");
+		if (user_config.override_end) SEND_STRING(" end");
+		if (user_config.override_ctrl_u) SEND_STRING(" ctlu");
+		if (user_config.override_cmd_q) SEND_STRING(" cmdq");
+		if (user_config.override_word_dl) SEND_STRING(" wddl");
+		if (user_config.override_word_mv) SEND_STRING(" wdmv");
 
-        SEND_STRING(" 1");
+		SEND_STRING(" 1");
 
-        if (user_config.is_auto_detect_os) SEND_STRING(" detectos");
-        if (user_config.override_linux_cmd) SEND_STRING(" lnxcmd");
-        if (user_config.is_jis_mode) SEND_STRING(" jis");
-        if (user_config.hrmod) SEND_STRING(" hrmod");
-        if (user_config.ergolft) SEND_STRING(" ergolft");
-        if (user_config.ergorit) SEND_STRING(" ergorit");
-    } else {
-        SEND_STRING(" override disabled");
-    }
+		if (user_config.is_auto_detect_os) SEND_STRING(" detectos");
+		if (user_config.override_linux_cmd) SEND_STRING(" lnxcmd");
+		if (user_config.is_jis_mode) SEND_STRING(" jis");
+		if (user_config.hrmod) SEND_STRING(" hrmod");
+		if (user_config.ergolft) SEND_STRING(" ergolft");
+		if (user_config.ergorit) SEND_STRING(" ergorit");
+	} else {
+		SEND_STRING(" override disabled");
+	}
 
-    unregister_code(KC_LSFT);
-    tap_code(KC_SPC);
-    tap_code(KC_SLSH);
+	unregister_code(KC_LSFT);
+	tap_code(KC_SPC);
+	tap_code(KC_SLSH);
 }
 
 void reload_overrides() {
-    user_enable_all_overrides();
+	user_enable_all_overrides();
 
-    if (!user_config.override_tab) {
-        user_switch_override(&tab_key_override, false);
-        user_switch_override(&hrm_tab_key_override, false);
-    }
-    if (!user_config.override_enter) {
-        user_switch_override(&enter_key_override, false);
-        user_switch_override(&hrm_enter_key_override, false);
-    }
-    if (!user_config.override_backspace) {
-        user_switch_override(&bs_key_override, false);
-        user_switch_override(&hrm_bs_key_override, false);
-    }
-    if (!user_config.override_delete) {
-        user_switch_override(&del_key_override, false);
-        user_switch_override(&hrm_del_key_override, false);
-    }
-    if (!user_config.override_arrows) {
-        user_switch_override(&up_key_override, false);
-        user_switch_override(&down_key_override, false);
-        user_switch_override(&right_key_override, false);
-        user_switch_override(&left_key_override, false);
-        user_switch_override(&hrm_up_key_override, false);
-        user_switch_override(&hrm_down_key_override, false);
-        user_switch_override(&hrm_right_key_override, false);
-        user_switch_override(&hrm_left_key_override, false);
-    }
+	if (!user_config.override_tab) {
+		user_switch_override(&tab_key_override, false);
+		user_switch_override(&hrm_tab_key_override, false);
+	}
+	if (!user_config.override_enter) {
+		user_switch_override(&enter_key_override, false);
+		user_switch_override(&hrm_enter_key_override, false);
+	}
+	if (!user_config.override_backspace) {
+		user_switch_override(&bs_key_override, false);
+		user_switch_override(&hrm_bs_key_override, false);
+	}
+	if (!user_config.override_delete) {
+		user_switch_override(&del_key_override, false);
+		user_switch_override(&hrm_del_key_override, false);
+	}
+	if (!user_config.override_arrows) {
+		user_switch_override(&up_key_override, false);
+		user_switch_override(&down_key_override, false);
+		user_switch_override(&right_key_override, false);
+		user_switch_override(&left_key_override, false);
+		user_switch_override(&hrm_up_key_override, false);
+		user_switch_override(&hrm_down_key_override, false);
+		user_switch_override(&hrm_right_key_override, false);
+		user_switch_override(&hrm_left_key_override, false);
+	}
 
-    if (!user_config.override_modded_esc) {
-        user_switch_override(&ctrl_tab_override, false);
-        user_switch_override(&alt_tab_override, false);
-        user_switch_override(&cmd_tab_override, false);
-        user_switch_override(&shift_tab_override, false);
-        user_switch_override(&hrm_ctrl_tab_override, false);
-        user_switch_override(&hrm_alt_tab_override, false);
-        user_switch_override(&hrm_cmd_tab_override, false);
-        user_switch_override(&hrm_shift_tab_override, false);
-    }
+	if (!user_config.override_modded_esc) {
+		user_switch_override(&ctrl_tab_override, false);
+		user_switch_override(&alt_tab_override, false);
+		user_switch_override(&cmd_tab_override, false);
+		user_switch_override(&shift_tab_override, false);
+		user_switch_override(&hrm_ctrl_tab_override, false);
+		user_switch_override(&hrm_alt_tab_override, false);
+		user_switch_override(&hrm_cmd_tab_override, false);
+		user_switch_override(&hrm_shift_tab_override, false);
+	}
 
-    if (user_is_macos() || user_is_ios() || !user_config.override_home) {
-        user_switch_override(&home_key_override, false);
-        user_switch_override(&hrm_home_key_override, false);
-    }
-    if (user_is_macos() || user_is_ios() || !user_config.override_end) {
-        user_switch_override(&end_key_override, false);
-        user_switch_override(&hrm_end_key_override, false);
-    }
+	if (user_is_macos() || user_is_ios() || !user_config.override_home) {
+		user_switch_override(&home_key_override, false);
+		user_switch_override(&hrm_home_key_override, false);
+	}
+	if (user_is_macos() || user_is_ios() || !user_config.override_end) {
+		user_switch_override(&end_key_override, false);
+		user_switch_override(&hrm_end_key_override, false);
+	}
 
-    if (user_is_linux() || user_is_windows() || !user_config.override_ctrl_u) {
-        user_switch_override(&ctrl_u_key_override, false);
-        user_switch_override(&hrm_ctrl_u_key_override, false);
-    }
-    if (user_is_linux() || user_is_windows() || !user_config.override_cmd_q) {
-        user_switch_override(&cmd_q_override, false);
-        user_switch_override(&hrm_cmd_q_override, false);
-    }
+	if (user_is_linux() || user_is_windows() || !user_config.override_ctrl_u) {
+		user_switch_override(&ctrl_u_key_override, false);
+		user_switch_override(&hrm_ctrl_u_key_override, false);
+	}
+	if (user_is_linux() || user_is_windows() || !user_config.override_cmd_q) {
+		user_switch_override(&cmd_q_override, false);
+		user_switch_override(&hrm_cmd_q_override, false);
+	}
 
-    if (user_is_macos() || user_is_ios() || !user_config.override_word_mv) {
-        user_switch_override(&w_fwd_win_override, false);
-        user_switch_override(&w_bck_win_override, false);
-        user_switch_override(&hrm_w_fwd_win_override, false);
-        user_switch_override(&hrm_w_bck_win_override, false);
-    }
+	if (user_is_macos() || user_is_ios() || !user_config.override_word_mv) {
+		user_switch_override(&w_fwd_win_override, false);
+		user_switch_override(&w_bck_win_override, false);
+		user_switch_override(&hrm_w_fwd_win_override, false);
+		user_switch_override(&hrm_w_bck_win_override, false);
+	}
 
-    if (user_is_linux() || user_is_windows() || !user_config.override_word_mv) {
-        user_switch_override(&w_fwd_mac_override, false);
-        user_switch_override(&w_bck_mac_override, false);
-        user_switch_override(&hrm_w_fwd_mac_override, false);
-        user_switch_override(&hrm_w_bck_mac_override, false);
-    }
+	if (user_is_linux() || user_is_windows() || !user_config.override_word_mv) {
+		user_switch_override(&w_fwd_mac_override, false);
+		user_switch_override(&w_bck_mac_override, false);
+		user_switch_override(&hrm_w_fwd_mac_override, false);
+		user_switch_override(&hrm_w_bck_mac_override, false);
+	}
 
-    if (user_is_macos() || user_is_ios() || !user_config.override_word_dl) {
-        user_switch_override(&w_del_win_override, false);
-        user_switch_override(&hrm_w_del_win_override, false);
-    }
+	if (user_is_macos() || user_is_ios() || !user_config.override_word_dl) {
+		user_switch_override(&w_del_win_override, false);
+		user_switch_override(&hrm_w_del_win_override, false);
+	}
 
-    if (user_is_linux() || user_is_windows() || !user_config.override_word_dl) {
-        user_switch_override(&w_del_mac_override, false);
-        user_switch_override(&hrm_w_del_mac_override, false);
-    }
+	if (user_is_linux() || user_is_windows() || !user_config.override_word_dl) {
+		user_switch_override(&w_del_mac_override, false);
+		user_switch_override(&hrm_w_del_mac_override, false);
+	}
 
-    if (user_is_macos() || user_is_ios() || !user_config.override_linux_cmd) {
-        user_switch_linux_cmd(false);
-    }
+	if (user_is_macos() || user_is_ios() || !user_config.override_linux_cmd) {
+		user_switch_linux_cmd(false);
+	}
 
-    if (!user_config.is_jis_mode) {
-        user_switch_jis(false);
-    }
+	if (!user_config.is_jis_mode) {
+		user_switch_jis(false);
+	}
 }
