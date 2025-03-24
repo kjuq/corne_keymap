@@ -26,13 +26,13 @@ cd "$QMK_BASE" || exit 1
 git submodule init
 git submodule update
 
-# if [ -v SUDO_ASKPASS ]; then
-# 	sudo_cmd="sudo -A"
-# else
-# 	sudo_cmd="sudo"
-# fi
+if [ -v SUDO_ASKPASS ]; then
+	sudo_cmd="sudo -A"
+else
+	sudo_cmd="sudo"
+fi
 
-util/docker_build.sh $TARGET || exit 1
+$sudo_cmd util/docker_build.sh $TARGET || exit 1
 
 OUTPUT="${TMP_KEYBOARD}_$(echo $REVISION | sed 's/\//_/')_$KEYMAP.uf2"
 [ ! -f "$OUTPUT" ] && exit 1
