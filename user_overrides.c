@@ -342,6 +342,19 @@ void user_switch_jis(bool enabled) {
 	user_switch_override(&jis_eql_override, enabled);
 }
 
+void user_switch_linux_ins(bool enable) {
+	if (enable) {
+		linux_v_override.replacement = LSFT(KC_INS);
+		linux_c_override.replacement = RCTL(KC_INS);
+		linux_x_override.replacement = LSFT(KC_DEL);
+	} else {
+		linux_v_override.replacement = KC_PASTE;
+		linux_c_override.replacement = KC_COPY;
+		linux_x_override.replacement = KC_CUT;
+	}
+
+}
+
 void user_switch_linux_cmd(bool enable) {
 	user_switch_override(&linux_a_override, enable);
 	user_switch_override(&linux_b_override, enable);
@@ -496,6 +509,7 @@ void user_dump_override_state(void) {
 
 		if (user_config.is_auto_detect_os) SEND_STRING(" detectos");
 		if (user_config.override_linux_cmd) SEND_STRING(" lnxcmd");
+		if (user_config.override_linux_ins) SEND_STRING(" lnxins");
 		if (user_config.is_jis_mode) SEND_STRING(" jis");
 		if (user_config.hrmod) SEND_STRING(" hrmod");
 		if (user_config.ergolft) SEND_STRING(" ergolft");
@@ -595,6 +609,8 @@ void reload_overrides() {
 	if (user_is_macos() || user_is_ios() || !user_config.override_linux_cmd) {
 		user_switch_linux_cmd(false);
 	}
+
+	user_switch_linux_ins(user_config.override_linux_ins);
 
 	if (!user_config.is_jis_mode) {
 		user_switch_jis(false);

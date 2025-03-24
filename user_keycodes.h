@@ -81,6 +81,7 @@ enum planck_keycodes {
 	KO_CMDQ,
 	KO_MTAB,
 	KO_LXCM,
+	KO_INS,
 	KO_JIS,
 	KO_PRNT,
 	MT_HRM,

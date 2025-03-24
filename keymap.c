@@ -237,6 +237,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 				user_reload_user_eeprom();
 			}
 			return false;
+		case KO_INS:
+			if (record->event.pressed) {
+				user_config.override_linux_ins = !user_config.override_linux_ins;
+				eeconfig_update_user(user_config.raw);
+				user_reload_user_eeprom();
+			}
+			return false;
+
 
 		case KO_JIS:
 			if (record->event.pressed) {
