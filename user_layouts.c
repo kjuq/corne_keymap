@@ -6,8 +6,8 @@
 #include "user_layers.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
 	// clang-format off
+	/* *INDENT-OFF* */
 
 	[_COLEMAK] = LAYOUT_split_3x5_3_ex2( // {{{
 			KC_ESC,  KC_W,    KC_F,    KC_P,    KC_B,    KC_F13,          KC_F15,  KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q,
@@ -115,5 +115,5 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			), // }}}
 
 	// clang-format on
-
+	/* *INDENT-ON* */
 };
