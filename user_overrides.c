@@ -75,6 +75,7 @@ key_override_t alt_tab_override = ko_make_basic(MOD_BIT(KC_RALT), KC_ESC, RALT(K
 key_override_t cmd_tab_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_ESC, LGUI(KC_TAB));
 key_override_t shift_tab_override = ko_make_basic(MOD_BIT(KC_RSFT), KC_ESC, LSFT(KC_TAB));
 key_override_t ctrl_u_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_U, LSFT(RCTL(KC_BSPC)));
+key_override_t ctrl_k_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_K, LSFT(RCTL(KC_DEL)));
 
 key_override_t hrm_right_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_F, KC_RIGHT);
 key_override_t hrm_left_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_B, KC_LEFT);
@@ -98,6 +99,7 @@ key_override_t hrm_alt_tab_override = ko_make_basic(MOD_BIT(KC_RALT), CM_ESC, RA
 key_override_t hrm_cmd_tab_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_ESC, LGUI(KC_TAB));
 key_override_t hrm_shift_tab_override = ko_make_basic(MOD_BIT(KC_RSFT), CM_ESC, LSFT(KC_TAB));
 key_override_t hrm_ctrl_u_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_U, LSFT(RCTL(KC_BSPC)));
+key_override_t hrm_ctrl_k_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_K, LSFT(RCTL(KC_DEL)));
 
 key_override_t linux_a_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_A, LCTL(KC_A));
 key_override_t linux_b_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_B, LCTL(KC_B));
@@ -227,6 +229,7 @@ const key_override_t **key_overrides = (const key_override_t *[]) {
 	&home_key_override,
 	&end_key_override,
 	&ctrl_u_key_override,
+	&ctrl_k_key_override,
 	&cmd_q_override,
 	&w_fwd_mac_override,
 	&w_bck_mac_override,
@@ -260,6 +263,8 @@ const key_override_t **key_overrides = (const key_override_t *[]) {
 	&hrm_alt_tab_override,
 	&hrm_cmd_tab_override,
 	&hrm_shift_tab_override,
+	&hrm_ctrl_u_key_override,
+	&hrm_ctrl_k_key_override,
 
 	&jis_s_2_override,
 	&jis_s_6_override,
@@ -520,6 +525,9 @@ void user_dump_override_state(void) {
 		if (user_config.override_ctrl_u) {
 			SEND_STRING(" ctlu");
 		}
+		if (user_config.override_ctrl_k) {
+			SEND_STRING(" ctlk");
+		}
 		if (user_config.override_cmd_q) {
 			SEND_STRING(" cmdq");
 		}
@@ -622,6 +630,11 @@ void reload_overrides() {
 	if (!user_config.override_ctrl_u) {
 		user_switch_override(&ctrl_u_key_override, false);
 		user_switch_override(&hrm_ctrl_u_key_override, false);
+	}
+
+	if (user_is_macos() || user_is_ios() || !user_config.override_ctrl_k) {
+		user_switch_override(&ctrl_k_key_override, false);
+		user_switch_override(&hrm_ctrl_k_key_override, false);
 	}
 
 	if (user_is_linux() || user_is_windows() || !user_config.override_cmd_q) {

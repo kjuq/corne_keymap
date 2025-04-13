@@ -218,6 +218,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		}
 		return(false);
 
+	case KO_CTLK:
+		if (record->event.pressed) {
+			user_config.override_ctrl_k = !user_config.override_ctrl_k;
+			eeconfig_update_user(user_config.raw);
+			user_reload_user_eeprom();
+		}
+		return(false);
+
 	case KO_CMDQ:
 		if (record->event.pressed) {
 			user_config.override_cmd_q = !user_config.override_cmd_q;
