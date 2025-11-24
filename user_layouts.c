@@ -59,23 +59,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	), // }}}
 
 	[_LOWER] = LAYOUT_split_3x5_3_ex2( // {{{
-		SC_TAB,  KC_MINS, KC_EQL,  KC_GRV,  XXXXXXX, XXXXXXX,         XXXXXXX, FNCTN,   KC_7,    KC_8,    KC_9,    KC_BSPC,
-		MOD_CAG, KC_SLSH, KC_LBRC, KC_RBRC, KC_QUOT, XXXXXXX,         XXXXXXX, KC_0,    KC_4,    KC_5,    KC_6,    XXXXXXX,
-		KC_RCTL, KC_COMM, KC_DOT,  KC_SCLN, KC_BSLS,                           XXXXXXX, KC_1,    KC_2,    KC_3,    KC_LSFT,
+		SC_TAB,  KC_MINS, KC_EQL,  KC_GRV,  XXXXXXX, XXXXXXX,         XXXXXXX, KC_COMM, KC_7,    KC_8,    KC_9,    KC_BSPC,
+		MOD_CAG, KC_SLSH, KC_LBRC, KC_RBRC, KC_QUOT, XXXXXXX,         XXXXXXX, KC_0,    KC_4,    KC_5,    KC_6,    FNCTN,
+		KC_RCTL, KC_COMM, KC_DOT,  KC_SCLN, KC_BSLS,                           KC_DOT,  KC_1,    KC_2,    KC_3,    KC_LSFT,
 		                           _______, _______, _______,         _______, _______, _______
 	), // }}}
 
 	[_RAISE] = LAYOUT_split_3x5_3_ex2( // {{{
-		SA_TAB,  KC_UNDS, KC_PLUS, KC_TILD, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, KC_AMPR, KC_ASTR, KC_LPRN, KC_BSPC,
+		SA_TAB,  KC_UNDS, KC_PLUS, KC_TILD, XXXXXXX, XXXXXXX,         XXXXXXX, KC_LABK, KC_AMPR, KC_ASTR, KC_LPRN, KC_BSPC,
 		XXXXXXX, KC_QUES, KC_LCBR, KC_RCBR, KC_DQUO, XXXXXXX,         XXXXXXX, KC_RPRN, KC_DLR,  KC_PERC, KC_CIRC, MOUSE,
-		KC_RCMD, KC_LABK, KC_RABK, KC_COLN, KC_PIPE,                           XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_LALT,
+		KC_RCMD, KC_LABK, KC_RABK, KC_COLN, KC_PIPE,                           KC_RABK, KC_EXLM, KC_AT,   KC_HASH, KC_LALT,
 		                           _______, _______, _______,         _______, _______, _______
 	), // }}}
 
 	[_FNCTN] = LAYOUT_split_3x5_3_ex2( // {{{
-		XXXXXXX, KC_BRIU, KC_VOLU, KC_PGUP, ADJUST,  XXXXXXX,         XXXXXXX, KC_F12,  KC_F7,   KC_F8,   KC_F9,   HOLDLST,
-		KC_CAPS, KC_BRID, KC_VOLD, KC_PGDN, KC_INS,  XXXXXXX,         XXXXXXX, KC_F11,  KC_F4,   KC_F5,   KC_F6,   MODS,
-		KC_SCRL, KC_MPLY, KC_MUTE, KC_PSCR, KC_PAUS,                           KC_F10,  KC_F1,   KC_F2,   KC_F3,   ORS,
+		XXXXXXX, KC_BRIU, KC_VOLU, KC_PGUP, KC_SCRL, XXXXXXX,         XXXXXXX, KC_F12,  KC_F7,   KC_F8,   KC_F9,   HOLDLST,
+		ADJUST,  KC_BRID, KC_VOLD, KC_PGDN, KC_INS,  XXXXXXX,         XXXXXXX, KC_F11,  KC_F4,   KC_F5,   KC_F6,   ORS,
+		KC_CAPS, KC_MPLY, KC_MUTE, KC_PSCR, KC_PAUS,                           KC_F10,  KC_F1,   KC_F2,   KC_F3,   MODS,
 		                           _______, _______, _______,         _______, _______, _______
 	), // }}}
 
@@ -94,8 +94,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	), // }}}
 
 	[_ADJUST] = LAYOUT_split_3x5_3_ex2( // {{{
-		EXT_LYR, KO_WDDL, KO_WD,   XXXXXXX, KO_AR,   XXXXXXX,         XXXXXXX, ADJUST2, XXXXXXX, KO_CTLU, XXXXXXX, KO_CMDQ,
-		KO_HM,   XXXXXXX, XXXXXXX, MT_HRM,  XXXXXXX, XXXXXXX,         XXXXXXX, KO_BS,   XXXXXXX, KO_ED,   KO_TB,   XXXXXXX,
+		EXT_LYR, KO_WDDL, KO_WD,   XXXXXXX, KO_AR,   XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, KO_CTLU, XXXXXXX, KO_CMDQ,
+		KO_HM,   XXXXXXX, XXXXXXX, MT_HRM,  XXXXXXX, XXXXXXX,         XXXXXXX, KO_BS,   XXXXXXX, KO_ED,   KO_TB,   ADJUST2,
 		XXXXXXX, XXXXXXX, XXXXXXX, KO_DL,   KO_INS,                            KO_CTLK, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
 			                       KO_MTAB, ERGOLFT, KO_LXCM,         MT_SPC,  ERGORIT, XXXXXXX
 	), // }}}
