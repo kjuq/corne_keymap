@@ -5,13 +5,13 @@
 #include "user_keycodes.h"
 #include "user_layers.h"
 
+// clang-format off
+/* *INDENT-OFF* */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-	// clang-format off
-	/* *INDENT-OFF* */
 
 	[_COLEMAK] = LAYOUT_split_3x5_3_ex2( // {{{
 		KC_ESC,  KC_W,    KC_F,    KC_P,    KC_B,    KC_DEL,          KC_PGUP, KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q,
-		KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_BSPC,         KC_PGDN, KC_H,    KC_N,    KC_E,    KC_I,    KC_O,
+		KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_ENT,          KC_PGDN, KC_H,    KC_N,    KC_E,    KC_I,    KC_O,
 		KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                              KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SCLN,
 		                           LOWER,   KC_LCTL, KC_SPC,          KC_SPC,  KC_RSFT, RAISE
 	), // }}}
@@ -114,6 +114,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		                           _______, _______, _______,         _______, _______, _______
 	), // }}}
 
-	// clang-format on
-	/* *INDENT-ON* */
 };
+// clang-format on
+/* *INDENT-ON* */
