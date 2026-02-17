@@ -27,15 +27,16 @@ git submodule init
 git submodule update
 
 # Use past version of Docker image (https://github.com/FrameworkComputer/qmk_firmware/issues/42)
+cd $QMK_BASE && git restore util/docker_build.sh # Reset just in case
 sed -i 's|ghcr.io/qmk/qmk_cli|ghcr.io/qmk/qmk_cli@sha256:d8ebfab96c46d3ab948dd4e87be8a976095bd31268700021a74716cbd6e5b4c1|' $GHQ_ROOT/github.com/foostan/kbd_firmware/src/qmk/qmk_firmware/util/docker_build.sh
 
 export RUNTIME=docker
-sudo util/docker_build.sh $TARGET || exit 1
+sudo util/docker_build.sh $TARGET
+
+cd $QMK_BASE && git restore util/docker_build.sh
 
 OUTPUT="${TMP_KEYBOARD}_$(echo $REVISION | sed 's/\//_/')_$KEYMAP.uf2"
 [ ! -f "$OUTPUT" ] && exit 1
 mv --force "$QMK_BASE/$OUTPUT" "$SCRIPT_DIR/firmware.uf2"
 
 rm -fdr "$TMP_KEYBOARD_PATH"
-
-cd $QMK_BASE && git restore util/docker_build.sh
