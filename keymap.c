@@ -266,9 +266,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		}
 		return (false);
 
-	case KO_INS:
+	case KO_LSPK:
 		if (record->event.pressed) {
-			user_config.override_linux_ins = !user_config.override_linux_ins;
+			user_config.override_linux_special_keys = !user_config.override_linux_special_keys;
 			eeconfig_update_user(user_config.raw);
 			user_reload_user_eeprom();
 		}

@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_ADJUST] = LAYOUT_split_3x5_3_ex2( // {{{
 		EXT_LYR, KO_WDDL, KO_WD,   XXXXXXX, KO_AR,   XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, KO_CTLU, XXXXXXX, KO_CMDQ,
 		KO_HM,   XXXXXXX, XXXXXXX, MT_HRM,  XXXXXXX, XXXXXXX,         XXXXXXX, KO_BS,   XXXXXXX, KO_ED,   KO_TB,   ADJUST2,
-		XXXXXXX, XXXXXXX, XXXXXXX, KO_DL,   KO_INS,                            KO_CTLK, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
+		XXXXXXX, XXXXXXX, XXXXXXX, KO_DL,   KO_LSPK,                           KO_CTLK, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
 			                       KO_MTAB, ERGOLFT, KO_LXCM,         MT_SPC,  ERGORIT, XXXXXXX
 	), // }}}
 

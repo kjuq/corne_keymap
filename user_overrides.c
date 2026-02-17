@@ -103,7 +103,7 @@ key_override_t hrm_ctrl_k_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_K, L
 
 key_override_t linux_a_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_A, LCTL(KC_A));
 key_override_t linux_b_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_B, LCTL(KC_B));
-key_override_t linux_c_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_C, KC_COPY);
+key_override_t linux_c_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_C, LCTL(KC_C));
 key_override_t linux_d_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_D, LCTL(KC_D));
 key_override_t linux_e_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_E, LCTL(KC_E));
 key_override_t linux_f_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_F, LCTL(KC_F));
@@ -122,9 +122,9 @@ key_override_t linux_r_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_R, LCTL(KC_
 key_override_t linux_s_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_S, LCTL(KC_S));
 key_override_t linux_t_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_T, LCTL(KC_T));
 key_override_t linux_u_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_U, LCTL(KC_U));
-key_override_t linux_v_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_V, KC_PASTE);
+key_override_t linux_v_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_V, LCTL(KC_V));
 key_override_t linux_w_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_W, LCTL(KC_W));
-key_override_t linux_x_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_X, KC_CUT);
+key_override_t linux_x_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_X, LCTL(KC_X));
 key_override_t linux_y_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_Y, LCTL(KC_Y));
 key_override_t linux_z_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_Z, LCTL(KC_Z));
 key_override_t linux_com_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_COMM, LCTL(KC_COMM));
@@ -345,15 +345,15 @@ void user_switch_jis(bool enabled) {
 	user_switch_override(&jis_eql_override, enabled);
 }
 
-void user_switch_linux_ins(bool enable) {
+void user_switch_linux_special_keys(bool enable) {
 	if (enable) {
-		linux_v_override.replacement = LSFT(KC_INS);
-		linux_c_override.replacement = RCTL(KC_INS);
-		linux_x_override.replacement = LSFT(KC_DEL);
-	} else {
-		linux_v_override.replacement = KC_PASTE;
 		linux_c_override.replacement = KC_COPY;
+		linux_v_override.replacement = KC_PASTE;
 		linux_x_override.replacement = KC_CUT;
+	} else {
+		linux_c_override.replacement = LCTL(KC_C);
+		linux_v_override.replacement = LCTL(KC_V);
+		linux_x_override.replacement = LCTL(KC_X);
 	}
 }
 
@@ -544,8 +544,8 @@ void user_dump_override_state(void) {
 		if (user_config.override_linux_cmd) {
 			SEND_STRING(" lnxcmd");
 		}
-		if (user_config.override_linux_ins) {
-			SEND_STRING(" lnxins");
+		if (user_config.override_linux_special_keys) {
+			SEND_STRING(" lnxspclks");
 		}
 		if (user_config.is_jis_mode) {
 			SEND_STRING(" jis");
@@ -668,7 +668,7 @@ void reload_overrides() {
 		user_switch_linux_cmd(false);
 	}
 
-	user_switch_linux_ins(user_config.override_linux_ins);
+	user_switch_linux_special_keys(user_config.override_linux_special_keys);
 
 	if (!user_config.is_jis_mode) {
 		user_switch_jis(false);
