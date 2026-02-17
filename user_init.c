@@ -3,8 +3,8 @@
 #include "eeconfig.h"
 
 #include "user_eeprom.h"
-#include "user_overrides.h"
 #include "user_layers.h"
+#include "user_overrides.h"
 
 void user_reload_user_eeprom(void) {
 	user_config.raw = eeconfig_read_user();

@@ -24,32 +24,32 @@ void user_exit_layer(void) {
 
 bool user_is_macos(void) {
 	if (user_config.is_auto_detect_os) {
-		return(detected_host_os() == OS_MACOS);
+		return (detected_host_os() == OS_MACOS);
 	} else {
-		return(user_config.is_macos);
+		return (user_config.is_macos);
 	}
 }
 
 bool user_is_ios(void) {
 	if (user_config.is_auto_detect_os) {
-		return(detected_host_os() == OS_IOS);
+		return (detected_host_os() == OS_IOS);
 	} else {
-		return(user_config.is_ios);
+		return (user_config.is_ios);
 	}
 }
 
 bool user_is_linux(void) {
 	if (user_config.is_auto_detect_os) {
-		return(detected_host_os() == OS_LINUX);
+		return (detected_host_os() == OS_LINUX);
 	} else {
-		return(user_config.is_linux);
+		return (user_config.is_linux);
 	}
 }
 
 bool user_is_windows(void) {
 	if (user_config.is_auto_detect_os) {
-		return(detected_host_os() == OS_WINDOWS);
+		return (detected_host_os() == OS_WINDOWS);
 	} else {
-		return(user_config.is_windows);
+		return (user_config.is_windows);
 	}
 }

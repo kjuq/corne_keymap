@@ -6,8 +6,8 @@
 
 #include "process_key_override.h"
 
-#include "user_overrides.h"
 #include "user_eeprom.h"
+#include "user_overrides.h"
 #include "user_utils.c"
 
 static bool false_const = false;
@@ -17,35 +17,35 @@ static bool false_const = false;
 // HACK: I have no idea why MOD_MASK_SHIFT is needed for @, ^, and :.
 
 key_override_t jis_s_2_override = ko_make_basic(MOD_MASK_SHIFT, KC_2, KC_LBRC);    // KC_AT @
-key_override_t jis_s_6_override = ko_make_basic(MOD_MASK_SHIFT, KC_6, KC_EQL);    // KC_CIRC ^
+key_override_t jis_s_6_override = ko_make_basic(MOD_MASK_SHIFT, KC_6, KC_EQL);     // KC_CIRC ^
 key_override_t jis_s_7_override = ko_make_basic(MOD_MASK_SHIFT, KC_7, KC_CIRC);    // KC_AMPR &
 key_override_t jis_s_8_override = ko_make_basic(MOD_MASK_SHIFT, KC_8, KC_DQUO);    // KC_ASTR *
 key_override_t jis_s_9_override = ko_make_basic(MOD_MASK_SHIFT, KC_9, KC_ASTR);    // KC_LPRN (
-key_override_t jis_s_0_override = ko_make_basic(MOD_MASK_SHIFT, KC_0, LSFT(KC_9));    // KC_RPRN )
+key_override_t jis_s_0_override = ko_make_basic(MOD_MASK_SHIFT, KC_0, LSFT(KC_9)); // KC_RPRN )
 
 key_override_t jis_s_mins_override = ko_make_basic(MOD_MASK_SHIFT, KC_MINS, LSFT(KC_INT1)); // KC_UNDS _
-key_override_t jis_s_eql_override = ko_make_basic(MOD_MASK_SHIFT, KC_EQL, KC_COLN);  // KC_PLUS +
-key_override_t jis_s_lbrc_override = ko_make_basic(MOD_MASK_SHIFT, KC_LBRC, KC_RCBR); // KC_LCBR {
+key_override_t jis_s_eql_override = ko_make_basic(MOD_MASK_SHIFT, KC_EQL, KC_COLN);         // KC_PLUS +
+key_override_t jis_s_lbrc_override = ko_make_basic(MOD_MASK_SHIFT, KC_LBRC, KC_RCBR);       // KC_LCBR {
 key_override_t jis_s_rbrc_override = ko_make_basic(MOD_MASK_SHIFT, KC_RBRC, LSFT(KC_NUHS)); // KC_RCBR }
 key_override_t jis_s_bsls_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSLS, LSFT(KC_INT3)); // KC_PIPE |
-key_override_t jis_s_scln_override = ko_make_basic(MOD_MASK_SHIFT, KC_SCLN, KC_QUOT); // KC_COLN :
-key_override_t jis_s_quot_override = ko_make_basic(MOD_MASK_SHIFT, KC_QUOT, KC_AT); // KC_DQUO "
-key_override_t jis_s_grv_override = ko_make_basic(MOD_MASK_SHIFT, KC_GRV, KC_PLUS);  // KC_TILD ~
+key_override_t jis_s_scln_override = ko_make_basic(MOD_MASK_SHIFT, KC_SCLN, KC_QUOT);       // KC_COLN :
+key_override_t jis_s_quot_override = ko_make_basic(MOD_MASK_SHIFT, KC_QUOT, KC_AT);         // KC_DQUO "
+key_override_t jis_s_grv_override = ko_make_basic(MOD_MASK_SHIFT, KC_GRV, KC_PLUS);         // KC_TILD ~
 
-key_override_t jis_at_override = ko_make_basic(MOD_MASK_SHIFT, KC_AT, KC_LBRC);   // S(KC_2),KC_AT @
+key_override_t jis_at_override = ko_make_basic(MOD_MASK_SHIFT, KC_AT, KC_LBRC);    // S(KC_2),KC_AT @
 key_override_t jis_circ_override = ko_make_basic(MOD_MASK_SHIFT, KC_CIRC, KC_EQL); // S(KC_6) KC_CIRC ^
-key_override_t jis_ampr_override = ko_make_basic(0, KC_AMPR, KC_CIRC); // S(KC_7) KC_AMPR &
-key_override_t jis_astr_override = ko_make_basic(0, KC_ASTR, KC_DQUO); // S(KC_8) KC_ASTR *
-key_override_t jis_lprn_override = ko_make_basic(0, KC_LPRN, KC_ASTR); // S(KC_9) KC_LPRN (
-key_override_t jis_rprn_override = ko_make_basic(0, KC_RPRN, LSFT(KC_9)); // S(KC_0) KC_RPRN )
-key_override_t jis_unds_override = ko_make_basic(0, KC_UNDS, LSFT(KC_INT1)); // S(KC_MINUS) KC_UNDS _
-key_override_t jis_plus_override = ko_make_basic(0, KC_PLUS, KC_COLN);  // S(KC_EQUAL) KC_PLUS +
+key_override_t jis_ampr_override = ko_make_basic(0, KC_AMPR, KC_CIRC);             // S(KC_7) KC_AMPR &
+key_override_t jis_astr_override = ko_make_basic(0, KC_ASTR, KC_DQUO);             // S(KC_8) KC_ASTR *
+key_override_t jis_lprn_override = ko_make_basic(0, KC_LPRN, KC_ASTR);             // S(KC_9) KC_LPRN (
+key_override_t jis_rprn_override = ko_make_basic(0, KC_RPRN, LSFT(KC_9));          // S(KC_0) KC_RPRN )
+key_override_t jis_unds_override = ko_make_basic(0, KC_UNDS, LSFT(KC_INT1));       // S(KC_MINUS) KC_UNDS _
+key_override_t jis_plus_override = ko_make_basic(0, KC_PLUS, KC_COLN);             // S(KC_EQUAL) KC_PLUS +
 key_override_t jis_lbrc_override = ko_make_basic(0, KC_LBRC, KC_RBRC);
 key_override_t jis_lcbr_override = ko_make_basic(0, KC_LCBR, KC_RCBR); // S(KC_LBRC) KC_LCBR {
 key_override_t jis_rbrc_override = ko_make_basic(0, KC_RBRC, KC_NUHS);
 key_override_t jis_rcbr_override = ko_make_basic(0, KC_RCBR, LSFT(KC_NUHS)); // S(KC_RBRC) KC_RCBR }
 key_override_t jis_bsls_override = ko_make_basic(0, KC_BSLS, KC_INT3);
-key_override_t jis_pipe_override = ko_make_basic(0, KC_PIPE, LSFT(KC_INT3)); // S(KC_BSLS) KC_PIPE |
+key_override_t jis_pipe_override = ko_make_basic(0, KC_PIPE, LSFT(KC_INT3));        // S(KC_BSLS) KC_PIPE |
 key_override_t jis_coln_override = ko_make_basic(MOD_MASK_SHIFT, KC_COLN, KC_QUOT); // S(KC_SCLN) KC_COLN :
 key_override_t jis_quot_override = ko_make_basic(0, KC_QUOT, KC_AMPR);
 key_override_t jis_dquo_override = ko_make_basic(0, KC_DQUO, KC_AT); // S(KC_QUOT) KC_DQUO "
@@ -159,155 +159,153 @@ key_override_t hrm_linux_z_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_Z, LCTL
 key_override_t hrm_linux_com_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_COMM, LCTL(KC_COMM));
 key_override_t hrm_linux_dot_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_DOT, LCTL(KC_DOT));
 
-const key_override_t **key_overrides = (const key_override_t *[]) {
-	&linux_a_override,
-	&linux_b_override,
-	&linux_c_override,
-	&linux_d_override,
-	&linux_e_override,
-	&linux_f_override,
-	&linux_g_override,
-	&linux_h_override,
-	&linux_i_override,
-	&linux_j_override,
-	&linux_k_override,
-	&linux_l_override,
-	&linux_m_override,
-	&linux_n_override,
-	&linux_o_override,
-	&linux_p_override,
-	&linux_q_override,
-	&linux_r_override,
-	&linux_s_override,
-	&linux_t_override,
-	&linux_u_override,
-	&linux_v_override,
-	&linux_w_override,
-	&linux_x_override,
-	&linux_y_override,
-	&linux_z_override,
-	&linux_com_override,
-	&linux_dot_override,
+const key_override_t **key_overrides = (const key_override_t *[]){
+    &linux_a_override,
+    &linux_b_override,
+    &linux_c_override,
+    &linux_d_override,
+    &linux_e_override,
+    &linux_f_override,
+    &linux_g_override,
+    &linux_h_override,
+    &linux_i_override,
+    &linux_j_override,
+    &linux_k_override,
+    &linux_l_override,
+    &linux_m_override,
+    &linux_n_override,
+    &linux_o_override,
+    &linux_p_override,
+    &linux_q_override,
+    &linux_r_override,
+    &linux_s_override,
+    &linux_t_override,
+    &linux_u_override,
+    &linux_v_override,
+    &linux_w_override,
+    &linux_x_override,
+    &linux_y_override,
+    &linux_z_override,
+    &linux_com_override,
+    &linux_dot_override,
 
-	&hrm_linux_a_override,
-	&hrm_linux_b_override,
-	&hrm_linux_c_override,
-	&hrm_linux_d_override,
-	&hrm_linux_e_override,
-	&hrm_linux_f_override,
-	&hrm_linux_g_override,
-	&hrm_linux_h_override,
-	&hrm_linux_i_override,
-	&hrm_linux_j_override,
-	&hrm_linux_k_override,
-	&hrm_linux_l_override,
-	&hrm_linux_m_override,
-	&hrm_linux_n_override,
-	&hrm_linux_o_override,
-	&hrm_linux_p_override,
-	&hrm_linux_q_override,
-	&hrm_linux_r_override,
-	&hrm_linux_s_override,
-	&hrm_linux_t_override,
-	&hrm_linux_u_override,
-	&hrm_linux_v_override,
-	&hrm_linux_w_override,
-	&hrm_linux_x_override,
-	&hrm_linux_y_override,
-	&hrm_linux_z_override,
-	&hrm_linux_com_override,
-	&hrm_linux_dot_override,
+    &hrm_linux_a_override,
+    &hrm_linux_b_override,
+    &hrm_linux_c_override,
+    &hrm_linux_d_override,
+    &hrm_linux_e_override,
+    &hrm_linux_f_override,
+    &hrm_linux_g_override,
+    &hrm_linux_h_override,
+    &hrm_linux_i_override,
+    &hrm_linux_j_override,
+    &hrm_linux_k_override,
+    &hrm_linux_l_override,
+    &hrm_linux_m_override,
+    &hrm_linux_n_override,
+    &hrm_linux_o_override,
+    &hrm_linux_p_override,
+    &hrm_linux_q_override,
+    &hrm_linux_r_override,
+    &hrm_linux_s_override,
+    &hrm_linux_t_override,
+    &hrm_linux_u_override,
+    &hrm_linux_v_override,
+    &hrm_linux_w_override,
+    &hrm_linux_x_override,
+    &hrm_linux_y_override,
+    &hrm_linux_z_override,
+    &hrm_linux_com_override,
+    &hrm_linux_dot_override,
 
-	&enter_key_override,
-	&tab_key_override,
-	&right_key_override,
-	&left_key_override,
-	&up_key_override,
-	&down_key_override,
-	&bs_key_override,
-	&del_key_override,
-	&home_key_override,
-	&end_key_override,
-	&ctrl_u_key_override,
-	&ctrl_k_key_override,
-	&cmd_q_override,
-	&w_fwd_mac_override,
-	&w_bck_mac_override,
-	&w_del_mac_override,
-	&w_fwd_win_override,
-	&w_bck_win_override,
-	&w_del_win_override,
-	&ctrl_tab_override,
-	&alt_tab_override,
-	&cmd_tab_override,
-	&shift_tab_override,
+    &enter_key_override,
+    &tab_key_override,
+    &right_key_override,
+    &left_key_override,
+    &up_key_override,
+    &down_key_override,
+    &bs_key_override,
+    &del_key_override,
+    &home_key_override,
+    &end_key_override,
+    &ctrl_u_key_override,
+    &ctrl_k_key_override,
+    &cmd_q_override,
+    &w_fwd_mac_override,
+    &w_bck_mac_override,
+    &w_del_mac_override,
+    &w_fwd_win_override,
+    &w_bck_win_override,
+    &w_del_win_override,
+    &ctrl_tab_override,
+    &alt_tab_override,
+    &cmd_tab_override,
+    &shift_tab_override,
 
-	&hrm_right_key_override,
-	&hrm_left_key_override,
-	&hrm_up_key_override,
-	&hrm_down_key_override,
-	&hrm_home_key_override,
-	&hrm_end_key_override,
-	&hrm_enter_key_override,
-	&hrm_tab_key_override,
-	&hrm_bs_key_override,
-	&hrm_del_key_override,
-	&hrm_w_fwd_mac_override,
-	&hrm_w_bck_mac_override,
-	&hrm_w_fwd_win_override,
-	&hrm_w_bck_win_override,
-	&hrm_w_del_mac_override,
-	&hrm_w_del_win_override,
-	&hrm_cmd_q_override,
-	&hrm_ctrl_tab_override,
-	&hrm_alt_tab_override,
-	&hrm_cmd_tab_override,
-	&hrm_shift_tab_override,
-	&hrm_ctrl_u_key_override,
-	&hrm_ctrl_k_key_override,
+    &hrm_right_key_override,
+    &hrm_left_key_override,
+    &hrm_up_key_override,
+    &hrm_down_key_override,
+    &hrm_home_key_override,
+    &hrm_end_key_override,
+    &hrm_enter_key_override,
+    &hrm_tab_key_override,
+    &hrm_bs_key_override,
+    &hrm_del_key_override,
+    &hrm_w_fwd_mac_override,
+    &hrm_w_bck_mac_override,
+    &hrm_w_fwd_win_override,
+    &hrm_w_bck_win_override,
+    &hrm_w_del_mac_override,
+    &hrm_w_del_win_override,
+    &hrm_cmd_q_override,
+    &hrm_ctrl_tab_override,
+    &hrm_alt_tab_override,
+    &hrm_cmd_tab_override,
+    &hrm_shift_tab_override,
+    &hrm_ctrl_u_key_override,
+    &hrm_ctrl_k_key_override,
 
-	&jis_s_2_override,
-	&jis_s_6_override,
-	&jis_s_7_override,
-	&jis_s_8_override,
-	&jis_s_9_override,
-	&jis_s_0_override,
-	&jis_s_mins_override,
-	&jis_s_eql_override,
-	&jis_s_lbrc_override,
-	&jis_s_rbrc_override,
-	&jis_s_bsls_override,
-	&jis_s_scln_override,
-	&jis_s_quot_override,
-	&jis_s_grv_override,
+    &jis_s_2_override,
+    &jis_s_6_override,
+    &jis_s_7_override,
+    &jis_s_8_override,
+    &jis_s_9_override,
+    &jis_s_0_override,
+    &jis_s_mins_override,
+    &jis_s_eql_override,
+    &jis_s_lbrc_override,
+    &jis_s_rbrc_override,
+    &jis_s_bsls_override,
+    &jis_s_scln_override,
+    &jis_s_quot_override,
+    &jis_s_grv_override,
 
-	&jis_at_override,
-	&jis_circ_override,
-	&jis_ampr_override,
-	&jis_astr_override,
-	&jis_lprn_override,
-	&jis_rprn_override,
-	&jis_unds_override,
-	&jis_plus_override,
-	&jis_lbrc_override,
-	&jis_lcbr_override,
-	&jis_rbrc_override,
-	&jis_rcbr_override,
-	&jis_bsls_override,
-	&jis_pipe_override,
-	&jis_coln_override,
-	&jis_quot_override,
-	&jis_dquo_override,
-	&jis_grv_override,
-	&jis_tild_override,
-	&jis_eql_override,
+    &jis_at_override,
+    &jis_circ_override,
+    &jis_ampr_override,
+    &jis_astr_override,
+    &jis_lprn_override,
+    &jis_rprn_override,
+    &jis_unds_override,
+    &jis_plus_override,
+    &jis_lbrc_override,
+    &jis_lcbr_override,
+    &jis_rbrc_override,
+    &jis_rcbr_override,
+    &jis_bsls_override,
+    &jis_pipe_override,
+    &jis_coln_override,
+    &jis_quot_override,
+    &jis_dquo_override,
+    &jis_grv_override,
+    &jis_tild_override,
+    &jis_eql_override,
 
-	NULL,
+    NULL,
 };
 
-void user_switch_override(key_override_t *override, bool enabled) {
-	override->enabled = enabled ? NULL : &false_const;
-}
+void user_switch_override(key_override_t *override, bool enabled) { override->enabled = enabled ? NULL : &false_const; }
 
 void user_switch_jis(bool enabled) {
 	user_switch_override(&jis_s_2_override, enabled);
