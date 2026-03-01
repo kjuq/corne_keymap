@@ -16,27 +16,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		                           LOWER,   KC_LCTL, KC_SPC,          KC_SPC,  KC_RSFT, RAISE
 	), // }}}
 
-	[_QWERTY] = LAYOUT_split_3x5_3_ex2( // {{{
-		KC_ESC,  KC_W,    KC_E,    KC_R,    KC_T,    _______,         _______, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
-		KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    _______,         _______, KC_H,    KC_J,    KC_K,    KC_L,    KC_Q,
-		KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                              KC_N,    KC_M,    _______, _______, _______,
-		                           _______, _______, _______,         _______, _______, _______
-	), // }}}
-
-	[_HRMOD] = LAYOUT_split_3x5_3_ex2( // {{{
-		CM_ESC,  CM_W,    CM_F,    CM_P,    CM_B,    _______,         _______, CM_J,    CM_L,    CM_U,    CM_Y,    CM_Q,
-		CM_A,    CM_R,    CM_S,    CM_T,    CM_G,    _______,         _______, CM_H,    CM_N,    CM_E,    CM_I,    CM_O,
-		CM_Z,    CM_X,    CM_C,    CM_D,    CM_V,                              CM_K,    CM_M,    CM_COMM, CM_DOT,  CM_SPC,
-		                           _______, _______, _______,         _______, _______, _______
-	), // }}}
-
-	[_SPACES] = LAYOUT_split_3x5_3_ex2( // {{{
-		KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  _______,         _______, KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,
-		KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  _______,         _______, KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,
-		KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,                            KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,  KC_SPC,
-		                           _______, _______, _______,         _______, _______, _______
-	), // }}}
-
 	[_SPC_TAP] = LAYOUT_split_3x5_3_ex2( // {{{
 		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
@@ -81,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[_ADJUST] = LAYOUT_split_3x5_3_ex2( // {{{
 		EXT_LYR, KO_WDDL, KO_WD,   XXXXXXX, KO_AR,   XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, KO_CTLU, XXXXXXX, KO_CMDQ,
-		KO_HM,   XXXXXXX, XXXXXXX, MT_HRM,  XXXXXXX, XXXXXXX,         XXXXXXX, KO_BS,   XXXXXXX, KO_ED,   KO_TB,   ADJUST2,
+		KO_HM,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KO_BS,   XXXXXXX, KO_ED,   KO_TB,   ADJUST2,
 		XXXXXXX, XXXXXXX, XXXXXXX, KO_DL,   KO_LSPK,                           KO_CTLK, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
 			                       KO_MTAB, XXXXXXX, KO_LXCM,         MT_SPC,  XXXXXXX, XXXXXXX
 	), // }}}

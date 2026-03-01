@@ -25,10 +25,7 @@ typedef union {
 		bool is_windows : 1;
 		bool is_linux : 1;
 		bool is_ios : 1;
-		bool hrmod : 1;
 		bool spc_tap : 1;
-		bool ergolft : 1;
-		bool ergorit : 1;
 	};
 } user_config_t;
 

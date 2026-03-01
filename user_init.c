@@ -11,15 +11,6 @@ void user_reload_user_eeprom(void) {
 
 	reload_overrides();
 
-	if (user_config.hrmod) {
-		// activate the layer
-		default_layer_or((layer_state_t)1 << _HRMOD);
-	} else {
-		// deactivate the layer
-		default_layer_or((layer_state_t)1 << _HRMOD);
-		default_layer_xor((layer_state_t)1 << _HRMOD);
-	}
-
 	if (user_config.spc_tap) {
 		default_layer_or((layer_state_t)1 << _SPC_TAP);
 	} else {

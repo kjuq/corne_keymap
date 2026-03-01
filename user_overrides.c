@@ -77,30 +77,6 @@ key_override_t shift_tab_override = ko_make_basic(MOD_BIT(KC_RSFT), KC_ESC, LSFT
 key_override_t ctrl_u_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_U, LSFT(RCTL(KC_BSPC)));
 key_override_t ctrl_k_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_K, LSFT(RCTL(KC_DEL)));
 
-key_override_t hrm_right_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_F, KC_RIGHT);
-key_override_t hrm_left_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_B, KC_LEFT);
-key_override_t hrm_up_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_P, KC_UP);
-key_override_t hrm_down_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_N, KC_DOWN);
-key_override_t hrm_home_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_A, KC_HOME);
-key_override_t hrm_end_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_E, KC_END);
-key_override_t hrm_enter_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_M, KC_ENT);
-key_override_t hrm_tab_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_I, KC_TAB);
-key_override_t hrm_bs_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_H, KC_BSPC);
-key_override_t hrm_del_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_D, KC_DEL);
-key_override_t hrm_w_fwd_mac_override = ko_make_basic(MOD_BIT(KC_RALT), CM_F, RALT(KC_RGHT));
-key_override_t hrm_w_bck_mac_override = ko_make_basic(MOD_BIT(KC_RALT), CM_B, RALT(KC_LEFT));
-key_override_t hrm_w_fwd_win_override = ko_make_basic(MOD_BIT(KC_RALT), CM_F, RCTL(KC_RGHT));
-key_override_t hrm_w_bck_win_override = ko_make_basic(MOD_BIT(KC_RALT), CM_B, RCTL(KC_LEFT));
-key_override_t hrm_w_del_mac_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_W, RALT(KC_BSPC));
-key_override_t hrm_w_del_win_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_W, LCTL(KC_BSPC));
-key_override_t hrm_cmd_q_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_Q, LGUI(KC_GRV)); // overridden by linux cmd
-key_override_t hrm_ctrl_tab_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_ESC, LCTL(KC_TAB));
-key_override_t hrm_alt_tab_override = ko_make_basic(MOD_BIT(KC_RALT), CM_ESC, RALT(KC_TAB));
-key_override_t hrm_cmd_tab_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_ESC, LGUI(KC_TAB));
-key_override_t hrm_shift_tab_override = ko_make_basic(MOD_BIT(KC_RSFT), CM_ESC, LSFT(KC_TAB));
-key_override_t hrm_ctrl_u_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_U, LSFT(RCTL(KC_BSPC)));
-key_override_t hrm_ctrl_k_key_override = ko_make_basic(MOD_BIT(KC_LCTL), CM_K, LSFT(RCTL(KC_DEL)));
-
 key_override_t linux_a_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_A, LCTL(KC_A));
 key_override_t linux_b_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_B, LCTL(KC_B));
 key_override_t linux_c_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_C, LCTL(KC_C));
@@ -129,35 +105,6 @@ key_override_t linux_y_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_Y, LCTL(KC_
 key_override_t linux_z_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_Z, LCTL(KC_Z));
 key_override_t linux_com_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_COMM, LCTL(KC_COMM));
 key_override_t linux_dot_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_DOT, LCTL(KC_DOT));
-
-key_override_t hrm_linux_a_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_A, LCTL(KC_A));
-key_override_t hrm_linux_b_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_B, LCTL(KC_B));
-key_override_t hrm_linux_c_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_C, KC_COPY);
-key_override_t hrm_linux_d_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_D, LCTL(KC_D));
-key_override_t hrm_linux_e_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_E, LCTL(KC_E));
-key_override_t hrm_linux_f_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_F, LCTL(KC_F));
-key_override_t hrm_linux_g_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_G, LCTL(KC_G));
-key_override_t hrm_linux_h_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_H, LCTL(KC_H));
-key_override_t hrm_linux_i_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_I, LCTL(KC_I));
-key_override_t hrm_linux_j_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_J, LCTL(KC_J));
-key_override_t hrm_linux_k_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_K, LCTL(KC_K));
-key_override_t hrm_linux_l_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_L, LCTL(KC_L));
-key_override_t hrm_linux_m_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_M, LCTL(KC_M));
-key_override_t hrm_linux_n_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_N, LCTL(KC_N));
-key_override_t hrm_linux_o_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_O, LCTL(KC_O));
-key_override_t hrm_linux_p_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_P, LCTL(KC_P));
-key_override_t hrm_linux_q_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_Q, LCTL(KC_Q));
-key_override_t hrm_linux_r_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_R, LCTL(KC_R));
-key_override_t hrm_linux_s_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_S, LCTL(KC_S));
-key_override_t hrm_linux_t_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_T, LCTL(KC_T));
-key_override_t hrm_linux_u_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_U, LCTL(KC_U));
-key_override_t hrm_linux_v_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_V, KC_PASTE);
-key_override_t hrm_linux_w_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_W, LCTL(KC_W));
-key_override_t hrm_linux_x_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_X, KC_CUT);
-key_override_t hrm_linux_y_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_Y, LCTL(KC_Y));
-key_override_t hrm_linux_z_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_Z, LCTL(KC_Z));
-key_override_t hrm_linux_com_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_COMM, LCTL(KC_COMM));
-key_override_t hrm_linux_dot_override = ko_make_basic(MOD_BIT(KC_LGUI), CM_DOT, LCTL(KC_DOT));
 
 const key_override_t **key_overrides = (const key_override_t *[]){
     &linux_a_override,
@@ -189,35 +136,6 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &linux_com_override,
     &linux_dot_override,
 
-    &hrm_linux_a_override,
-    &hrm_linux_b_override,
-    &hrm_linux_c_override,
-    &hrm_linux_d_override,
-    &hrm_linux_e_override,
-    &hrm_linux_f_override,
-    &hrm_linux_g_override,
-    &hrm_linux_h_override,
-    &hrm_linux_i_override,
-    &hrm_linux_j_override,
-    &hrm_linux_k_override,
-    &hrm_linux_l_override,
-    &hrm_linux_m_override,
-    &hrm_linux_n_override,
-    &hrm_linux_o_override,
-    &hrm_linux_p_override,
-    &hrm_linux_q_override,
-    &hrm_linux_r_override,
-    &hrm_linux_s_override,
-    &hrm_linux_t_override,
-    &hrm_linux_u_override,
-    &hrm_linux_v_override,
-    &hrm_linux_w_override,
-    &hrm_linux_x_override,
-    &hrm_linux_y_override,
-    &hrm_linux_z_override,
-    &hrm_linux_com_override,
-    &hrm_linux_dot_override,
-
     &enter_key_override,
     &tab_key_override,
     &right_key_override,
@@ -241,30 +159,6 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &alt_tab_override,
     &cmd_tab_override,
     &shift_tab_override,
-
-    &hrm_right_key_override,
-    &hrm_left_key_override,
-    &hrm_up_key_override,
-    &hrm_down_key_override,
-    &hrm_home_key_override,
-    &hrm_end_key_override,
-    &hrm_enter_key_override,
-    &hrm_tab_key_override,
-    &hrm_bs_key_override,
-    &hrm_del_key_override,
-    &hrm_w_fwd_mac_override,
-    &hrm_w_bck_mac_override,
-    &hrm_w_fwd_win_override,
-    &hrm_w_bck_win_override,
-    &hrm_w_del_mac_override,
-    &hrm_w_del_win_override,
-    &hrm_cmd_q_override,
-    &hrm_ctrl_tab_override,
-    &hrm_alt_tab_override,
-    &hrm_cmd_tab_override,
-    &hrm_shift_tab_override,
-    &hrm_ctrl_u_key_override,
-    &hrm_ctrl_k_key_override,
 
     &jis_s_2_override,
     &jis_s_6_override,
@@ -386,35 +280,6 @@ void user_switch_linux_cmd(bool enable) {
 	user_switch_override(&linux_z_override, enable);
 	user_switch_override(&linux_com_override, enable);
 	user_switch_override(&linux_dot_override, enable);
-
-	user_switch_override(&hrm_linux_a_override, enable);
-	user_switch_override(&hrm_linux_b_override, enable);
-	user_switch_override(&hrm_linux_c_override, enable);
-	user_switch_override(&hrm_linux_d_override, enable);
-	user_switch_override(&hrm_linux_e_override, enable);
-	user_switch_override(&hrm_linux_f_override, enable);
-	user_switch_override(&hrm_linux_g_override, enable);
-	user_switch_override(&hrm_linux_h_override, enable);
-	user_switch_override(&hrm_linux_i_override, enable);
-	user_switch_override(&hrm_linux_j_override, enable);
-	user_switch_override(&hrm_linux_k_override, enable);
-	user_switch_override(&hrm_linux_l_override, enable);
-	user_switch_override(&hrm_linux_m_override, enable);
-	user_switch_override(&hrm_linux_n_override, enable);
-	user_switch_override(&hrm_linux_o_override, enable);
-	user_switch_override(&hrm_linux_p_override, enable);
-	user_switch_override(&hrm_linux_q_override, enable);
-	user_switch_override(&hrm_linux_r_override, enable);
-	user_switch_override(&hrm_linux_s_override, enable);
-	user_switch_override(&hrm_linux_t_override, enable);
-	user_switch_override(&hrm_linux_u_override, enable);
-	user_switch_override(&hrm_linux_v_override, enable);
-	user_switch_override(&hrm_linux_w_override, enable);
-	user_switch_override(&hrm_linux_x_override, enable);
-	user_switch_override(&hrm_linux_y_override, enable);
-	user_switch_override(&hrm_linux_z_override, enable);
-	user_switch_override(&hrm_linux_com_override, enable);
-	user_switch_override(&hrm_linux_dot_override, enable);
 }
 
 void user_enable_all_overrides(void) {
@@ -550,15 +415,6 @@ void user_dump_override_state(void) {
 		if (user_config.is_jis_mode) {
 			SEND_STRING(" jis");
 		}
-		if (user_config.hrmod) {
-			SEND_STRING(" hrmod");
-		}
-		if (user_config.ergolft) {
-			SEND_STRING(" ergolft");
-		}
-		if (user_config.ergorit) {
-			SEND_STRING(" ergorit");
-		}
 	} else {
 		SEND_STRING(" override disabled");
 	}
@@ -573,29 +429,21 @@ void reload_overrides() {
 
 	if (!user_config.override_tab) {
 		user_switch_override(&tab_key_override, false);
-		user_switch_override(&hrm_tab_key_override, false);
 	}
 	if (!user_config.override_enter) {
 		user_switch_override(&enter_key_override, false);
-		user_switch_override(&hrm_enter_key_override, false);
 	}
 	if (!user_config.override_backspace) {
 		user_switch_override(&bs_key_override, false);
-		user_switch_override(&hrm_bs_key_override, false);
 	}
 	if (!user_config.override_delete) {
 		user_switch_override(&del_key_override, false);
-		user_switch_override(&hrm_del_key_override, false);
 	}
 	if (!user_config.override_arrows) {
 		user_switch_override(&up_key_override, false);
 		user_switch_override(&down_key_override, false);
 		user_switch_override(&right_key_override, false);
 		user_switch_override(&left_key_override, false);
-		user_switch_override(&hrm_up_key_override, false);
-		user_switch_override(&hrm_down_key_override, false);
-		user_switch_override(&hrm_right_key_override, false);
-		user_switch_override(&hrm_left_key_override, false);
 	}
 
 	if (!user_config.override_modded_esc) {
@@ -603,65 +451,48 @@ void reload_overrides() {
 		user_switch_override(&alt_tab_override, false);
 		user_switch_override(&cmd_tab_override, false);
 		user_switch_override(&shift_tab_override, false);
-		user_switch_override(&hrm_ctrl_tab_override, false);
-		user_switch_override(&hrm_alt_tab_override, false);
-		user_switch_override(&hrm_cmd_tab_override, false);
-		user_switch_override(&hrm_shift_tab_override, false);
 	}
 
 	if (user_is_macos() || user_is_ios() || !user_config.override_home) {
 		user_switch_override(&home_key_override, false);
-		user_switch_override(&hrm_home_key_override, false);
 	}
 	if (user_is_macos() || user_is_ios() || !user_config.override_end) {
 		user_switch_override(&end_key_override, false);
-		user_switch_override(&hrm_end_key_override, false);
 	}
 
 	if (user_is_macos() || user_is_ios()) {
 		ctrl_u_key_override.replacement = LCMD(KC_BSPC);
-		hrm_ctrl_u_key_override.replacement = LCMD(KC_BSPC);
 	} else if (user_is_linux() || user_is_windows()) {
 		ctrl_u_key_override.replacement = LSFT(RCTL(KC_BSPC));
-		hrm_ctrl_u_key_override.replacement = LSFT(RCTL(KC_BSPC));
 	}
 	if (!user_config.override_ctrl_u) {
 		user_switch_override(&ctrl_u_key_override, false);
-		user_switch_override(&hrm_ctrl_u_key_override, false);
 	}
 
 	if (user_is_macos() || user_is_ios() || !user_config.override_ctrl_k) {
 		user_switch_override(&ctrl_k_key_override, false);
-		user_switch_override(&hrm_ctrl_k_key_override, false);
 	}
 
 	if (user_is_linux() || user_is_windows() || !user_config.override_cmd_q) {
 		user_switch_override(&cmd_q_override, false);
-		user_switch_override(&hrm_cmd_q_override, false);
 	}
 
 	if (user_is_macos() || user_is_ios() || !user_config.override_word_mv) {
 		user_switch_override(&w_fwd_win_override, false);
 		user_switch_override(&w_bck_win_override, false);
-		user_switch_override(&hrm_w_fwd_win_override, false);
-		user_switch_override(&hrm_w_bck_win_override, false);
 	}
 
 	if (user_is_linux() || user_is_windows() || !user_config.override_word_mv) {
 		user_switch_override(&w_fwd_mac_override, false);
 		user_switch_override(&w_bck_mac_override, false);
-		user_switch_override(&hrm_w_fwd_mac_override, false);
-		user_switch_override(&hrm_w_bck_mac_override, false);
 	}
 
 	if (user_is_macos() || user_is_ios() || !user_config.override_word_dl) {
 		user_switch_override(&w_del_win_override, false);
-		user_switch_override(&hrm_w_del_win_override, false);
 	}
 
 	if (user_is_linux() || user_is_windows() || !user_config.override_word_dl) {
 		user_switch_override(&w_del_mac_override, false);
-		user_switch_override(&hrm_w_del_mac_override, false);
 	}
 
 	if (user_is_macos() || user_is_ios() || !user_config.override_linux_cmd) {

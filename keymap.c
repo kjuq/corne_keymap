@@ -59,12 +59,6 @@ void keyboard_post_init_user(void) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	switch (keycode) {
 	// Layers
-	case QWERTY:
-		if (record->event.pressed) {
-			set_single_persistent_default_layer(_QWERTY);
-		}
-		return (false);
-
 	case COLEMAK:
 		if (record->event.pressed) {
 			set_single_persistent_default_layer(_COLEMAK);
@@ -325,14 +319,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		return (false);
 
 	// Hold tap
-	case MT_HRM:
-		if (record->event.pressed) {
-			user_config.hrmod = !user_config.hrmod;
-			eeconfig_update_user(user_config.raw);
-			user_reload_user_eeprom();
-		}
-		return (false);
-
 	case MT_SPC:
 		if (record->event.pressed) {
 			user_config.spc_tap = !user_config.spc_tap;
