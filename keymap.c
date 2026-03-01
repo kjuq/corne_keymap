@@ -62,7 +62,6 @@ enum planck_keycodes {
 	KO_HM,
 	KO_ED,
 	KO_CTLK,
-	KO_CTLO,
 	KO_WD,
 	KO_WDDL,
 	KO_CTLU,
@@ -720,7 +719,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		XXXXXXX, XXXXXXX, KC_RGHT, KC_UP,   KC_LEFT, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 		KC_HOME, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KC_BSPC, KC_DOWN, KC_END,  KC_TAB,  XXXXXXX,
 		XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,  XXXXXXX,                           XXXXXXX, KC_ENT,  XXXXXXX, XXXXXXX, XXXXXXX,
-		                           KC_LNG2, _______, _______,         _______, _______, KC_LNG1
+		                           _______, _______, _______,         _______, _______, _______
 	), // }}}
 
 	[_ADJUST] = LAYOUT_split_3x5_3_ex2( // {{{
