@@ -21,8 +21,6 @@
 
 enum planck_keycodes {
 	COLEMAK = SAFE_RANGE,
-	QWERTY,
-	LNG_TAP,
 	ADJUST,
 	ADJUST2,
 	MOD_CAG,
