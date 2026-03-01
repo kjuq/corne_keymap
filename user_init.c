@@ -26,18 +26,4 @@ void user_reload_user_eeprom(void) {
 		default_layer_or((layer_state_t)1 << _SPC_TAP);
 		default_layer_xor((layer_state_t)1 << _SPC_TAP);
 	}
-
-	if (user_config.ergolft) {
-		default_layer_or((layer_state_t)1 << _ERGOLFT);
-	} else {
-		default_layer_or((layer_state_t)1 << _ERGOLFT);
-		default_layer_xor((layer_state_t)1 << _ERGOLFT);
-	}
-
-	if (user_config.ergorit) {
-		default_layer_or((layer_state_t)1 << _ERGORIT);
-	} else {
-		default_layer_or((layer_state_t)1 << _ERGORIT);
-		default_layer_xor((layer_state_t)1 << _ERGORIT);
-	}
 };

@@ -8,8 +8,6 @@ enum planck_layers {
 	_HRMOD,
 	_SPACES,
 	_SPC_TAP,
-	_ERGOLFT,
-	_ERGORIT,
 	_LOWER,
 	_RAISE,
 	_FNCTN,
