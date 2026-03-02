@@ -35,7 +35,6 @@ typedef union {
 		bool override_word_dl : 1;
 		bool override_modded_esc : 1;
 		bool override_linux_cmd : 1;
-		bool override_linux_special_keys : 1;
 		bool is_jis_mode : 1;
 		bool is_auto_detect_os : 1;
 		bool is_macos : 1;
@@ -70,7 +69,6 @@ enum planck_keycodes {
 	KO_CMDQ,
 	KO_MTAB,
 	KO_LXCM,
-	KO_LSPK,
 	KO_JIS,
 	KO_PRNT,
 	MT_SPC,
@@ -302,7 +300,6 @@ bool kjuq_is_ios(void);
 bool kjuq_is_linux(void);
 bool kjuq_is_windows(void);
 void kjuq_switch_override(key_override_t *, bool);
-void kjuq_switch_linux_special_keys(bool);
 // ------
 
 void kjuq_reload_overrides() {
@@ -375,8 +372,6 @@ void kjuq_reload_overrides() {
 	if (kjuq_is_macos() || kjuq_is_ios() || !user_config.override_linux_cmd) {
 		kjuq_switch_linux_cmd(false);
 	}
-
-	kjuq_switch_linux_special_keys(user_config.override_linux_special_keys);
 
 	if (!user_config.is_jis_mode) {
 		kjuq_switch_jis(false);
@@ -481,18 +476,6 @@ void kjuq_switch_jis(bool enabled) {
 	kjuq_switch_override(&jis_grv_override, enabled);
 	kjuq_switch_override(&jis_tild_override, enabled);
 	kjuq_switch_override(&jis_eql_override, enabled);
-}
-
-void kjuq_switch_linux_special_keys(bool enable) {
-	if (enable) {
-		linux_c_override.replacement = KC_COPY;
-		linux_v_override.replacement = KC_PASTE;
-		linux_x_override.replacement = KC_CUT;
-	} else {
-		linux_c_override.replacement = LCTL(KC_C);
-		linux_v_override.replacement = LCTL(KC_V);
-		linux_x_override.replacement = LCTL(KC_X);
-	}
 }
 
 void kjuq_switch_linux_cmd(bool enable) {
@@ -650,9 +633,6 @@ void kjuq_dump_override_state(void) {
 		if (user_config.override_linux_cmd) {
 			SEND_STRING(" lnxcmd");
 		}
-		if (user_config.override_linux_special_keys) {
-			SEND_STRING(" lnxspclks");
-		}
 		if (user_config.is_jis_mode) {
 			SEND_STRING(" jis");
 		}
@@ -728,7 +708,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_ADJUST] = LAYOUT_split_3x5_3_ex2( // {{{
 		EXT_LYR, KO_WDDL, KO_WD,   XXXXXXX, KO_AR,   XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, KO_CTLU, XXXXXXX, XXXXXXX,
 		KO_HM,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KO_BS,   XXXXXXX, KO_ED,   KO_TB,   ADJUST2,
-		XXXXXXX, XXXXXXX, XXXXXXX, KO_DL,   KO_LSPK,                           KO_CTLK, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
+		XXXXXXX, XXXXXXX, XXXXXXX, KO_DL,   XXXXXXX,                           KO_CTLK, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
 			                       KO_MTAB, XXXXXXX, KO_LXCM,         MT_SPC,  XXXXXXX, XXXXXXX
 	), // }}}
 
@@ -983,14 +963,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	case KO_LXCM:
 		if (record->event.pressed) {
 			user_config.override_linux_cmd = !user_config.override_linux_cmd;
-			eeconfig_update_user(user_config.raw);
-			kjuq_reload_user_eeprom();
-		}
-		return (false);
-
-	case KO_LSPK:
-		if (record->event.pressed) {
-			user_config.override_linux_special_keys = !user_config.override_linux_special_keys;
 			eeconfig_update_user(user_config.raw);
 			kjuq_reload_user_eeprom();
 		}
