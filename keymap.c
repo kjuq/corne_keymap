@@ -22,6 +22,13 @@
 typedef union {
 	uint32_t raw;
 	struct {
+		bool is_jis_mode : 1;
+		bool is_auto_detect_os : 1;
+		bool is_macos : 1;
+		bool is_windows : 1;
+		bool is_linux : 1;
+		bool is_ios : 1;
+		bool spc_tap : 1;
 		bool override_tab : 1;
 		bool override_enter : 1;
 		bool override_backspace : 1;
@@ -30,18 +37,10 @@ typedef union {
 		bool override_home : 1;
 		bool override_end : 1;
 		bool override_ctrl_k : 1;
-		bool override_ctrl_o : 1;
 		bool override_ctrl_u : 1;
 		bool override_word_mv : 1;
 		bool override_word_dl : 1;
 		bool override_modded_esc : 1;
-		bool is_jis_mode : 1;
-		bool is_auto_detect_os : 1;
-		bool is_macos : 1;
-		bool is_windows : 1;
-		bool is_linux : 1;
-		bool is_ios : 1;
-		bool spc_tap : 1;
 	};
 } user_config_t;
 user_config_t user_config;
@@ -451,97 +450,95 @@ void kjuq_toggle_word_del_override(bool enable) {
 }
 
 void kjuq_dump_override_state(void) {
-	tap_code(KC_LNG2); // disable Japanese input
-	tap_code(KC_SLSH);
-	register_code(KC_LSFT);
+	// register_code(KC_RSFT);
+	SEND_STRING("#{"); // 1 is '1'
 
-	if (!user_config.is_auto_detect_os) {
-		SEND_STRING(" manually");
-	} else if (kjuq_is_macos()) {
-		SEND_STRING(" macos");
-	} else if (kjuq_is_windows()) {
-		SEND_STRING(" win");
-	} else if (kjuq_is_linux()) {
-		SEND_STRING(" linux");
-	} else if (kjuq_is_ios()) {
-		SEND_STRING(" ios");
-	} else {
-		SEND_STRING(" unknown");
+	if (user_config.is_auto_detect_os) {
+		SEND_STRING(" DETECTOS");
 	}
-	SEND_STRING(" detected 1"); // 1 is '1'
+	if (!user_config.is_auto_detect_os) {
+		SEND_STRING(" MANUAL_DETECTION");
+	} else if (kjuq_is_macos()) {
+		SEND_STRING(" MACOS_DETECTED");
+	} else if (kjuq_is_windows()) {
+		SEND_STRING(" WIN_DETECTED");
+	} else if (kjuq_is_linux()) {
+		SEND_STRING(" LINUX_DETECTED");
+	} else if (kjuq_is_ios()) {
+		SEND_STRING(" IOS_DETECTED");
+	} else {
+		SEND_STRING(" UNKNOWN_DETECTED");
+	}
+
+	SEND_STRING(" |"); // 1 is '1'
 
 	if (user_config.is_macos) {
-		SEND_STRING(" macos");
+		SEND_STRING(" MACOS");
 	} else if (user_config.is_windows) {
-		SEND_STRING(" win");
+		SEND_STRING(" WIN");
 	} else if (user_config.is_linux) {
-		SEND_STRING(" linux");
+		SEND_STRING(" LINUX");
 	} else if (user_config.is_ios) {
-		SEND_STRING(" ios");
+		SEND_STRING(" IOS");
 	} else {
-		SEND_STRING(" unknown");
+		SEND_STRING(" UNKNOWN");
 	}
-	SEND_STRING(" 1");
+	SEND_STRING(" |");
 
 	if (key_override_is_enabled()) {
 		if (user_config.override_modded_esc) {
-			SEND_STRING(" modesc");
+			SEND_STRING(" MODESC");
 		}
 		if (user_config.override_enter) {
-			SEND_STRING(" ent");
+			SEND_STRING(" ENT");
 		}
 		if (user_config.override_backspace) {
-			SEND_STRING(" bksp");
+			SEND_STRING(" BKSP");
 		}
 		if (user_config.override_tab) {
-			SEND_STRING(" tab");
+			SEND_STRING(" TAB");
 		}
 		if (user_config.override_arrows) {
-			SEND_STRING(" arr");
+			SEND_STRING(" ARR");
 		}
 		if (user_config.override_delete) {
-			SEND_STRING(" del");
+			SEND_STRING(" DEL");
 		}
 		if (user_config.spc_tap) {
-			SEND_STRING(" spctap");
+			SEND_STRING(" SPCTAP");
 		}
 
-		SEND_STRING(" 1");
+		SEND_STRING(" |");
 
 		if (user_config.override_home) {
-			SEND_STRING(" home");
+			SEND_STRING(" HOME");
 		}
 		if (user_config.override_end) {
-			SEND_STRING(" end");
+			SEND_STRING(" END");
 		}
 		if (user_config.override_ctrl_u) {
-			SEND_STRING(" ctlu");
+			SEND_STRING(" CTLU");
 		}
 		if (user_config.override_ctrl_k) {
-			SEND_STRING(" ctlk");
+			SEND_STRING(" CTLK");
 		}
 		if (user_config.override_word_dl) {
-			SEND_STRING(" wddl");
+			SEND_STRING(" WDDL");
 		}
 		if (user_config.override_word_mv) {
-			SEND_STRING(" wdmv");
+			SEND_STRING(" WDMV");
 		}
 
-		SEND_STRING(" 1");
+		SEND_STRING(" |");
 
-		if (user_config.is_auto_detect_os) {
-			SEND_STRING(" detectos");
-		}
 		if (user_config.is_jis_mode) {
-			SEND_STRING(" jis");
+			SEND_STRING(" JIS");
 		}
 	} else {
-		SEND_STRING(" override disabled");
+		SEND_STRING(" OVERRIDE DISABLED");
 	}
 
-	unregister_code(KC_LSFT);
-	tap_code(KC_SPC);
-	tap_code(KC_SLSH);
+	SEND_STRING(" }");
 }
 
 // clang-format off
