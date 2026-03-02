@@ -9,7 +9,8 @@
 #define ALT_SPC LALT_T(KC_SPC)
 
 #define LOWER MO(_LOWER)
-#define RAISE LM(_RAISE, MOD_MASK_SHIFT)
+#define RAISE MO(_RAISE)
+// #define RAISE LM(_RAISE, MOD_MASK_SHIFT)
 
 #define FNCTN OSL(_FNCTN)
 #define MODS OSL(_MODS)
@@ -34,7 +35,6 @@ typedef union {
 		bool override_word_mv : 1;
 		bool override_word_dl : 1;
 		bool override_modded_esc : 1;
-		bool override_linux_cmd : 1;
 		bool is_jis_mode : 1;
 		bool is_auto_detect_os : 1;
 		bool is_macos : 1;
@@ -64,11 +64,7 @@ enum planck_keycodes {
 	KO_WD,
 	KO_WDDL,
 	KO_CTLU,
-	KO_CMDV,
-	KO_CMDD,
-	KO_CMDQ,
 	KO_MTAB,
-	KO_LXCM,
 	KO_JIS,
 	KO_PRNT,
 	MT_SPC,
@@ -158,65 +154,7 @@ key_override_t shift_tab_override = ko_make_basic(MOD_BIT(KC_LSFT), KC_ESC, RSFT
 key_override_t ctrl_u_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_U, RSFT(RCTL(KC_BSPC)));
 key_override_t ctrl_k_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_K, RSFT(RCTL(KC_DEL)));
 
-key_override_t linux_a_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_A, RCTL(KC_A));
-key_override_t linux_b_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_B, RCTL(KC_B));
-key_override_t linux_c_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_C, RCTL(KC_C));
-key_override_t linux_d_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_D, RCTL(KC_D));
-key_override_t linux_e_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_E, RCTL(KC_E));
-key_override_t linux_f_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_F, RCTL(KC_F));
-key_override_t linux_g_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_G, RCTL(KC_G));
-key_override_t linux_h_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_H, RCTL(KC_H));
-key_override_t linux_i_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_I, RCTL(KC_I));
-key_override_t linux_j_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_J, RCTL(KC_J));
-key_override_t linux_k_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_K, RCTL(KC_K));
-key_override_t linux_l_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_L, RCTL(KC_L));
-key_override_t linux_m_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_M, RCTL(KC_M));
-key_override_t linux_n_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_N, RCTL(KC_N));
-key_override_t linux_o_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_O, RCTL(KC_O));
-key_override_t linux_p_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_P, RCTL(KC_P));
-key_override_t linux_q_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_Q, RCTL(KC_Q));
-key_override_t linux_r_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_R, RCTL(KC_R));
-key_override_t linux_s_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_S, RCTL(KC_S));
-key_override_t linux_t_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_T, RCTL(KC_T));
-key_override_t linux_u_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_U, RCTL(KC_U));
-key_override_t linux_v_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_V, RCTL(KC_V));
-key_override_t linux_w_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_W, RCTL(KC_W));
-key_override_t linux_x_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_X, RCTL(KC_X));
-key_override_t linux_y_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_Y, RCTL(KC_Y));
-key_override_t linux_z_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_Z, RCTL(KC_Z));
-key_override_t linux_com_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_COMM, RCTL(KC_COMM));
-key_override_t linux_dot_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_DOT, RCTL(KC_DOT));
-
 const key_override_t **key_overrides = (const key_override_t *[]){
-    &linux_a_override,
-    &linux_b_override,
-    &linux_c_override,
-    &linux_d_override,
-    &linux_e_override,
-    &linux_f_override,
-    &linux_g_override,
-    &linux_h_override,
-    &linux_i_override,
-    &linux_j_override,
-    &linux_k_override,
-    &linux_l_override,
-    &linux_m_override,
-    &linux_n_override,
-    &linux_o_override,
-    &linux_p_override,
-    &linux_q_override,
-    &linux_r_override,
-    &linux_s_override,
-    &linux_t_override,
-    &linux_u_override,
-    &linux_v_override,
-    &linux_w_override,
-    &linux_x_override,
-    &linux_y_override,
-    &linux_z_override,
-    &linux_com_override,
-    &linux_dot_override,
-
     &enter_key_override,
     &tab_key_override,
     &right_key_override,
@@ -283,7 +221,6 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 
 // Prototype declaration
 void kjuq_switch_jis(bool);
-void kjuq_switch_linux_cmd(bool);
 void kjuq_enable_all_overrides(void);
 void kjuq_disable_all_overrides(void);
 void kjuq_enable_word_del_override(void);
@@ -367,10 +304,6 @@ void kjuq_reload_overrides() {
 
 	if (kjuq_is_linux() || kjuq_is_windows() || !user_config.override_word_dl) {
 		kjuq_switch_override(&w_del_mac_override, false);
-	}
-
-	if (kjuq_is_macos() || kjuq_is_ios() || !user_config.override_linux_cmd) {
-		kjuq_switch_linux_cmd(false);
 	}
 
 	if (!user_config.is_jis_mode) {
@@ -476,37 +409,6 @@ void kjuq_switch_jis(bool enabled) {
 	kjuq_switch_override(&jis_grv_override, enabled);
 	kjuq_switch_override(&jis_tild_override, enabled);
 	kjuq_switch_override(&jis_eql_override, enabled);
-}
-
-void kjuq_switch_linux_cmd(bool enable) {
-	kjuq_switch_override(&linux_a_override, enable);
-	kjuq_switch_override(&linux_b_override, enable);
-	kjuq_switch_override(&linux_c_override, enable);
-	kjuq_switch_override(&linux_d_override, enable);
-	kjuq_switch_override(&linux_e_override, enable);
-	kjuq_switch_override(&linux_f_override, enable);
-	kjuq_switch_override(&linux_g_override, enable);
-	kjuq_switch_override(&linux_h_override, enable);
-	kjuq_switch_override(&linux_i_override, enable);
-	kjuq_switch_override(&linux_j_override, enable);
-	kjuq_switch_override(&linux_k_override, enable);
-	kjuq_switch_override(&linux_l_override, enable);
-	kjuq_switch_override(&linux_m_override, enable);
-	kjuq_switch_override(&linux_n_override, enable);
-	kjuq_switch_override(&linux_o_override, enable);
-	kjuq_switch_override(&linux_p_override, enable);
-	kjuq_switch_override(&linux_q_override, enable);
-	kjuq_switch_override(&linux_r_override, enable);
-	kjuq_switch_override(&linux_s_override, enable);
-	kjuq_switch_override(&linux_t_override, enable);
-	kjuq_switch_override(&linux_u_override, enable);
-	kjuq_switch_override(&linux_v_override, enable);
-	kjuq_switch_override(&linux_w_override, enable);
-	kjuq_switch_override(&linux_x_override, enable);
-	kjuq_switch_override(&linux_y_override, enable);
-	kjuq_switch_override(&linux_z_override, enable);
-	kjuq_switch_override(&linux_com_override, enable);
-	kjuq_switch_override(&linux_dot_override, enable);
 }
 
 void kjuq_enable_all_overrides(void) {
@@ -630,9 +532,6 @@ void kjuq_dump_override_state(void) {
 		if (user_config.is_auto_detect_os) {
 			SEND_STRING(" detectos");
 		}
-		if (user_config.override_linux_cmd) {
-			SEND_STRING(" lnxcmd");
-		}
 		if (user_config.is_jis_mode) {
 			SEND_STRING(" jis");
 		}
@@ -680,7 +579,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_RAISE] = LAYOUT_split_3x5_3_ex2( // {{{
 		SA_TAB,  KC_UNDS, KC_PLUS, KC_TILD, XXXXXXX, XXXXXXX,         XXXXXXX, KC_LABK, KC_AMPR, KC_ASTR, KC_LPRN, KC_BSPC,
 		XXXXXXX, KC_QUES, KC_LCBR, KC_RCBR, KC_DQUO, XXXXXXX,         XXXXXXX, KC_RPRN, KC_DLR,  KC_PERC, KC_CIRC, MOUSE,
-		KC_RCMD, KC_LABK, KC_RABK, KC_COLN, KC_PIPE,                           KC_RABK, KC_EXLM, KC_AT,   KC_HASH, KC_RALT,
+		KC_RALT, KC_LABK, KC_RABK, KC_COLN, KC_PIPE,                           KC_RABK, KC_EXLM, KC_AT,   KC_HASH, KC_RGUI,
 		                           _______, _______, _______,         _______, _______, _______
 	), // }}}
 
@@ -709,7 +608,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		EXT_LYR, KO_WDDL, KO_WD,   XXXXXXX, KO_AR,   XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, KO_CTLU, XXXXXXX, XXXXXXX,
 		KO_HM,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KO_BS,   XXXXXXX, KO_ED,   KO_TB,   ADJUST2,
 		XXXXXXX, XXXXXXX, XXXXXXX, KO_DL,   XXXXXXX,                           KO_CTLK, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
-			                       KO_MTAB, XXXXXXX, KO_LXCM,         MT_SPC,  XXXXXXX, XXXXXXX
+			                       KO_MTAB, XXXXXXX, XXXXXXX,         MT_SPC,  XXXXXXX, XXXXXXX
 	), // }}}
 
 	[_ADJUST2] = LAYOUT_split_3x5_3_ex2( // {{{
@@ -955,14 +854,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	case KO_WDDL:
 		if (record->event.pressed) {
 			user_config.override_word_dl = !user_config.override_word_dl;
-			eeconfig_update_user(user_config.raw);
-			kjuq_reload_user_eeprom();
-		}
-		return (false);
-
-	case KO_LXCM:
-		if (record->event.pressed) {
-			user_config.override_linux_cmd = !user_config.override_linux_cmd;
 			eeconfig_update_user(user_config.raw);
 			kjuq_reload_user_eeprom();
 		}
