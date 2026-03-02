@@ -5,7 +5,7 @@
 
 // user defined keycodes
 #define CMD_SPC LGUI_T(KC_SPC)
-#define ALT_SPC RALT_T(KC_SPC)
+#define ALT_SPC LALT_T(KC_SPC)
 
 #define LOWER MO(_LOWER)
 #define RAISE LM(_RAISE, MOD_MASK_SHIFT)
@@ -14,7 +14,7 @@
 #define MODS OSL(_MODS)
 #define ORS OSL(_ORS)
 
-#define SC_TAB (QK_LCTL | QK_RSFT | KC_TAB)
+#define SC_TAB (QK_RCTL | QK_RSFT | KC_TAB)
 #define SA_TAB (QK_RALT | QK_RSFT | KC_TAB)
 
 typedef union {
@@ -32,7 +32,6 @@ typedef union {
 		bool override_ctrl_u : 1;
 		bool override_word_mv : 1;
 		bool override_word_dl : 1;
-		bool override_cmd_q : 1;
 		bool override_modded_esc : 1;
 		bool override_linux_cmd : 1;
 		bool override_linux_special_keys : 1;
@@ -104,13 +103,13 @@ key_override_t jis_s_6_override = ko_make_basic(MOD_MASK_SHIFT, KC_6, KC_EQL);  
 key_override_t jis_s_7_override = ko_make_basic(MOD_MASK_SHIFT, KC_7, KC_CIRC);    // KC_AMPR &
 key_override_t jis_s_8_override = ko_make_basic(MOD_MASK_SHIFT, KC_8, KC_DQUO);    // KC_ASTR *
 key_override_t jis_s_9_override = ko_make_basic(MOD_MASK_SHIFT, KC_9, KC_ASTR);    // KC_LPRN (
-key_override_t jis_s_0_override = ko_make_basic(MOD_MASK_SHIFT, KC_0, LSFT(KC_9)); // KC_RPRN )
+key_override_t jis_s_0_override = ko_make_basic(MOD_MASK_SHIFT, KC_0, RSFT(KC_9)); // KC_RPRN )
 
-key_override_t jis_s_mins_override = ko_make_basic(MOD_MASK_SHIFT, KC_MINS, LSFT(KC_INT1)); // KC_UNDS _
+key_override_t jis_s_mins_override = ko_make_basic(MOD_MASK_SHIFT, KC_MINS, RSFT(KC_INT1)); // KC_UNDS _
 key_override_t jis_s_eql_override = ko_make_basic(MOD_MASK_SHIFT, KC_EQL, KC_COLN);         // KC_PLUS +
 key_override_t jis_s_lbrc_override = ko_make_basic(MOD_MASK_SHIFT, KC_LBRC, KC_RCBR);       // KC_LCBR {
-key_override_t jis_s_rbrc_override = ko_make_basic(MOD_MASK_SHIFT, KC_RBRC, LSFT(KC_NUHS)); // KC_RCBR }
-key_override_t jis_s_bsls_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSLS, LSFT(KC_INT3)); // KC_PIPE |
+key_override_t jis_s_rbrc_override = ko_make_basic(MOD_MASK_SHIFT, KC_RBRC, RSFT(KC_NUHS)); // KC_RCBR }
+key_override_t jis_s_bsls_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSLS, RSFT(KC_INT3)); // KC_PIPE |
 key_override_t jis_s_scln_override = ko_make_basic(MOD_MASK_SHIFT, KC_SCLN, KC_QUOT);       // KC_COLN :
 key_override_t jis_s_quot_override = ko_make_basic(MOD_MASK_SHIFT, KC_QUOT, KC_AT);         // KC_DQUO "
 key_override_t jis_s_grv_override = ko_make_basic(MOD_MASK_SHIFT, KC_GRV, KC_PLUS);         // KC_TILD ~
@@ -120,15 +119,15 @@ key_override_t jis_circ_override = ko_make_basic(MOD_MASK_SHIFT, KC_CIRC, KC_EQL
 key_override_t jis_ampr_override = ko_make_basic(0, KC_AMPR, KC_CIRC);             // S(KC_7) KC_AMPR &
 key_override_t jis_astr_override = ko_make_basic(0, KC_ASTR, KC_DQUO);             // S(KC_8) KC_ASTR *
 key_override_t jis_lprn_override = ko_make_basic(0, KC_LPRN, KC_ASTR);             // S(KC_9) KC_LPRN (
-key_override_t jis_rprn_override = ko_make_basic(0, KC_RPRN, LSFT(KC_9));          // S(KC_0) KC_RPRN )
-key_override_t jis_unds_override = ko_make_basic(0, KC_UNDS, LSFT(KC_INT1));       // S(KC_MINUS) KC_UNDS _
+key_override_t jis_rprn_override = ko_make_basic(0, KC_RPRN, RSFT(KC_9));          // S(KC_0) KC_RPRN )
+key_override_t jis_unds_override = ko_make_basic(0, KC_UNDS, RSFT(KC_INT1));       // S(KC_MINUS) KC_UNDS _
 key_override_t jis_plus_override = ko_make_basic(0, KC_PLUS, KC_COLN);             // S(KC_EQUAL) KC_PLUS +
 key_override_t jis_lbrc_override = ko_make_basic(0, KC_LBRC, KC_RBRC);
 key_override_t jis_lcbr_override = ko_make_basic(0, KC_LCBR, KC_RCBR); // S(KC_LBRC) KC_LCBR {
 key_override_t jis_rbrc_override = ko_make_basic(0, KC_RBRC, KC_NUHS);
-key_override_t jis_rcbr_override = ko_make_basic(0, KC_RCBR, LSFT(KC_NUHS)); // S(KC_RBRC) KC_RCBR }
+key_override_t jis_rcbr_override = ko_make_basic(0, KC_RCBR, RSFT(KC_NUHS)); // S(KC_RBRC) KC_RCBR }
 key_override_t jis_bsls_override = ko_make_basic(0, KC_BSLS, KC_INT3);
-key_override_t jis_pipe_override = ko_make_basic(0, KC_PIPE, LSFT(KC_INT3));        // S(KC_BSLS) KC_PIPE |
+key_override_t jis_pipe_override = ko_make_basic(0, KC_PIPE, RSFT(KC_INT3));        // S(KC_BSLS) KC_PIPE |
 key_override_t jis_coln_override = ko_make_basic(MOD_MASK_SHIFT, KC_COLN, KC_QUOT); // S(KC_SCLN) KC_COLN :
 key_override_t jis_quot_override = ko_make_basic(0, KC_QUOT, KC_AMPR);
 key_override_t jis_dquo_override = ko_make_basic(0, KC_DQUO, KC_AT); // S(KC_QUOT) KC_DQUO "
@@ -146,47 +145,47 @@ key_override_t enter_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_M, KC_ENT
 key_override_t tab_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_I, KC_TAB);
 key_override_t bs_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_H, KC_BSPC);
 key_override_t del_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_D, KC_DEL);
-key_override_t w_fwd_mac_override = ko_make_basic(MOD_BIT(KC_RALT), KC_F, RALT(KC_RGHT));
-key_override_t w_bck_mac_override = ko_make_basic(MOD_BIT(KC_RALT), KC_B, RALT(KC_LEFT));
-key_override_t w_fwd_win_override = ko_make_basic(MOD_BIT(KC_RALT), KC_F, RCTL(KC_RGHT));
-key_override_t w_bck_win_override = ko_make_basic(MOD_BIT(KC_RALT), KC_B, RCTL(KC_LEFT));
+key_override_t w_fwd_mac_override = ko_make_basic(MOD_BIT(KC_LALT), KC_F, RALT(KC_RGHT));
+key_override_t w_bck_mac_override = ko_make_basic(MOD_BIT(KC_LALT), KC_B, RALT(KC_LEFT));
+key_override_t w_fwd_win_override = ko_make_basic(MOD_BIT(KC_LALT), KC_F, RCTL(KC_RGHT));
+key_override_t w_bck_win_override = ko_make_basic(MOD_BIT(KC_LALT), KC_B, RCTL(KC_LEFT));
 key_override_t w_del_mac_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_W, RALT(KC_BSPC));
-key_override_t w_del_win_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_W, LCTL(KC_BSPC));
-key_override_t ctrl_tab_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_ESC, LCTL(KC_TAB));
-key_override_t alt_tab_override = ko_make_basic(MOD_BIT(KC_RALT), KC_ESC, RALT(KC_TAB));
-key_override_t cmd_tab_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_ESC, LGUI(KC_TAB));
-key_override_t shift_tab_override = ko_make_basic(MOD_BIT(KC_RSFT), KC_ESC, LSFT(KC_TAB));
-key_override_t ctrl_u_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_U, LSFT(RCTL(KC_BSPC)));
-key_override_t ctrl_k_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_K, LSFT(RCTL(KC_DEL)));
+key_override_t w_del_win_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_W, RCTL(KC_BSPC));
+key_override_t ctrl_tab_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_ESC, RCTL(KC_TAB));
+key_override_t alt_tab_override = ko_make_basic(MOD_BIT(KC_LALT), KC_ESC, RALT(KC_TAB));
+key_override_t cmd_tab_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_ESC, RGUI(KC_TAB));
+key_override_t shift_tab_override = ko_make_basic(MOD_BIT(KC_LSFT), KC_ESC, RSFT(KC_TAB));
+key_override_t ctrl_u_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_U, RSFT(RCTL(KC_BSPC)));
+key_override_t ctrl_k_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_K, RSFT(RCTL(KC_DEL)));
 
-key_override_t linux_a_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_A, LCTL(KC_A));
-key_override_t linux_b_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_B, LCTL(KC_B));
-key_override_t linux_c_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_C, LCTL(KC_C));
-key_override_t linux_d_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_D, LCTL(KC_D));
-key_override_t linux_e_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_E, LCTL(KC_E));
-key_override_t linux_f_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_F, LCTL(KC_F));
-key_override_t linux_g_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_G, LCTL(KC_G));
-key_override_t linux_h_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_H, LCTL(KC_H));
-key_override_t linux_i_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_I, LCTL(KC_I));
-key_override_t linux_j_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_J, LCTL(KC_J));
-key_override_t linux_k_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_K, LCTL(KC_K));
-key_override_t linux_l_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_L, LCTL(KC_L));
-key_override_t linux_m_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_M, LCTL(KC_M));
-key_override_t linux_n_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_N, LCTL(KC_N));
-key_override_t linux_o_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_O, LCTL(KC_O));
-key_override_t linux_p_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_P, LCTL(KC_P));
-key_override_t linux_q_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_Q, LCTL(KC_Q));
-key_override_t linux_r_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_R, LCTL(KC_R));
-key_override_t linux_s_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_S, LCTL(KC_S));
-key_override_t linux_t_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_T, LCTL(KC_T));
-key_override_t linux_u_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_U, LCTL(KC_U));
-key_override_t linux_v_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_V, LCTL(KC_V));
-key_override_t linux_w_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_W, LCTL(KC_W));
-key_override_t linux_x_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_X, LCTL(KC_X));
-key_override_t linux_y_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_Y, LCTL(KC_Y));
-key_override_t linux_z_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_Z, LCTL(KC_Z));
-key_override_t linux_com_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_COMM, LCTL(KC_COMM));
-key_override_t linux_dot_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_DOT, LCTL(KC_DOT));
+key_override_t linux_a_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_A, RCTL(KC_A));
+key_override_t linux_b_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_B, RCTL(KC_B));
+key_override_t linux_c_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_C, RCTL(KC_C));
+key_override_t linux_d_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_D, RCTL(KC_D));
+key_override_t linux_e_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_E, RCTL(KC_E));
+key_override_t linux_f_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_F, RCTL(KC_F));
+key_override_t linux_g_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_G, RCTL(KC_G));
+key_override_t linux_h_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_H, RCTL(KC_H));
+key_override_t linux_i_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_I, RCTL(KC_I));
+key_override_t linux_j_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_J, RCTL(KC_J));
+key_override_t linux_k_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_K, RCTL(KC_K));
+key_override_t linux_l_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_L, RCTL(KC_L));
+key_override_t linux_m_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_M, RCTL(KC_M));
+key_override_t linux_n_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_N, RCTL(KC_N));
+key_override_t linux_o_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_O, RCTL(KC_O));
+key_override_t linux_p_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_P, RCTL(KC_P));
+key_override_t linux_q_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_Q, RCTL(KC_Q));
+key_override_t linux_r_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_R, RCTL(KC_R));
+key_override_t linux_s_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_S, RCTL(KC_S));
+key_override_t linux_t_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_T, RCTL(KC_T));
+key_override_t linux_u_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_U, RCTL(KC_U));
+key_override_t linux_v_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_V, RCTL(KC_V));
+key_override_t linux_w_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_W, RCTL(KC_W));
+key_override_t linux_x_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_X, RCTL(KC_X));
+key_override_t linux_y_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_Y, RCTL(KC_Y));
+key_override_t linux_z_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_Z, RCTL(KC_Z));
+key_override_t linux_com_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_COMM, RCTL(KC_COMM));
+key_override_t linux_dot_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_DOT, RCTL(KC_DOT));
 
 const key_override_t **key_overrides = (const key_override_t *[]){
     &linux_a_override,
@@ -668,7 +667,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_ESC,  KC_W,    KC_F,    KC_P,    KC_B,    KC_PGUP,         KC_TAB,  KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q,
 		KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_PGDN,         KC_ENT,  KC_H,    KC_N,    KC_E,    KC_I,    KC_O,
 		KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                              KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SCLN,
-		                           LOWER,   KC_LCTL, KC_SPC,          KC_SPC,  KC_RSFT, RAISE
+		                           LOWER,   KC_LCTL, KC_SPC,          KC_SPC,  KC_LSFT, RAISE
 	), // }}}
 
 	[_SPC_TAP] = LAYOUT_split_3x5_3_ex2( // {{{
@@ -681,14 +680,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_LOWER] = LAYOUT_split_3x5_3_ex2( // {{{
 		SC_TAB,  KC_MINS, KC_EQL,  KC_GRV,  XXXXXXX, XXXXXXX,         XXXXXXX, KC_COMM, KC_7,    KC_8,    KC_9,    KC_BSPC,
 		MOD_CAG, KC_SLSH, KC_LBRC, KC_RBRC, KC_QUOT, XXXXXXX,         XXXXXXX, KC_0,    KC_4,    KC_5,    KC_6,    FNCTN,
-		KC_RCTL, KC_COMM, KC_DOT,  KC_SCLN, KC_BSLS,                           KC_DOT,  KC_1,    KC_2,    KC_3,    KC_LSFT,
+		KC_RCTL, KC_COMM, KC_DOT,  KC_SCLN, KC_BSLS,                           KC_DOT,  KC_1,    KC_2,    KC_3,    KC_RSFT,
 		                           _______, _______, _______,         _______, _______, _______
 	), // }}}
 
 	[_RAISE] = LAYOUT_split_3x5_3_ex2( // {{{
 		SA_TAB,  KC_UNDS, KC_PLUS, KC_TILD, XXXXXXX, XXXXXXX,         XXXXXXX, KC_LABK, KC_AMPR, KC_ASTR, KC_LPRN, KC_BSPC,
 		XXXXXXX, KC_QUES, KC_LCBR, KC_RCBR, KC_DQUO, XXXXXXX,         XXXXXXX, KC_RPRN, KC_DLR,  KC_PERC, KC_CIRC, MOUSE,
-		KC_RCMD, KC_LABK, KC_RABK, KC_COLN, KC_PIPE,                           KC_RABK, KC_EXLM, KC_AT,   KC_HASH, KC_LALT,
+		KC_RCMD, KC_LABK, KC_RABK, KC_COLN, KC_PIPE,                           KC_RABK, KC_EXLM, KC_AT,   KC_HASH, KC_RALT,
 		                           _______, _______, _______,         _______, _______, _______
 	), // }}}
 
