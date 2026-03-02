@@ -152,7 +152,6 @@ key_override_t w_fwd_win_override = ko_make_basic(MOD_BIT(KC_RALT), KC_F, RCTL(K
 key_override_t w_bck_win_override = ko_make_basic(MOD_BIT(KC_RALT), KC_B, RCTL(KC_LEFT));
 key_override_t w_del_mac_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_W, RALT(KC_BSPC));
 key_override_t w_del_win_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_W, LCTL(KC_BSPC));
-key_override_t cmd_q_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_Q, LGUI(KC_GRV)); // overridden by linux cmd
 key_override_t ctrl_tab_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_ESC, LCTL(KC_TAB));
 key_override_t alt_tab_override = ko_make_basic(MOD_BIT(KC_RALT), KC_ESC, RALT(KC_TAB));
 key_override_t cmd_tab_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_ESC, LGUI(KC_TAB));
@@ -231,7 +230,6 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &end_key_override,
     &ctrl_u_key_override,
     &ctrl_k_key_override,
-    &cmd_q_override,
     &w_fwd_mac_override,
     &w_bck_mac_override,
     &w_del_mac_override,
@@ -353,10 +351,6 @@ void kjuq_reload_overrides() {
 
 	if (kjuq_is_macos() || kjuq_is_ios() || !user_config.override_ctrl_k) {
 		kjuq_switch_override(&ctrl_k_key_override, false);
-	}
-
-	if (kjuq_is_linux() || kjuq_is_windows() || !user_config.override_cmd_q) {
-		kjuq_switch_override(&cmd_q_override, false);
 	}
 
 	if (kjuq_is_macos() || kjuq_is_ios() || !user_config.override_word_mv) {
@@ -636,9 +630,6 @@ void kjuq_dump_override_state(void) {
 		if (user_config.override_ctrl_k) {
 			SEND_STRING(" ctlk");
 		}
-		if (user_config.override_cmd_q) {
-			SEND_STRING(" cmdq");
-		}
 		if (user_config.override_word_dl) {
 			SEND_STRING(" wddl");
 		}
@@ -723,7 +714,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	), // }}}
 
 	[_ADJUST] = LAYOUT_split_3x5_3_ex2( // {{{
-		EXT_LYR, KO_WDDL, KO_WD,   XXXXXXX, KO_AR,   XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, KO_CTLU, XXXXXXX, KO_CMDQ,
+		EXT_LYR, KO_WDDL, KO_WD,   XXXXXXX, KO_AR,   XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, KO_CTLU, XXXXXXX, XXXXXXX,
 		KO_HM,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KO_BS,   XXXXXXX, KO_ED,   KO_TB,   ADJUST2,
 		XXXXXXX, XXXXXXX, XXXXXXX, KO_DL,   KO_LSPK,                           KO_CTLK, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
 			                       KO_MTAB, XXXXXXX, KO_LXCM,         MT_SPC,  XXXXXXX, XXXXXXX
@@ -947,14 +938,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	case KO_CTLK:
 		if (record->event.pressed) {
 			user_config.override_ctrl_k = !user_config.override_ctrl_k;
-			eeconfig_update_user(user_config.raw);
-			kjuq_reload_user_eeprom();
-		}
-		return (false);
-
-	case KO_CMDQ:
-		if (record->event.pressed) {
-			user_config.override_cmd_q = !user_config.override_cmd_q;
 			eeconfig_update_user(user_config.raw);
 			kjuq_reload_user_eeprom();
 		}
