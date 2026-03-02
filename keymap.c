@@ -5,6 +5,7 @@
 
 // user defined keycodes
 #define CMD_SPC LGUI_T(KC_SPC)
+#define CTL_SPC RCTL_T(KC_SPC)
 #define ALT_SPC LALT_T(KC_SPC)
 
 #define LOWER MO(_LOWER)
@@ -81,7 +82,8 @@ enum planck_keycodes {
 
 enum planck_layers {
 	_COLEMAK,
-	_SPC_TAP,
+	_SPC_MAC,
+	_SPC_LNX,
 	_LOWER,
 	_RAISE,
 	_FNCTN,
@@ -384,11 +386,15 @@ void kjuq_reload_overrides() {
 void kjuq_reload_user_eeprom(void) {
 	user_config.raw = eeconfig_read_user();
 	kjuq_reload_overrides();
-	if (user_config.spc_tap) {
-		default_layer_or((layer_state_t)1 << _SPC_TAP);
+	if (user_config.spc_tap && (kjuq_is_macos() || kjuq_is_ios())) {
+		default_layer_or((layer_state_t)1 << _SPC_MAC);
+	} else if (user_config.spc_tap) {
+		default_layer_or((layer_state_t)1 << _SPC_LNX);
 	} else {
-		default_layer_or((layer_state_t)1 << _SPC_TAP);
-		default_layer_xor((layer_state_t)1 << _SPC_TAP);
+		default_layer_or((layer_state_t)1 << _SPC_MAC);
+		default_layer_xor((layer_state_t)1 << _SPC_MAC);
+		default_layer_or((layer_state_t)1 << _SPC_LNX);
+		default_layer_xor((layer_state_t)1 << _SPC_LNX);
 	}
 };
 
@@ -670,11 +676,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		                           LOWER,   KC_LCTL, KC_SPC,          KC_SPC,  KC_LSFT, RAISE
 	), // }}}
 
-	[_SPC_TAP] = LAYOUT_split_3x5_3_ex2( // {{{
+	[_SPC_MAC] = LAYOUT_split_3x5_3_ex2( // {{{
 		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______,
 		                           _______, _______, CMD_SPC,         ALT_SPC, _______, _______
+	), // }}}
+
+	[_SPC_LNX] = LAYOUT_split_3x5_3_ex2( // {{{
+		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
+		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
+		_______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______,
+		                           _______, _______, CTL_SPC,         ALT_SPC, _______, _______
 	), // }}}
 
 	[_LOWER] = LAYOUT_split_3x5_3_ex2( // {{{
@@ -751,6 +764,7 @@ void oneshot_layer_changed_user(uint8_t layer) {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 	switch (keycode) {
 	case CMD_SPC:
+	case CTL_SPC:
 	case ALT_SPC:
 		return (125);
 
