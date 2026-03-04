@@ -13,11 +13,12 @@
 // #define RAISE LM(_RAISE, MOD_MASK_SHIFT)
 
 #define FNCTN OSL(_FNCTN)
-#define MODS OSL(_MODS)
-#define ORS OSL(_ORS)
 
 #define SC_TAB (QK_RCTL | QK_RSFT | KC_TAB)
 #define SA_TAB (QK_RALT | QK_RSFT | KC_TAB)
+
+#define S_PGDN RSFT(KC_PGDN)
+#define S_PGUP RSFT(KC_PGUP)
 
 typedef union {
 	uint32_t raw;
@@ -41,6 +42,9 @@ typedef union {
 		bool override_word_mv : 1;
 		bool override_word_dl : 1;
 		bool override_modded_esc : 1;
+		bool override_cut : 1;
+		bool override_copy : 1;
+		bool override_paste : 1;
 	};
 } user_config_t;
 user_config_t user_config;
@@ -51,6 +55,7 @@ enum planck_keycodes {
 	ADJUST2,
 	MOD_CAG,
 	MOUSE,
+	ORS,
 	EXT_LYR,
 	KO_TB,
 	KO_EN,
@@ -66,6 +71,9 @@ enum planck_keycodes {
 	KO_MTAB,
 	KO_JIS,
 	KO_PRNT,
+	KO_CUT,
+	KO_COPY,
+	KO_PAST,
 	MT_SPC,
 	HOLDLST,
 	DTCT_OS,
@@ -80,7 +88,6 @@ enum planck_layers {
 	_LOWER,
 	_RAISE,
 	_FNCTN,
-	_MODS,
 	_ORS,
 	_ADJUST,
 	_ADJUST2,
@@ -152,6 +159,9 @@ key_override_t cmd_tab_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_ESC, RGUI(K
 key_override_t shift_tab_override = ko_make_basic(MOD_BIT(KC_LSFT), KC_ESC, RSFT(KC_TAB));
 key_override_t ctrl_u_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_U, RSFT(RCTL(KC_BSPC)));
 key_override_t ctrl_k_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_K, RSFT(RCTL(KC_DEL)));
+key_override_t cut_override = ko_make_basic(MOD_BIT(KC_RCTL), KC_X, KC_CUT);
+key_override_t copy_override = ko_make_basic(MOD_BIT(KC_RCTL), KC_C, KC_COPY);
+key_override_t paste_override = ko_make_basic(MOD_BIT(KC_RCTL), KC_V, KC_PASTE);
 
 const key_override_t **key_overrides = (const key_override_t *[]){
     &enter_key_override,
@@ -176,6 +186,9 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &alt_tab_override,
     &cmd_tab_override,
     &shift_tab_override,
+    &cut_override,
+    &copy_override,
+    &paste_override,
 
     &jis_s_2_override,
     &jis_s_6_override,
@@ -265,6 +278,16 @@ void kjuq_reload_overrides() {
 		kjuq_switch_override(&alt_tab_override, false);
 		kjuq_switch_override(&cmd_tab_override, false);
 		kjuq_switch_override(&shift_tab_override, false);
+	}
+
+	if (!user_config.override_cut) {
+		kjuq_switch_override(&cut_override, false);
+	}
+	if (!user_config.override_copy) {
+		kjuq_switch_override(&copy_override, false);
+	}
+	if (!user_config.override_paste) {
+		kjuq_switch_override(&paste_override, false);
 	}
 
 	if (kjuq_is_macos() || kjuq_is_ios() || !user_config.override_home) {
@@ -450,7 +473,6 @@ void kjuq_toggle_word_del_override(bool enable) {
 }
 
 void kjuq_dump_override_state(void) {
-	// register_code(KC_RSFT);
 	SEND_STRING("#{"); // 1 is '1'
 
 	if (user_config.is_auto_detect_os) {
@@ -483,12 +505,19 @@ void kjuq_dump_override_state(void) {
 	} else {
 		SEND_STRING(" UNKNOWN");
 	}
+
 	SEND_STRING(" |");
 
 	if (key_override_is_enabled()) {
 		if (user_config.override_modded_esc) {
 			SEND_STRING(" MODESC");
 		}
+		if (user_config.spc_tap) {
+			SEND_STRING(" SPCTAP");
+		}
+
+		SEND_STRING(" |");
+
 		if (user_config.override_enter) {
 			SEND_STRING(" ENT");
 		}
@@ -504,18 +533,15 @@ void kjuq_dump_override_state(void) {
 		if (user_config.override_delete) {
 			SEND_STRING(" DEL");
 		}
-		if (user_config.spc_tap) {
-			SEND_STRING(" SPCTAP");
-		}
-
-		SEND_STRING(" |");
-
 		if (user_config.override_home) {
 			SEND_STRING(" HOME");
 		}
 		if (user_config.override_end) {
 			SEND_STRING(" END");
 		}
+
+		SEND_STRING(" |");
+
 		if (user_config.override_ctrl_u) {
 			SEND_STRING(" CTLU");
 		}
@@ -527,6 +553,18 @@ void kjuq_dump_override_state(void) {
 		}
 		if (user_config.override_word_mv) {
 			SEND_STRING(" WDMV");
+		}
+
+		SEND_STRING(" |");
+
+		if (user_config.override_cut) {
+			SEND_STRING(" CUT");
+		}
+		if (user_config.override_copy) {
+			SEND_STRING(" COPY");
+		}
+		if (user_config.override_paste) {
+			SEND_STRING(" PASTE");
 		}
 
 		SEND_STRING(" |");
@@ -567,30 +605,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	), // }}}
 
 	[_LOWER] = LAYOUT_split_3x5_3_ex2( // {{{
-		SC_TAB,  KC_MINS, KC_EQL,  KC_GRV,  XXXXXXX, XXXXXXX,         XXXXXXX, KC_COMM, KC_7,    KC_8,    KC_9,    KC_BSPC,
+		SC_TAB,  KC_MINS, KC_EQL,  KC_GRV,  XXXXXXX, XXXXXXX,         XXXXXXX, KC_PGDN, KC_7,    KC_8,    KC_9,    KC_BSPC,
 		MOD_CAG, KC_SLSH, KC_LBRC, KC_RBRC, KC_QUOT, XXXXXXX,         XXXXXXX, KC_0,    KC_4,    KC_5,    KC_6,    FNCTN,
-		KC_RCTL, KC_COMM, KC_DOT,  KC_SCLN, KC_BSLS,                           KC_DOT,  KC_1,    KC_2,    KC_3,    KC_RSFT,
+		KC_RCTL, KC_COMM, KC_DOT,  KC_SCLN, KC_BSLS,                           KC_PGUP, KC_1,    KC_2,    KC_3,    KC_RSFT,
 		                           _______, _______, _______,         _______, _______, _______
 	), // }}}
 
 	[_RAISE] = LAYOUT_split_3x5_3_ex2( // {{{
-		SA_TAB,  KC_UNDS, KC_PLUS, KC_TILD, XXXXXXX, XXXXXXX,         XXXXXXX, KC_LABK, KC_AMPR, KC_ASTR, KC_LPRN, KC_BSPC,
+		SA_TAB,  KC_UNDS, KC_PLUS, KC_TILD, XXXXXXX, XXXXXXX,         XXXXXXX, S_PGDN,  KC_AMPR, KC_ASTR, KC_LPRN, KC_BSPC,
 		XXXXXXX, KC_QUES, KC_LCBR, KC_RCBR, KC_DQUO, XXXXXXX,         XXXXXXX, KC_RPRN, KC_DLR,  KC_PERC, KC_CIRC, MOUSE,
-		KC_RALT, KC_LABK, KC_RABK, KC_COLN, KC_PIPE,                           KC_RABK, KC_EXLM, KC_AT,   KC_HASH, KC_RGUI,
+		KC_RALT, KC_LABK, KC_RABK, KC_COLN, KC_PIPE,                           S_PGUP,  KC_EXLM, KC_AT,   KC_HASH, KC_RGUI,
 		                           _______, _______, _______,         _______, _______, _______
 	), // }}}
 
 	[_FNCTN] = LAYOUT_split_3x5_3_ex2( // {{{
-		XXXXXXX, KC_BRIU, KC_VOLU, KC_PGUP, KC_SCRL, XXXXXXX,         XXXXXXX, KC_F12,  KC_F7,   KC_F8,   KC_F9,   HOLDLST,
-		ADJUST,  KC_BRID, KC_VOLD, KC_PGDN, KC_INS,  XXXXXXX,         XXXXXXX, KC_F11,  KC_F4,   KC_F5,   KC_F6,   ORS,
-		KC_CAPS, KC_MPLY, KC_MUTE, KC_PSCR, KC_PAUS,                           KC_F10,  KC_F1,   KC_F2,   KC_F3,   MODS,
-		                           _______, _______, _______,         _______, _______, _______
-	), // }}}
-
-	[_MODS] = LAYOUT_split_3x5_3_ex2( // {{{
-		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
-		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
-		_______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______,
+		XXXXXXX, KC_CAPS, KC_VOLU, KC_BRIU, KC_SCRL, XXXXXXX,         XXXXXXX, KC_F12,  KC_F7,   KC_F8,   KC_F9,   HOLDLST,
+		ADJUST,  KC_PSCR, KC_VOLD, KC_BRID, KC_INS,  XXXXXXX,         XXXXXXX, KC_F11,  KC_F4,   KC_F5,   KC_F6,   ORS,
+		XXXXXXX, XXXXXXX, KC_MUTE, KC_MPLY, KC_PAUS,                           KC_F10,  KC_F1,   KC_F2,   KC_F3,   XXXXXXX,
 		                           _______, _______, _______,         _______, _______, _______
 	), // }}}
 
@@ -604,14 +635,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_ADJUST] = LAYOUT_split_3x5_3_ex2( // {{{
 		EXT_LYR, KO_WDDL, KO_WD,   XXXXXXX, KO_AR,   XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, KO_CTLU, XXXXXXX, XXXXXXX,
 		KO_HM,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KO_BS,   XXXXXXX, KO_ED,   KO_TB,   ADJUST2,
-		XXXXXXX, XXXXXXX, XXXXXXX, KO_DL,   XXXXXXX,                           KO_CTLK, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
+		XXXXXXX, KO_CUT,  KO_COPY, KO_DL,   KO_PAST,                           KO_CTLK, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
 			                       KO_MTAB, XXXXXXX, XXXXXXX,         MT_SPC,  XXXXXXX, XXXXXXX
 	), // }}}
 
 	[_ADJUST2] = LAYOUT_split_3x5_3_ex2( // {{{
-		EXT_LYR, QK_BOOT, DB_TOGG, RGB_TOG, XXXXXXX, XXXXXXX,         XXXXXXX, RGB_SPI, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
-		XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW,RGB_RDP,
-		CYCL_OS, DTCT_OS, KO_TOGG, EE_CLR,  COLEMAK,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+		EXT_LYR, QK_BOOT, DB_TOGG, RGB_TOG, COLEMAK, XXXXXXX,         XXXXXXX, RGB_SPI, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
+		EE_CLR,  KO_TOGG, DTCT_OS, CYCL_OS, XXXXXXX, XXXXXXX,         XXXXXXX, RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW,RGB_RDP,
+		XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 		                           XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KC_RSFT, XXXXXXX
 	), // }}}
 
@@ -630,9 +661,9 @@ static uint16_t last_keycode;
 static int mouse_acl_pressed = 0;
 
 void oneshot_layer_changed_user(uint8_t layer) {
-	if (layer == _MODS || layer == _ORS) {
+	if (layer == _ORS) {
 		kjuq_disable_all_overrides();
-	} else { // Exit _MODS and _ORS
+	} else { // Exit _ORS
 		kjuq_reload_user_eeprom();
 	}
 }
@@ -710,12 +741,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	case MOD_CAG:
 		if (record->event.pressed) {
 			register_code(KC_RCTL);
-			register_code(KC_LALT);
+			register_code(KC_RALT);
 			register_code(KC_RGUI);
 		} else {
 			unregister_code(KC_RCTL);
-			unregister_code(KC_LALT);
+			unregister_code(KC_RALT);
 			unregister_code(KC_RGUI);
+		}
+		return (false);
+
+	case ORS:
+		if (record->event.pressed) {
+			layer_move(_ORS);
+		} else {
+			layer_off(_ORS);
 		}
 		return (false);
 
@@ -723,7 +762,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	case MOUSE:
 		if (record->event.pressed) {
 			layer_on(_MOUSE);
-			unregister_code(KC_LSFT);
+			// unregister_code(KC_LSFT);
 		}
 		return (false);
 
@@ -859,6 +898,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	case KO_JIS:
 		if (record->event.pressed) {
 			user_config.is_jis_mode = !user_config.is_jis_mode;
+			eeconfig_update_user(user_config.raw);
+			kjuq_reload_user_eeprom();
+		}
+		return (false);
+
+	case KO_CUT:
+		if (record->event.pressed) {
+			user_config.override_cut = !user_config.override_cut;
+			eeconfig_update_user(user_config.raw);
+			kjuq_reload_user_eeprom();
+		}
+		return (false);
+	case KO_COPY:
+		if (record->event.pressed) {
+			user_config.override_copy = !user_config.override_copy;
+			eeconfig_update_user(user_config.raw);
+			kjuq_reload_user_eeprom();
+		}
+		return (false);
+	case KO_PAST:
+		if (record->event.pressed) {
+			user_config.override_paste = !user_config.override_paste;
 			eeconfig_update_user(user_config.raw);
 			kjuq_reload_user_eeprom();
 		}
