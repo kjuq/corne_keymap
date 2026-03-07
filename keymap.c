@@ -30,6 +30,7 @@ typedef union {
 		bool is_linux : 1;
 		bool is_ios : 1;
 		bool spc_tap : 1;
+		bool cmd_like_ctrl : 1;
 		bool override_tab : 1;
 		bool override_enter : 1;
 		bool override_backspace : 1;
@@ -75,6 +76,7 @@ enum planck_keycodes {
 	KO_COPY,
 	KO_PAST,
 	MT_SPC,
+	CMD_CTL,
 	HOLDLST,
 	DTCT_OS,
 	CYCL_OS,
@@ -83,7 +85,7 @@ enum planck_keycodes {
 
 enum planck_layers {
 	_COLEMAK,
-	_SPC_MAC,
+	_SPC_TAP,
 	_SPC_LNX,
 	_LOWER,
 	_RAISE,
@@ -239,6 +241,7 @@ void kjuq_enable_all_overrides(void);
 void kjuq_disable_all_overrides(void);
 void kjuq_dump_override_state(void);
 void kjuq_reload_overrides(void);
+bool kjuq_cmd_key_is_suitable(void);
 
 // ------
 void kjuq_enter_layer(uint8_t, uint8_t, uint8_t, uint8_t);
@@ -333,16 +336,22 @@ void kjuq_reload_overrides() {
 	}
 }
 
+bool kjuq_cmd_key_is_suitable(void) { return kjuq_is_macos() || kjuq_is_ios() || !user_config.cmd_like_ctrl; }
+
 void kjuq_reload_user_eeprom(void) {
 	user_config.raw = eeconfig_read_user();
 	kjuq_reload_overrides();
-	if (user_config.spc_tap && (kjuq_is_macos() || kjuq_is_ios())) {
-		default_layer_or((layer_state_t)1 << _SPC_MAC);
-	} else if (user_config.spc_tap) {
+	// if (user_config.spc_tap && (kjuq_is_macos() || kjuq_is_ios() || !user_config.cmd_like_ctrl)) {
+	if (user_config.spc_tap && kjuq_cmd_key_is_suitable()) {
+		default_layer_or((layer_state_t)1 << _SPC_TAP);
+	} else {
+		default_layer_or((layer_state_t)1 << _SPC_TAP);
+		default_layer_xor((layer_state_t)1 << _SPC_TAP);
+	}
+	// if (user_config.spc_tap && (!(kjuq_is_macos() || kjuq_is_ios()) && user_config.cmd_like_ctrl)) {
+	if (user_config.spc_tap && !kjuq_cmd_key_is_suitable()) {
 		default_layer_or((layer_state_t)1 << _SPC_LNX);
 	} else {
-		default_layer_or((layer_state_t)1 << _SPC_MAC);
-		default_layer_xor((layer_state_t)1 << _SPC_MAC);
 		default_layer_or((layer_state_t)1 << _SPC_LNX);
 		default_layer_xor((layer_state_t)1 << _SPC_LNX);
 	}
@@ -490,6 +499,9 @@ void kjuq_dump_override_state(void) {
 		if (user_config.spc_tap) {
 			SEND_STRING(" SPCTAP");
 		}
+		if (user_config.cmd_like_ctrl) {
+			SEND_STRING(" CMD_CTL");
+		}
 
 		SEND_STRING(" |");
 
@@ -559,13 +571,13 @@ void kjuq_dump_override_state(void) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[_COLEMAK] = LAYOUT_split_3x5_3_ex2( // {{{
-		KC_ESC,  KC_W,    KC_F,    KC_P,    KC_B,    KC_PGUP,         KC_TAB,  KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q,
-		KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_PGDN,         KC_ENT,  KC_H,    KC_N,    KC_E,    KC_I,    KC_O,
+		KC_ESC,  KC_W,    KC_F,    KC_P,    KC_B,    KC_RALT,         KC_TAB,  KC_J,    KC_L,    KC_U,    KC_Y,    KC_Q,
+		KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_RSFT,         KC_ENT,  KC_H,    KC_N,    KC_E,    KC_I,    KC_O,
 		KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                              KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SCLN,
 		                           LOWER,   KC_LCTL, KC_SPC,          KC_SPC,  KC_LSFT, RAISE
 	), // }}}
 
-	[_SPC_MAC] = LAYOUT_split_3x5_3_ex2( // {{{
+	[_SPC_TAP] = LAYOUT_split_3x5_3_ex2( // {{{
 		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______,
@@ -611,7 +623,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		EXT_LYR, KO_WDDL, KO_WD,   XXXXXXX, KO_AR,   XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, KO_CTLU, XXXXXXX, XXXXXXX,
 		KO_HM,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KO_BS,   XXXXXXX, KO_ED,   KO_TB,   ADJUST2,
 		XXXXXXX, KO_CUT,  KO_COPY, KO_DL,   KO_PAST,                           KO_CTLK, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
-			                       KO_MTAB, XXXXXXX, XXXXXXX,         MT_SPC,  XXXXXXX, XXXXXXX
+			                       KO_MTAB, XXXXXXX, CMD_CTL,         MT_SPC,  XXXXXXX, XXXXXXX
 	), // }}}
 
 	[_ADJUST2] = LAYOUT_split_3x5_3_ex2( // {{{
@@ -946,6 +958,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	case MT_SPC:
 		if (record->event.pressed) {
 			user_config.spc_tap = !user_config.spc_tap;
+			eeconfig_update_user(user_config.raw);
+			kjuq_reload_user_eeprom();
+		}
+		return (false);
+
+	case CMD_CTL:
+		if (record->event.pressed) {
+			user_config.cmd_like_ctrl = !user_config.cmd_like_ctrl;
 			eeconfig_update_user(user_config.raw);
 			kjuq_reload_user_eeprom();
 		}
