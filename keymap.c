@@ -237,9 +237,6 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 void kjuq_switch_jis(bool);
 void kjuq_enable_all_overrides(void);
 void kjuq_disable_all_overrides(void);
-void kjuq_enable_word_del_override(void);
-void kjuq_disable_word_del_override(void);
-void kjuq_toggle_word_del_override(bool);
 void kjuq_dump_override_state(void);
 void kjuq_reload_overrides(void);
 
@@ -301,9 +298,9 @@ void kjuq_reload_overrides() {
 	}
 
 	if (kjuq_is_macos() || kjuq_is_ios()) {
-		ctrl_u_key_override.replacement = LCMD(KC_BSPC);
+		ctrl_u_key_override.replacement = RCMD(KC_BSPC);
 	} else if (kjuq_is_linux() || kjuq_is_windows()) {
-		ctrl_u_key_override.replacement = LSFT(RCTL(KC_BSPC));
+		ctrl_u_key_override.replacement = RSFT(RCTL(KC_BSPC));
 	}
 	if (!user_config.override_ctrl_u) {
 		kjuq_switch_override(&ctrl_u_key_override, false);
@@ -449,31 +446,6 @@ void kjuq_disable_all_overrides(void) {
 		ko->enabled = &false_const;
 	}
 };
-
-void kjuq_enable_word_del_override(void) {
-	if (user_config.is_macos) { // If MacOS
-		kjuq_switch_override(&w_del_mac_override, true);
-		kjuq_switch_override(&w_del_win_override, false);
-	} else if (user_config.is_windows) { // If Windows
-		kjuq_switch_override(&w_del_mac_override, false);
-		kjuq_switch_override(&w_del_win_override, true);
-	} else if (user_config.is_linux) { // Linux is not implemented yet. Maybe depends on distributions.
-		kjuq_disable_word_del_override();
-	}
-}
-
-void kjuq_disable_word_del_override(void) {
-	kjuq_switch_override(&w_del_mac_override, false);
-	kjuq_switch_override(&w_del_win_override, false);
-}
-
-void kjuq_toggle_word_del_override(bool enable) {
-	if (enable) {
-		kjuq_enable_word_del_override();
-	} else {
-		kjuq_disable_word_del_override();
-	}
-}
 
 void kjuq_dump_override_state(void) {
 	SEND_STRING("#{"); // 1 is '1'
