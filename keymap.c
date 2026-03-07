@@ -156,6 +156,7 @@ key_override_t w_del_win_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_W, RCTL(K
 key_override_t ctrl_tab_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_ESC, RCTL(KC_TAB));
 key_override_t alt_tab_override = ko_make_basic(MOD_BIT(KC_LALT), KC_ESC, RALT(KC_TAB));
 key_override_t cmd_tab_override = ko_make_basic(MOD_BIT(KC_LGUI), KC_ESC, RGUI(KC_TAB));
+key_override_t rctrl_tab_override = ko_make_basic(MOD_BIT(KC_RCTL), KC_ESC, RGUI(KC_TAB));
 key_override_t shift_tab_override = ko_make_basic(MOD_BIT(KC_LSFT), KC_ESC, RSFT(KC_TAB));
 key_override_t ctrl_u_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_U, RSFT(RCTL(KC_BSPC)));
 key_override_t ctrl_k_key_override = ko_make_basic(MOD_BIT(KC_LCTL), KC_K, RSFT(RCTL(KC_DEL)));
@@ -185,6 +186,7 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &ctrl_tab_override,
     &alt_tab_override,
     &cmd_tab_override,
+    &rctrl_tab_override,
     &shift_tab_override,
     &cut_override,
     &copy_override,
@@ -277,6 +279,7 @@ void kjuq_reload_overrides() {
 		kjuq_switch_override(&ctrl_tab_override, false);
 		kjuq_switch_override(&alt_tab_override, false);
 		kjuq_switch_override(&cmd_tab_override, false);
+		kjuq_switch_override(&rctrl_tab_override, false);
 		kjuq_switch_override(&shift_tab_override, false);
 	}
 
