@@ -530,14 +530,14 @@ void kjuq_dump_override_state(void) {
 		if (user_config.override_modded_esc) {
 			SEND_STRING(" MODESC");
 		}
+		if (user_config.pure_gc) {
+			SEND_STRING(" PUREGC");
+		}
 		if (user_config.gui_tap) {
 			SEND_STRING(" GUITAP");
 		}
 		if (user_config.alt_tap) {
 			SEND_STRING(" ALTTAP");
-		}
-		if (user_config.pure_gc) {
-			SEND_STRING(" PUREGC");
 		}
 		if (user_config.pure_alt) {
 			SEND_STRING(" PUREALT");
