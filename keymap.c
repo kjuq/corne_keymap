@@ -4,7 +4,7 @@
 #define HSV_ADJUST HSV_YELLOW
 
 // user defined keycodes
-#define CMD_SPC LGUI_T(KC_SPC)
+#define GUI_SPC LGUI_T(KC_SPC)
 #define CTL_SPC RCTL_T(KC_SPC)
 #define ALT_SPC LALT_T(KC_SPC)
 
@@ -29,7 +29,10 @@ typedef union {
 		bool is_windows : 1;
 		bool is_linux : 1;
 		bool is_ios : 1;
-		bool spc_tap : 1;
+		bool gui_tap : 1;
+		bool alt_tap : 1;
+		bool pure_gc : 1;
+		bool pure_alt : 1;
 		bool cmd_like_ctrl : 1;
 		bool override_tab : 1;
 		bool override_enter : 1;
@@ -75,8 +78,11 @@ enum planck_keycodes {
 	KO_CUT,
 	KO_COPY,
 	KO_PAST,
-	MT_SPC,
-	CMD_CTL,
+	MT_GCS,
+	MT_ALTS,
+	PUREGC,
+	PUREALT,
+	GUI_CTL,
 	HOLDLST,
 	DTCT_OS,
 	CYCL_OS,
@@ -85,8 +91,12 @@ enum planck_keycodes {
 
 enum planck_layers {
 	_COLEMAK,
-	_SPC_TAP,
-	_SPC_LNX,
+	_ALT_SPC,
+	_ALT,
+	_GUI_SPC,
+	_CTL_SPC,
+	_GUI,
+	_CTL,
 	_LOWER,
 	_RAISE,
 	_FNCTN,
@@ -301,7 +311,7 @@ void kjuq_reload_overrides() {
 	}
 
 	if (kjuq_is_macos() || kjuq_is_ios()) {
-		ctrl_u_key_override.replacement = RCMD(KC_BSPC);
+		ctrl_u_key_override.replacement = RGUI(KC_BSPC);
 	} else if (kjuq_is_linux() || kjuq_is_windows()) {
 		ctrl_u_key_override.replacement = RSFT(RCTL(KC_BSPC));
 	}
@@ -341,19 +351,43 @@ bool kjuq_cmd_key_is_suitable(void) { return kjuq_is_macos() || kjuq_is_ios() ||
 void kjuq_reload_user_eeprom(void) {
 	user_config.raw = eeconfig_read_user();
 	kjuq_reload_overrides();
-	// if (user_config.spc_tap && (kjuq_is_macos() || kjuq_is_ios() || !user_config.cmd_like_ctrl)) {
-	if (user_config.spc_tap && kjuq_cmd_key_is_suitable()) {
-		default_layer_or((layer_state_t)1 << _SPC_TAP);
+	if (user_config.gui_tap && kjuq_cmd_key_is_suitable()) {
+		default_layer_or((layer_state_t)1 << _GUI_SPC);
 	} else {
-		default_layer_or((layer_state_t)1 << _SPC_TAP);
-		default_layer_xor((layer_state_t)1 << _SPC_TAP);
+		default_layer_or((layer_state_t)1 << _GUI_SPC);
+		default_layer_xor((layer_state_t)1 << _GUI_SPC);
 	}
-	// if (user_config.spc_tap && (!(kjuq_is_macos() || kjuq_is_ios()) && user_config.cmd_like_ctrl)) {
-	if (user_config.spc_tap && !kjuq_cmd_key_is_suitable()) {
-		default_layer_or((layer_state_t)1 << _SPC_LNX);
+	if (user_config.pure_gc && kjuq_cmd_key_is_suitable()) {
+		default_layer_or((layer_state_t)1 << _GUI);
 	} else {
-		default_layer_or((layer_state_t)1 << _SPC_LNX);
-		default_layer_xor((layer_state_t)1 << _SPC_LNX);
+		default_layer_or((layer_state_t)1 << _GUI);
+		default_layer_xor((layer_state_t)1 << _GUI);
+	}
+
+	if (user_config.gui_tap && !kjuq_cmd_key_is_suitable()) {
+		default_layer_or((layer_state_t)1 << _CTL_SPC);
+	} else {
+		default_layer_or((layer_state_t)1 << _CTL_SPC);
+		default_layer_xor((layer_state_t)1 << _CTL_SPC);
+	}
+	if (user_config.pure_gc && !kjuq_cmd_key_is_suitable()) {
+		default_layer_or((layer_state_t)1 << _CTL);
+	} else {
+		default_layer_or((layer_state_t)1 << _CTL);
+		default_layer_xor((layer_state_t)1 << _CTL);
+	}
+
+	if (user_config.alt_tap) {
+		default_layer_or((layer_state_t)1 << _ALT_SPC);
+	} else {
+		default_layer_or((layer_state_t)1 << _ALT_SPC);
+		default_layer_xor((layer_state_t)1 << _ALT_SPC);
+	}
+	if (user_config.pure_alt) {
+		default_layer_or((layer_state_t)1 << _ALT);
+	} else {
+		default_layer_or((layer_state_t)1 << _ALT);
+		default_layer_xor((layer_state_t)1 << _ALT);
 	}
 };
 
@@ -496,11 +530,20 @@ void kjuq_dump_override_state(void) {
 		if (user_config.override_modded_esc) {
 			SEND_STRING(" MODESC");
 		}
-		if (user_config.spc_tap) {
-			SEND_STRING(" SPCTAP");
+		if (user_config.gui_tap) {
+			SEND_STRING(" GUITAP");
+		}
+		if (user_config.alt_tap) {
+			SEND_STRING(" ALTTAP");
+		}
+		if (user_config.pure_gc) {
+			SEND_STRING(" PUREGC");
+		}
+		if (user_config.pure_alt) {
+			SEND_STRING(" PUREALT");
 		}
 		if (user_config.cmd_like_ctrl) {
-			SEND_STRING(" CMD_CTL");
+			SEND_STRING(" GUI_CTL");
 		}
 
 		SEND_STRING(" |");
@@ -577,18 +620,46 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		                           LOWER,   KC_LCTL, KC_SPC,          KC_SPC,  KC_LSFT, RAISE
 	), // }}}
 
-	[_SPC_TAP] = LAYOUT_split_3x5_3_ex2( // {{{
+	[_ALT_SPC] = LAYOUT_split_3x5_3_ex2( // {{{
 		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______,
-		                           _______, _______, CMD_SPC,         ALT_SPC, _______, _______
+		                           _______, _______, _______,         ALT_SPC, _______, _______
 	), // }}}
 
-	[_SPC_LNX] = LAYOUT_split_3x5_3_ex2( // {{{
+	[_ALT] = LAYOUT_split_3x5_3_ex2( // {{{
 		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______,
-		                           _______, _______, CTL_SPC,         ALT_SPC, _______, _______
+		                           _______, _______, _______,         KC_LALT, _______, _______
+	), // }}}
+
+	[_GUI_SPC] = LAYOUT_split_3x5_3_ex2( // {{{
+		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
+		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
+		_______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______,
+		                           _______, _______, GUI_SPC,         _______, _______, _______
+	), // }}}
+
+	[_CTL_SPC] = LAYOUT_split_3x5_3_ex2( // {{{
+		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
+		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
+		_______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______,
+		                           _______, _______, CTL_SPC,         _______, _______, _______
+	), // }}}
+
+	[_GUI] = LAYOUT_split_3x5_3_ex2( // {{{
+		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
+		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
+		_______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______,
+		                           _______, _______, KC_LGUI,         _______, _______, _______
+	), // }}}
+
+	[_CTL] = LAYOUT_split_3x5_3_ex2( // {{{
+		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
+		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
+		_______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______,
+		                           _______, _______, KC_RCTL,         _______, _______, _______
 	), // }}}
 
 	[_LOWER] = LAYOUT_split_3x5_3_ex2( // {{{
@@ -622,8 +693,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_ADJUST] = LAYOUT_split_3x5_3_ex2( // {{{
 		EXT_LYR, KO_WDDL, KO_WD,   XXXXXXX, KO_AR,   XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, KO_CTLU, XXXXXXX, XXXXXXX,
 		KO_HM,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KO_BS,   XXXXXXX, KO_ED,   KO_TB,   ADJUST2,
-		XXXXXXX, KO_CUT,  KO_COPY, KO_DL,   KO_PAST,                           KO_CTLK, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
-			                       KO_MTAB, XXXXXXX, CMD_CTL,         MT_SPC,  XXXXXXX, XXXXXXX
+		KO_MTAB, KO_CUT,  KO_COPY, KO_DL,   KO_PAST,                           KO_CTLK, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
+			                       GUI_CTL, PUREGC,  MT_GCS,          MT_ALTS, PUREALT, XXXXXXX
 	), // }}}
 
 	[_ADJUST2] = LAYOUT_split_3x5_3_ex2( // {{{
@@ -657,7 +728,7 @@ void oneshot_layer_changed_user(uint8_t layer) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 	switch (keycode) {
-	case CMD_SPC:
+	case GUI_SPC:
 	case CTL_SPC:
 	case ALT_SPC:
 		return (125);
@@ -955,15 +1026,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		return (false);
 
 	// Hold tap
-	case MT_SPC:
+	case MT_GCS:
 		if (record->event.pressed) {
-			user_config.spc_tap = !user_config.spc_tap;
+			user_config.gui_tap = !user_config.gui_tap;
+			eeconfig_update_user(user_config.raw);
+			kjuq_reload_user_eeprom();
+		}
+		return (false);
+	case MT_ALTS:
+		if (record->event.pressed) {
+			user_config.gui_tap = !user_config.gui_tap;
+			eeconfig_update_user(user_config.raw);
+			kjuq_reload_user_eeprom();
+		}
+		return (false);
+	case PUREGC:
+		if (record->event.pressed) {
+			user_config.pure_gc = !user_config.pure_gc;
+			eeconfig_update_user(user_config.raw);
+			kjuq_reload_user_eeprom();
+		}
+		return (false);
+	case PUREALT:
+		if (record->event.pressed) {
+			user_config.pure_alt = !user_config.pure_alt;
 			eeconfig_update_user(user_config.raw);
 			kjuq_reload_user_eeprom();
 		}
 		return (false);
 
-	case CMD_CTL:
+	case GUI_CTL:
 		if (record->event.pressed) {
 			user_config.cmd_like_ctrl = !user_config.cmd_like_ctrl;
 			eeconfig_update_user(user_config.raw);
