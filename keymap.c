@@ -2,6 +2,7 @@
 #include "os_detection.h"
 
 #define HSV_ADJUST HSV_YELLOW
+#define HSV_ORS HSV_BLUE
 
 // user defined keycodes
 #define GUI_SPC LGUI_T(KC_SPC)
@@ -29,6 +30,7 @@ typedef union {
 		bool is_windows : 1;
 		bool is_linux : 1;
 		bool is_ios : 1;
+		bool override_enabled : 1;
 		bool gui_tap : 1;
 		bool alt_tap : 1;
 		bool pure_gc : 1;
@@ -264,6 +266,11 @@ void kjuq_switch_override(key_override_t *, bool);
 // ------
 
 void kjuq_reload_overrides() {
+	if (user_config.override_enabled) {
+		key_override_on();
+	} else {
+		key_override_off();
+	}
 	kjuq_enable_all_overrides();
 
 	if (!user_config.override_tab) {
@@ -677,14 +684,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	), // }}}
 
 	[_FNCTN] = LAYOUT_split_3x5_3_ex2( // {{{
-		XXXXXXX, KC_CAPS, KC_VOLU, KC_BRIU, KC_SCRL, XXXXXXX,         XXXXXXX, KC_F12,  KC_F7,   KC_F8,   KC_F9,   HOLDLST,
-		ADJUST,  KC_PSCR, KC_VOLD, KC_BRID, KC_INS,  XXXXXXX,         XXXXXXX, KC_F11,  KC_F4,   KC_F5,   KC_F6,   ORS,
-		XXXXXXX, XXXXXXX, KC_MUTE, KC_MPLY, KC_PAUS,                           KC_F10,  KC_F1,   KC_F2,   KC_F3,   XXXXXXX,
+		XXXXXXX, KC_INS,  KC_VOLU, KC_BRIU, KC_SCRL, XXXXXXX,         XXXXXXX, KC_F12,  KC_F7,   KC_F8,   KC_F9,   HOLDLST,
+		ADJUST,  KC_PSCR, KC_VOLD, KC_BRID, KC_CAPS, XXXXXXX,         XXXXXXX, KC_F11,  KC_F4,   KC_F5,   KC_F6,   XXXXXXX,
+		XXXXXXX, XXXXXXX, KC_MUTE, KC_MPLY, KC_PAUS,                           KC_F10,  KC_F1,   KC_F2,   KC_F3,   ORS,
 		                           _______, _______, _______,         _______, _______, _______
 	), // }}}
 
 	[_ORS] = LAYOUT_split_3x5_3_ex2( // {{{
-		XXXXXXX, XXXXXXX, KC_RGHT, KC_UP,   KC_LEFT, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+		EXT_LYR, XXXXXXX, KC_RGHT, KC_UP,   KC_LEFT, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 		KC_HOME, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KC_BSPC, KC_DOWN, KC_END,  KC_TAB,  XXXXXXX,
 		XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,  XXXXXXX,                           XXXXXXX, KC_ENT,  XXXXXXX, XXXXXXX, XXXXXXX,
 		                           _______, KC_LCTL, KC_LGUI,         KC_LALT, KC_LSFT, _______
@@ -692,14 +699,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[_ADJUST] = LAYOUT_split_3x5_3_ex2( // {{{
 		EXT_LYR, KO_WDDL, KO_WD,   XXXXXXX, KO_AR,   XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, KO_CTLU, XXXXXXX, XXXXXXX,
-		KO_HM,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KO_BS,   XXXXXXX, KO_ED,   KO_TB,   ADJUST2,
+		KO_HM,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KO_BS,   KO_TOGG, KO_ED,   KO_TB,   ADJUST2,
 		KO_MTAB, KO_CUT,  KO_COPY, KO_DL,   KO_PAST,                           KO_CTLK, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
 			                       GUI_CTL, PUREGC,  MT_GCS,          MT_ALTS, PUREALT, XXXXXXX
 	), // }}}
 
 	[_ADJUST2] = LAYOUT_split_3x5_3_ex2( // {{{
 		EXT_LYR, QK_BOOT, QK_RBT,  DB_TOGG, RGB_TOG, XXXXXXX,         XXXXXXX, RGB_SPI, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
-		EE_CLR,  KO_TOGG, DTCT_OS, CYCL_OS, COLEMAK, XXXXXXX,         XXXXXXX, RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW,RGB_RDP,
+		EE_CLR,  XXXXXXX, DTCT_OS, CYCL_OS, COLEMAK, XXXXXXX,         XXXXXXX, RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW,RGB_RDP,
 		XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 		                           XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KC_RSFT, XXXXXXX
 	), // }}}
@@ -717,14 +724,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 static uint16_t last_keycode;
 static int mouse_acl_pressed = 0;
-
-void oneshot_layer_changed_user(uint8_t layer) {
-	if (layer == _ORS) {
-		kjuq_disable_all_overrides();
-	} else { // Exit _ORS
-		kjuq_reload_user_eeprom();
-	}
-}
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 	switch (keycode) {
@@ -810,9 +809,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 	case ORS:
 		if (record->event.pressed) {
-			layer_move(_ORS);
-		} else {
-			layer_off(_ORS);
+			if (IS_LAYER_OFF(_ADJUST)) {
+				kjuq_enter_layer(_ORS, HSV_ORS);
+			} else {
+				kjuq_exit_layer();
+			}
 		}
 		return (false);
 
@@ -1025,6 +1026,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		}
 		return (false);
 
+	case KO_TOGG:
+		if (record->event.pressed) {
+			user_config.override_enabled = !user_config.override_enabled;
+			eeconfig_update_user(user_config.raw);
+			kjuq_reload_user_eeprom();
+		}
+		return (false);
+
 	// Hold tap
 	case MT_GCS:
 		if (record->event.pressed) {
@@ -1035,7 +1044,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		return (false);
 	case MT_ALTS:
 		if (record->event.pressed) {
-			user_config.gui_tap = !user_config.gui_tap;
+			user_config.alt_tap = !user_config.alt_tap;
 			eeconfig_update_user(user_config.raw);
 			kjuq_reload_user_eeprom();
 		}
