@@ -2,7 +2,7 @@
 
 KEYBOARD="crkbd"
 TMP_KEYBOARD="tmp$KEYBOARD"
-REVISION="rev4_0/mini"
+REVISION="rev4_1/mini"
 KEYMAP="corne_keymap"
 TARGET="$TMP_KEYBOARD/$REVISION:$KEYMAP"
 

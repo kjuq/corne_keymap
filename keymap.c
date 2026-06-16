@@ -753,7 +753,8 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 }
 
 void keyboard_post_init_user(void) {
-	// wait_ms(250); // wait to detect OS properly
+	// wait to detect OS properly. The duration depends on devices. `process_detected_host_os_user` not worked
+	wait_ms(500);
 	kjuq_reload_user_eeprom();
 }
 
