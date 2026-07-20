@@ -31,7 +31,7 @@ cd $QMK_BASE && git restore util/docker_build.sh # Reset just in case
 sed -i 's|ghcr.io/qmk/qmk_cli|ghcr.io/qmk/qmk_cli@sha256:d8ebfab96c46d3ab948dd4e87be8a976095bd31268700021a74716cbd6e5b4c1|' $GHQ_ROOT/github.com/foostan/kbd_firmware/src/qmk/qmk_firmware/util/docker_build.sh
 
 export RUNTIME=docker
-sudo util/docker_build.sh $TARGET
+util/docker_build.sh $TARGET
 
 cd $QMK_BASE && git restore util/docker_build.sh
 
