@@ -1,6 +1,14 @@
 # My ultimate Corne keymap
 
+- Latest firmware is [here](https://github.com/kjuq/corne_keymap/releases/download/latest/firmware.uf2)
+
 ---
+
+# Actions
+
+- Or download with `gh` command: `gh run download -n firmware`
+- `gh run list`
+- `gh run watch`
 
 # Build with docker
 
