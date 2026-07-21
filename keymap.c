@@ -622,7 +622,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[_COLEMAK] = LAYOUT_split_3x5_3_ex2( // {{{
 		KC_ESC,  KC_W,    KC_F,    KC_P,    KC_B,    KC_LEFT,         KC_UP,   KC_J,    KC_L,    KC_U,    KC_Y,    KC_ENT,
-		KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_RGHT,         KC_DONW, KC_H,    KC_N,    KC_E,    KC_I,    KC_O,
+		KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_RGHT,         KC_DOWN, KC_H,    KC_N,    KC_E,    KC_I,    KC_O,
 		KC_LCTL, KC_X,    KC_C,    KC_D,    KC_V,                              KC_K,    KC_M,    KC_Z,    KC_Q,    KC_LSFT,
 		                           LOWER,   KC_LCTL, KC_SPC,          KC_SPC,  KC_LSFT, RAISE
 	), // }}}
