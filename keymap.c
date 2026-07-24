@@ -14,6 +14,7 @@
 // #define RAISE LM(_RAISE, MOD_MASK_SHIFT)
 
 #define FNCTN OSL(_FNCTN)
+#define ORS OSL(_ORS)
 
 #define SC_TAB (QK_RCTL | QK_RSFT | KC_TAB)
 #define SA_TAB (QK_RALT | QK_RSFT | KC_TAB)
@@ -61,7 +62,6 @@ enum planck_keycodes {
 	ADJUST2,
 	MOD_CAG,
 	MOUSE,
-	ORS,
 	EXT_LYR,
 	KO_TB,
 	KO_EN,
@@ -805,16 +805,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 			unregister_code(KC_RCTL);
 			unregister_code(KC_RALT);
 			unregister_code(KC_RGUI);
-		}
-		return (false);
-
-	case ORS:
-		if (record->event.pressed) {
-			if (IS_LAYER_OFF(_ADJUST)) {
-				kjuq_enter_layer(_ORS, HSV_ORS);
-			} else {
-				kjuq_exit_layer();
-			}
 		}
 		return (false);
 
