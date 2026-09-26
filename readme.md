@@ -1,128 +1,46 @@
 # My ultimate Corne keymap
 
-- Latest firmware is [here](https://github.com/kjuq/corne_keymap/releases/download/latest/firmware.uf2)
+Latest firmware: [firmware.uf2](https://github.com/kjuq/corne_keymap/releases/download/latest/firmware.uf2)
 
----
+## Build
 
-# Actions
-
-- Or download with `gh` command: `gh run download -n firmware`
-- `gh run list`
-- `gh run watch`
-
-# Build with docker
+Initialize the pinned QMK submodule after cloning:
 
 ```bash
-ghq get --no-recursive https://github.com/foostan/kbd_firmware
-cd $GHQ_ROOT/github.com/foostan/kbd_firmware
-git reset --hard e9e0dd694f4fc92249a4b161fa4387339d9bc420
-bash $GHQ_ROOT/github.com/kjuq/corne_keymap/build_docker.sh
+git submodule update --init --recursive
 ```
 
-# Development
-
-To use clangd and suppress inconpatible flags' errors
+Build with Podman (the default):
 
 ```bash
-nvim qmk_firmware/.clangd
-```
-
-Append them to `CompileFlags/Remove`
-
-```yaml
----
-CompileFlags:
-  Remove:
-    - -mcpu=*
-    - -mfpu=*
-    - -mfloat-abi=*
-    - -mno-unaligned-access
-```
-
-It should be like below
-
-```yaml
-CompileFlags:
-  Add: [-Wno-unknown-attributes, -Wno-maybe-uninitialized, -Wno-unknown-warning-option]
-  Remove: [-W*, -mcall-prologues]
-  Compiler: clang
----
-CompileFlags:
-  Remove:
-    - -mcpu=*
-    - -mfpu=*
-    - -mfloat-abi=*
-    - -mno-unaligned-access
-```
-
-# TODO list
-
-#todo
-
-- Build with latest qmk_firmware
-- Build with GitHub Actions
-
----
-
-**The instructions below *are outdated.***
-
-<details>
-	<summary>Outdated instructions. Do ignore.</summary>
-
-## Usage (`foostan/kbd_firmware`)
-
-Clone `foostan/kbd_firmware`
-
-```sh
-git clone --recursive https://github.com/foostan/kbd_firmware
-```
-
-Clone this repository
-
-```sh
-cd kbd_firmware/keyboards/crkbd/qmk/qmk_firmware/keymaps
-git clone https://github.com/kjuq/corne_keymap
-```
-
-Build
-
-```sh
-cd corne_keymap
 ./build.sh
 ```
 
-## Usage (`qmk/qmk_firmware`)
-
-Clone `qmk/qmk_firmware` first
+Use Docker explicitly when needed:
 
 ```bash
-git clone --recursive https://github.com/qmk/qmk_firmware
+./build.sh --runtime docker
 ```
 
-Then clone `foostan/kdb_firmware`
+The result is written to `firmware.uf2`. The build uses the Corne v4.1 mini target
+`crkbd/rev4_1/mini` and the QMK commit and container image pinned by this repository.
+
+Enter bootloader mode and use:
 
 ```bash
-git clone --recursive https://github.com/foostan/kbd_firmware
+./deploy_uf2.sh
 ```
 
-Copy components in `kbd_firmware` to `qmk_firmware`
+## Updating QMK
+
+QMK is tracked as a submodule. Update it deliberately, build with both Podman and
+Docker, and verify the GitHub Actions build before committing the new submodule
+pointer. Keep the container image digest in `build.conf` fixed as well.
+
+## Actions
 
 ```bash
-cd qmk_firmware/keyboards
-mkdir crkbd
-cd crkbd
-cp -r kbd_firmware/keyboards/crkbd/qmk/qmk_firmware/* .
-```
-
-Clone this repository
-
-```bash
-cd qmk_firmware/keyboards/crkbd/keymaps
-git clone https://github.com/kjuq/corne_keymap
-```
-
-Build
-
-```bash
-./build_qmk.sh
+gh run download -n firmware
+gh run list
+gh run watch
 ```

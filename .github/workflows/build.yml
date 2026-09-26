@@ -4,58 +4,28 @@ on:
   push:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    # Same image as build_docker.sh (https://github.com/FrameworkComputer/qmk_firmware/issues/42)
-    container:
-      image: ghcr.io/qmk/qmk_cli@sha256:d8ebfab96c46d3ab948dd4e87be8a976095bd31268700021a74716cbd6e5b4c1
-    env:
-      TMP_KEYBOARD: tmpcrkbd
-      REVISION: rev4_1/mini
-      KEYMAP: corne_keymap
-      QMK_BASE: kbd_firmware/src/qmk/qmk_firmware
     steps:
-      - name: Checkout keymap
-        uses: actions/checkout@v7
+      - name: Checkout userspace and pinned QMK
+        uses: actions/checkout@v4
         with:
-          path: corne_keymap
+          submodules: recursive
 
-      - name: Checkout kbd_firmware
-        uses: actions/checkout@v7
-        with:
-          repository: foostan/kbd_firmware
-          ref: e9e0dd694f4fc92249a4b161fa4387339d9bc420
-          path: kbd_firmware
-
-      - name: Init QMK submodules
-        working-directory: kbd_firmware
-        run: |
-          git submodule update --init src/qmk/qmk_firmware
-          cd src/qmk/qmk_firmware
-          git submodule update --init
-
-      - name: Place keyboard and keymap
-        run: |
-          cp -r kbd_firmware/keyboards/crkbd/qmk/qmk_firmware "$QMK_BASE/keyboards/$TMP_KEYBOARD"
-          mkdir -p "$QMK_BASE/keyboards/$TMP_KEYBOARD/keymaps/$KEYMAP"
-          cp corne_keymap/* "$QMK_BASE/keyboards/$TMP_KEYBOARD/keymaps/$KEYMAP/"
-
-      - name: Compile
-        working-directory: kbd_firmware/src/qmk/qmk_firmware
-        run: make "$TMP_KEYBOARD/$REVISION:$KEYMAP"
-
-      - name: Collect firmware
-        run: cp "$QMK_BASE/${TMP_KEYBOARD}_$(echo "$REVISION" | tr / _)_${KEYMAP}.uf2" firmware.uf2
+      - name: Build firmware
+        run: ./build.sh --runtime docker
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: firmware
           path: firmware.uf2
           if-no-files-found: error
 
-  # Artifacts are always zipped, so attach the bare UF2 to a rolling release instead
   release:
     if: github.ref == 'refs/heads/master'
     needs: build
@@ -64,7 +34,7 @@ jobs:
       contents: write
     steps:
       - name: Download firmware
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@v4
         with:
           name: firmware
 

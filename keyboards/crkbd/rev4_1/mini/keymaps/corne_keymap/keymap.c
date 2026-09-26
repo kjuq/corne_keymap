@@ -182,7 +182,7 @@ key_override_t cut_override = ko_make_basic(MOD_BIT(KC_RCTL), KC_X, KC_CUT);
 key_override_t copy_override = ko_make_basic(MOD_BIT(KC_RCTL), KC_C, KC_COPY);
 key_override_t paste_override = ko_make_basic(MOD_BIT(KC_RCTL), KC_V, KC_PASTE);
 
-const key_override_t **key_overrides = (const key_override_t *[]){
+const key_override_t *key_overrides[] = {
     &enter_key_override,
     &tab_key_override,
     &right_key_override,
@@ -726,16 +726,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	), // }}}
 
 	[_ADJUST2] = LAYOUT_split_3x5_3_ex2( // {{{
-		EXT_LYR, QK_BOOT, QK_RBT,  DB_TOGG, RGB_TOG, XXXXXXX,         XXXXXXX, RGB_SPI, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
+		EXT_LYR, QK_BOOT, QK_RBT,  DB_TOGG, RM_TOGG, XXXXXXX,         XXXXXXX, RM_SPDU, RM_NEXT, RM_HUEU, RM_SATU, RM_VALU,
 		EE_CLR,  XXXXXXX, DTCT_OS, CYCL_OS, COLEMAK, XXXXXXX,         XXXXXXX, RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW,RGB_RDP,
 		XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 		                           XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KC_RSFT, XXXXXXX
 	), // }}}
 
 	[_MOUSE] = LAYOUT_split_3x5_3_ex2( // {{{
-		_______, KC_WH_U, KC_MS_U, KC_WH_D, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, KC_BTN3, KC_BTN2, XXXXXXX, XXXXXXX,
-		XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN5, XXXXXXX,         XXXXXXX, XXXXXXX, KC_BTN1, KC_ACL1, KC_ACL1, KC_LSFT,
-		XXXXXXX, KC_WH_L, XXXXXXX, KC_WH_R, KC_BTN4,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LALT,
+		_______, MS_WHLU, MS_UP,   MS_WHLD, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, MS_BTN3, MS_BTN2, XXXXXXX, XXXXXXX,
+		XXXXXXX, MS_LEFT, MS_DOWN, MS_RGHT, MS_BTN5, XXXXXXX,         XXXXXXX, XXXXXXX, MS_BTN1, MS_ACL1, MS_ACL1, KC_LSFT,
+		XXXXXXX, MS_WHLL, XXXXXXX, MS_WHLR, MS_BTN4,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LALT,
 		                           _______, _______, _______,         _______, _______, _______
 	), // }}}
 
@@ -861,20 +861,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		}
 		return (false);
 
-	case KC_ACL1:
+		case MS_ACL1:
 		if (record->event.pressed) {
 			if (mouse_acl_pressed == 1) {
-				register_code(KC_ACL0);
+				register_code(MS_ACL0);
 			} else {
-				register_code(KC_ACL1);
+					register_code(MS_ACL1);
 			}
 			mouse_acl_pressed++;
 		} else {
 			if (mouse_acl_pressed == 2) {
-				unregister_code(KC_ACL0);
-				register_code(KC_ACL1);
+					unregister_code(MS_ACL0);
+				register_code(MS_ACL1);
 			} else {
-				unregister_code(KC_ACL1);
+				unregister_code(MS_ACL1);
 			}
 			mouse_acl_pressed--;
 		}
