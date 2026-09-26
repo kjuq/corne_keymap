@@ -13,7 +13,6 @@
 #define RAISE MO(_RAISE)
 // #define RAISE LM(_RAISE, MOD_MASK_SHIFT)
 
-#define FNCTN OSL(_FNCTN)
 #define ORS OSL(_ORS)
 
 #define SC_TAB (QK_RCTL | QK_RSFT | KC_TAB)
@@ -64,6 +63,7 @@ enum planck_keycodes {
 	MOD_CAG,
 	MOD_CSG,
 	MOUSE,
+	FNCTN,
 	EXT_LYR,
 	KO_TB,
 	KO_EN,
@@ -817,6 +817,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		}
 		return (true);
 
+	case LOWER:
+		if (!record->event.pressed) {
+			layer_off(_FNCTN);
+		}
+		return (true);
+
 	case MOD_CAG:
 		if (record->event.pressed) {
 			register_code(KC_RCTL);
@@ -846,6 +852,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		if (record->event.pressed) {
 			layer_on(_MOUSE);
 			// unregister_code(KC_LSFT);
+		}
+		return (false);
+
+	case FNCTN:
+		if (record->event.pressed) {
+			layer_on(_FNCTN);
 		}
 		return (false);
 
