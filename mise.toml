@@ -1,0 +1,6 @@
+[tools]
+clang-format = "23.1.2"
+
+[tasks.format]
+description = "Format the keymap C sources"
+run = "clang-format -i keyboards/crkbd/rev4_1/mini/keymaps/corne_keymap/config.h keyboards/crkbd/rev4_1/mini/keymaps/corne_keymap/keymap.c"

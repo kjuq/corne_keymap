@@ -25,6 +25,17 @@ Use Docker explicitly when needed:
 The result is written to `firmware.uf2`. The build uses the Corne v4.1 mini target
 `crkbd/rev4_1/mini` and the QMK commit and container image pinned by this repository.
 
+## Formatting
+
+The repository uses `clang-format` 23.1.2, managed by mise:
+
+```bash
+mise install
+mise run format
+```
+
+CI runs `mise run format` and fails if it leaves any formatting diff.
+
 Run the dependency-free smoke tests with:
 
 ```bash

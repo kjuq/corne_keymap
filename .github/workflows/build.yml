@@ -16,6 +16,18 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Set up mise
+        uses: jdx/mise-action@v4
+
+      - name: Check C formatting
+        run: |
+          mise run format
+          if ! git diff --quiet; then
+            echo "C sources are not clang-formatted. Run: mise run format"
+            git diff
+            exit 1
+          fi
+
       - name: Test build configuration
         run: ./tests/test_build.sh
 

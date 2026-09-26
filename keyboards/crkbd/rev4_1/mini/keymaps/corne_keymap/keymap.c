@@ -861,17 +861,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		}
 		return (false);
 
-		case MS_ACL1:
+	case MS_ACL1:
 		if (record->event.pressed) {
 			if (mouse_acl_pressed == 1) {
 				register_code(MS_ACL0);
 			} else {
-					register_code(MS_ACL1);
+				register_code(MS_ACL1);
 			}
 			mouse_acl_pressed++;
 		} else {
 			if (mouse_acl_pressed == 2) {
-					unregister_code(MS_ACL0);
+				unregister_code(MS_ACL0);
 				register_code(MS_ACL1);
 			} else {
 				unregister_code(MS_ACL1);
