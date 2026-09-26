@@ -25,6 +25,12 @@ Use Docker explicitly when needed:
 The result is written to `firmware.uf2`. The build uses the Corne v4.1 mini target
 `crkbd/rev4_1/mini` and the QMK commit and container image pinned by this repository.
 
+Run the dependency-free smoke tests with:
+
+```bash
+./tests/test_build.sh
+```
+
 Enter bootloader mode and use:
 
 ```bash

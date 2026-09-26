@@ -16,8 +16,14 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Test build configuration
+        run: ./tests/test_build.sh
+
       - name: Build firmware
         run: ./build.sh --runtime docker
+
+      - name: Verify firmware
+        run: ./tests/test_build.sh firmware.uf2
 
       - name: Upload artifact
         uses: actions/upload-artifact@v7
