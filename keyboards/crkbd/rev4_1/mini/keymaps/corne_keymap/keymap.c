@@ -91,7 +91,7 @@ enum planck_keycodes {
 	HOLDLST,
 	DTCT_OS,
 	CYCL_OS,
-	RGB_RDP,
+	RGB_SLD,
 };
 
 enum planck_layers {
@@ -726,8 +726,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	), // }}}
 
 	[_ADJUST2] = LAYOUT_split_3x5_3_ex2( // {{{
-		EXT_LYR, QK_BOOT, QK_RBT,  DB_TOGG, RM_TOGG, XXXXXXX,         XXXXXXX, RM_SPDU, RM_NEXT, RM_HUEU, RM_SATU, RM_VALU,
-		EE_CLR,  XXXXXXX, DTCT_OS, CYCL_OS, COLEMAK, XXXXXXX,         XXXXXXX, RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW,RGB_RDP,
+		EXT_LYR, QK_BOOT, QK_RBT,  DB_TOGG, RM_TOGG, XXXXXXX,         XXXXXXX, XXXXXXX, RM_NEXT, RM_HUEU, RM_SATU, RM_VALU,
+		EE_CLR,  XXXXXXX, DTCT_OS, CYCL_OS, COLEMAK, XXXXXXX,         XXXXXXX, XXXXXXX, RGB_SLD, XXXXXXX, RM_FLGN, RM_SPDU,
 		XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 		                           XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KC_RSFT, XXXXXXX
 	), // }}}
@@ -1115,9 +1115,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		}
 		return (false);
 
-	case RGB_RDP:
+	case RGB_SLD:
 		if (record->event.pressed) {
-			rgb_matrix_mode(RGB_MATRIX_RAINDROPS);
+			rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
 		}
 
 	default:
