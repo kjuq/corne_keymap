@@ -15,8 +15,6 @@
 
 #define ORS OSL(_ORS)
 
-#define MOD_CA (QK_LCTL | QK_LALT)
-
 #define SC_TAB (QK_RCTL | QK_RSFT | KC_TAB)
 #define SA_TAB (QK_RALT | QK_RSFT | KC_TAB)
 
@@ -62,6 +60,7 @@ enum planck_keycodes {
 	COLEMAK = SAFE_RANGE,
 	ADJUST,
 	ADJUST2,
+	MOD_CA,
 	MOD_CAG,
 	MOUSE,
 	FNCTN,
@@ -824,6 +823,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		}
 		return (true);
 
+	case MOD_CA:
+		if (record->event.pressed) {
+			register_code(KC_LCTL);
+			register_code(KC_RALT);
+		} else {
+			unregister_code(KC_LCTL);
+			unregister_code(KC_RALT);
+		}
+		return (false);
+
 	case MOD_CAG:
 		if (record->event.pressed) {
 			register_code(KC_RCTL);
@@ -836,18 +845,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		}
 		return (false);
 
-	// case MOD_CSG:
-	// 	if (record->event.pressed) {
-	// 		register_code(KC_RCTL);
-	// 		register_code(KC_RSFT);
-	// 		register_code(KC_RGUI);
-	// 	} else {
-	// 		unregister_code(KC_RCTL);
-	// 		unregister_code(KC_RSFT);
-	// 		unregister_code(KC_RGUI);
-	// 	}
-	// 	return (false);
-	//
 	// MOUSE
 	case MOUSE:
 		if (record->event.pressed) {
