@@ -15,6 +15,8 @@
 
 #define ORS OSL(_ORS)
 
+#define MOD_CA (QK_LCTL | QK_LALT)
+
 #define SC_TAB (QK_RCTL | QK_RSFT | KC_TAB)
 #define SA_TAB (QK_RALT | QK_RSFT | KC_TAB)
 
@@ -33,7 +35,7 @@ typedef union {
 		bool override_enabled : 1;
 		bool gui_tap : 1;
 		bool alt_tap : 1;
-		bool left_csg : 1;
+		bool left_ca : 1;
 		bool pure_gc : 1;
 		bool pure_alt : 1;
 		bool cmd_like_ctrl : 1;
@@ -61,7 +63,6 @@ enum planck_keycodes {
 	ADJUST,
 	ADJUST2,
 	MOD_CAG,
-	MOD_CSG,
 	MOUSE,
 	FNCTN,
 	EXT_LYR,
@@ -84,7 +85,7 @@ enum planck_keycodes {
 	KO_PAST,
 	MT_GCS,
 	MT_ALTS,
-	LEFTCSG,
+	LEFTCA,
 	PUREGC,
 	PUREALT,
 	GUI_CTL,
@@ -102,7 +103,7 @@ enum planck_layers {
 	_CTL_SPC,
 	_GUI,
 	_CTL,
-	_LEFTCSG,
+	_LEFTCA,
 	_LOWER,
 	_RAISE,
 	_FNCTN,
@@ -388,11 +389,11 @@ void kjuq_reload_user_eeprom(void) {
 		default_layer_xor((layer_state_t)1 << _CTL);
 	}
 
-	if (user_config.left_csg) {
-		default_layer_or((layer_state_t)1 << _LEFTCSG);
+	if (user_config.left_ca) {
+		default_layer_or((layer_state_t)1 << _LEFTCA);
 	} else {
-		default_layer_or((layer_state_t)1 << _LEFTCSG);
-		default_layer_xor((layer_state_t)1 << _LEFTCSG);
+		default_layer_or((layer_state_t)1 << _LEFTCA);
+		default_layer_xor((layer_state_t)1 << _LEFTCA);
 	}
 
 	if (user_config.alt_tap) {
@@ -548,8 +549,8 @@ void kjuq_dump_override_state(void) {
 		if (user_config.override_modded_esc) {
 			SEND_STRING(" MODESC");
 		}
-		if (user_config.left_csg) {
-			SEND_STRING(" LEFTCSG");
+		if (user_config.left_ca) {
+			SEND_STRING(" LEFTCA");
 		}
 		if (user_config.pure_gc) {
 			SEND_STRING(" PUREGC");
@@ -637,7 +638,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_COLEMAK] = LAYOUT_split_3x5_3_ex2( // {{{
 		KC_ESC,  KC_W,    KC_F,    KC_P,    KC_B,    KC_LEFT,         KC_UP,   KC_J,    KC_L,    KC_U,    KC_Y,    KC_ENT,
 		KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_RGHT,         KC_DOWN, KC_H,    KC_N,    KC_E,    KC_I,    KC_O,
-		KC_LGUI, KC_X,    KC_C,    KC_D,    KC_V,                              KC_K,    KC_M,    KC_Z,    KC_Q,    MOD_CSG,
+		KC_LGUI, KC_X,    KC_C,    KC_D,    KC_V,                              KC_K,    KC_M,    KC_Z,    KC_Q,    MOD_CA,
 		                           LOWER,   KC_LCTL, KC_SPC,          KC_SPC,  KC_LSFT, RAISE
 	), // }}}
 
@@ -683,10 +684,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		                           _______, _______, KC_RCTL,         _______, _______, _______
 	), // }}}
 
-	[_LEFTCSG] = LAYOUT_split_3x5_3_ex2( // {{{
+	[_LEFTCA] = LAYOUT_split_3x5_3_ex2( // {{{
 		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______, _______,
-		MOD_CSG, _______, _______, _______, _______,                           _______, _______, _______, _______, KC_LGUI,
+		MOD_CA, _______, _______, _______, _______,                           _______, _______, _______, _______, KC_LGUI,
 		                           _______, _______, _______,         _______, _______, _______
 	), // }}}
 
@@ -721,7 +722,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_ADJUST] = LAYOUT_split_3x5_3_ex2( // {{{
 		EXT_LYR, KO_WDDL, KO_WD,   XXXXXXX, KO_AR,   XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX, KO_CTLU, XXXXXXX, XXXXXXX,
 		KO_HM,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, KO_BS,   KO_TOGG, KO_ED,   KO_TB,   ADJUST2,
-		LEFTCSG, KO_CUT,  KO_COPY, KO_DL,   KO_PAST,                           KO_CTLK, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
+		LEFTCA,  KO_CUT,  KO_COPY, KO_DL,   KO_PAST,                           KO_CTLK, KO_EN,   XXXXXXX, KO_JIS,  KO_PRNT,
 			                       GUI_CTL, PUREGC,  MT_GCS,          MT_ALTS, PUREALT, KO_MTAB
 	), // }}}
 
@@ -835,18 +836,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		}
 		return (false);
 
-	case MOD_CSG:
-		if (record->event.pressed) {
-			register_code(KC_RCTL);
-			register_code(KC_RSFT);
-			register_code(KC_RGUI);
-		} else {
-			unregister_code(KC_RCTL);
-			unregister_code(KC_RSFT);
-			unregister_code(KC_RGUI);
-		}
-		return (false);
-
+	// case MOD_CSG:
+	// 	if (record->event.pressed) {
+	// 		register_code(KC_RCTL);
+	// 		register_code(KC_RSFT);
+	// 		register_code(KC_RGUI);
+	// 	} else {
+	// 		unregister_code(KC_RCTL);
+	// 		unregister_code(KC_RSFT);
+	// 		unregister_code(KC_RGUI);
+	// 	}
+	// 	return (false);
+	//
 	// MOUSE
 	case MOUSE:
 		if (record->event.pressed) {
@@ -1085,9 +1086,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 			kjuq_reload_user_eeprom();
 		}
 		return (false);
-	case LEFTCSG:
+	case LEFTCA:
 		if (record->event.pressed) {
-			user_config.left_csg = !user_config.left_csg;
+			user_config.left_ca = !user_config.left_ca;
 			eeconfig_update_user(user_config.raw);
 			kjuq_reload_user_eeprom();
 		}
